@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,11 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        $event = Event::all();
+        return view('dashboard-admin.posts.input-article.create-article',[
+            'title' => 'Input Posts - Pradita University\'s Guest Lecturers',
+            'event' => $event
+        ]);
     }
 
     /**
@@ -39,7 +44,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => 'required|string',
+            'ringkasan' => 'required|string',
+            'author' => 'required',
+        ]);
+
+        return redirect()->intended(route('posts.index'))->with('success','Posts has been successfully added');
     }
 
     /**

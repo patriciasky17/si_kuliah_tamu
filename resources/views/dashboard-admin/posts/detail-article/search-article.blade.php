@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
     <!-- Custom CSS by Group 2 -->
-    <link href="./assets/css/style-search-article.css" rel="stylesheet">
+    <link href="/assets/css/style-search-article.css" rel="stylesheet">
 @endsection
 
 @section('main')
