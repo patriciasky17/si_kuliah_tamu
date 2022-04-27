@@ -7,32 +7,32 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Proposal</h6>
-                    <form>
+                    <form action="{{ route("proposal.store") }}" method='POST'>
                         <div class="row mb-3">
                             <label for="inputMataKuliahProposal" class="col-sm-2 col-form-label">Mata Kuliah</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputMataKuliahProposal">
+                                <input type="email" class="form-control" id="inputMataKuliahProposal" name="mata_kuliah">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputLatarBelakangProposal" class="col-sm-2 col-form-label">Latar Belakang</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" ></textarea>
+                                <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" name="latar_belakang" ></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputTujuanKegiatanProposal" class="col-sm-2 col-form-label">Tujuan Kegiatan</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" ></textarea>
+                                <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" name="tujuan_kegiatan"></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputFileProposal" class="col-sm-2 col-form-label">File Proposal</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="inputFileProposal">
+                                <input class="form-control" type="file" id="inputFileProposal" name="file_proposal">
                             </div>
 
                         </div>

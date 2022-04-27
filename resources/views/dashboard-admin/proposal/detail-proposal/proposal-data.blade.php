@@ -11,6 +11,17 @@
 @endsection
 
 @section('main')
+    @if (session()->has('success'))
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded p-4">
+                <div class="alert alert-success col-lg-8" role="alert">
+                    {{ session('success') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
+
     <!-- Data Proposal Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
@@ -40,56 +51,20 @@
                     </tfoot>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Social Engineering</td>
-                            <td><a href="#">proposal_se_1.pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Interaksi Manusia dan Komputer</td>
-                            <td><a href="#">proposal_imk_1.pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Arsitektur komputer</td>
-                            <td><a href="#">proposal_arsikom_1.pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Pemrograman Web</td>
-                            <td><a href="#">proposal_pemrograman_website_1.pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Komputasi Kinerja Tinggi</td>
-                            <td><a href="#">proposal_hpc_1.pdf</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
+
+                        @forelse ( $proposal as $p)
+                            <tr>
+                                <td>{{ $p->id_proposal }}</td>
+                                <td>{{ $p->mata_kuliah }}</td>
+                                <td><a href="{{ $p->file_proposal }}">{{ $p->file_proposal }}</a></td>
+                                <td class="d-flex align-items-center">
+                                    <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
+                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                </td>
+                            </tr>
+                            @empty
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -111,7 +86,7 @@
                 <div class="col-md-6 col-sm-12">
                     <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
                         <h6 class="mb-4">Latar Belakang</h6>
-                        <h6 class="isi-latar-belakang-proposal text-muted">
+                        <p class="isi-latar-belakang-proposal text-muted">
                             Dalam menciptakan sumber daya manusia yang berkualitas, perguruan tinggi perlu bekerja
                             sama dengan dunia industri untuk menyelaraskan pengetahuan dan keterampilan yang
                             diberikan kepada mahasiswa. Dalam proses pembelajaran, mahasiswa diharapkan memahami dan
@@ -120,16 +95,16 @@
                             dunia industri diperlukan. Dengan adanya kuliah tamu ini program studi informatika
                             mengundang narasumber langsung dari dunia industri untuk berbagi pengalaman dalam
                             mengantisipasi dan memitigasi bahaya social engineering.
-                        </h6>
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
                         <h6 class="mb-4">Tujuan Kegiatan</h6>
-                        <h6 class="isi-tujuan-kegiatan-proposal text-muted">
+                        <p class="isi-tujuan-kegiatan-proposal text-muted">
                             Mahasiswa mendapatkan sharing best practice bagaimana indsutri mengantisipasi dan
                             memitigasi bahaya social engineering.
-                        </h6>
+                        </p>
                     </div>
                 </div>
             </div>

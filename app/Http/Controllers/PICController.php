@@ -41,7 +41,19 @@ class PICController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_dosen' => 'required|string',
+            'prodi' => 'required|string'
+        ]);
+
+        $picAwal = [
+            'nama_dosen' => $validatedData['nama_dosen'],
+            'prodi' => $validatedData['prodi']
+        ];
+
+        PIC::create($picAwal);
+
+        return redirect()->intended(route('pic.index'))->with('success','PIC has been successfully added');
     }
 
     /**
@@ -75,7 +87,19 @@ class PICController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_dosen' => 'required|string',
+            'prodi' => 'required|string'
+        ]);
+
+        $picAwal = [
+            'nama_dosen' => $validatedData['nama_dosen'],
+            'prodi' => $validatedData['prodi']
+        ];
+
+        PIC::where('id_pic',$id)->update($picAwal);
+
+        return redirect()->intended(route('pic.index'))->with('success','PIC has been successfully updated');
     }
 
     /**
@@ -86,6 +110,8 @@ class PICController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pic = PIC::where('id_pic', $id);
+        PIC::where('id_pic', $id)->delete();
+        return redirect()->intended(route('pic.index'))->with('success','PIC has been successfully deleted');
     }
 }
