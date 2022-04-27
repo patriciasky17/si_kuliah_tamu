@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/assets/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -36,11 +36,11 @@
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
-                <img src="./assets/img/logo-pradita.png" class="logo-pradita" alt="logo-pradita">
+                <img src="/assets/img/logo-pradita.png" class="logo-pradita" alt="logo-pradita">
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
-                    <img class="rounded-circle" src="./assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="/assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
@@ -129,7 +129,7 @@
             <div class="navbar-nav align-items-center ms-auto">
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="./assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle me-lg-2" src="/assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
                         <span class="d-none d-lg-inline-flex">Patricia Ho</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -147,25 +147,31 @@
                 <div class="col-sm-12">
                     <div class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Input Data Mahasiswa</h6>
-                        <form>
+                        <form action="{{ route('mahasiswa.store') }}" method='POST'>
+                            {{-- @method('DELETE') --}}
+{{-- enctype="multipart/form-data" --}}
+                            @csrf
                             <div class="row mb-3">
                                 <label for="inputNIMMahasiswa" class="col-sm-2 col-form-label">NIM</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputNIMMahasiswa">
+                                    <input type="text" class="form-control" id="inputNIMMahasiswa" name="nim">
+                                    @error('nim')
+                                        {{ $message }}
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputNamaMahasiswa" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputNamaMahasiswa">
+                                    <input type="text" class="form-control" id="inputNamaMahasiswa" name="nama_mahasiswa">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputJenisKelaminMahasiswa" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select form-control" id="inputJenisKelaminMahasiswa">
+                                    <select class="form-select form-control" id="inputJenisKelaminMahasiswa" name="jenis_kelamin">
                                         <option selected>Pilih...</option>
                                         <option value="L">Laki-Laki</option>
                                         <option value="P">Perempuan</option>
@@ -176,14 +182,14 @@
                             <div class="row mb-3">
                                 <label for="inputProdiMahasiswa" class="col-sm-2 col-form-label">Prodi</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputProdiMahasiswa">
+                                    <input type="text" class="form-control" id="inputProdiMahasiswa" name="prodi">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputAngkatanMahasiswa" class="col-sm-2 col-form-label">Angkatan</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="inputAngkatanMahasiswa">
+                                    <input type="number" class="form-control" id="inputAngkatanMahasiswa" name='angkatan'>
                                 </div>
                             </div>
                             
@@ -217,16 +223,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/lib/chart/chart.min.js"></script>
-    <script src="./assets/lib/easing/easing.min.js"></script>
-    <script src="./assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="./assets/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="./assets/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="./assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="./assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/assets/lib/chart/chart.min.js"></script>
+    <script src="/assets/lib/easing/easing.min.js"></script>
+    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="./assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 
 </body>
 </html>

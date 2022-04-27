@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -13,7 +14,11 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        $mahasiswa = Mahasiswa::all();
+        return view('dashboard-admin.detail-mahasiswa',[
+            'title' => 'Mahasiswa',
+            'mahasiswa' => $mahasiswa
+        ]);
     }
 
     /**
@@ -23,7 +28,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard-admin.input-mahasiswa');
     }
 
     /**
@@ -34,7 +39,16 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nim' => 'required|numeric',
+            'nama_mahasiswa' => 'required',
+            'jenis_kelamin' => 'required',
+            'prodi' => 'required',
+            'angkatan' => 'required',
+        ]);
+
+        Mahasiswa::create($validatedData);
+        return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully added');
     }
 
     /**

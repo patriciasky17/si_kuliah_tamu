@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
+    protected $table = 'mahasiswa';
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'nim',
