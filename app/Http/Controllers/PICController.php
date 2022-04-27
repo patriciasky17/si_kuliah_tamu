@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
+use App\Models\PIC;
 use Illuminate\Http\Request;
 
-class MahasiswaController extends Controller
+class PICController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('dashboard-admin.mahasiswa.detail-mahasiswa.detail-mahasiswa',[
-            'title' => 'Data Mahasiswa - Pradita University\'s Guest Lecturers',
-            'mahasiswa' => $mahasiswa
+        $pic = PIC::all();
+        return view('dashboard-admin.pic.detail-pic.detail-pic',[
+            'title' => 'Data PIC - Pradita University\'s Guest Lecturers',
+            'pic' => $pic
         ]);
     }
 
@@ -28,8 +28,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('dashboard-admin.mahasiswa.input-mahasiswa.input-mahasiswa',[
-            'title' => 'Input Mahasiswa - Pradita University\'s Guest Lecturers',
+        return view('dashboard-admin.pic.input-pic.input-pic',[
+            'title' => 'Input PIC - Pradita University\'s Guest Lecturers',
         ]);
     }
 
@@ -41,16 +41,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nim' => 'required|numeric',
-            'nama_mahasiswa' => 'required',
-            'jenis_kelamin' => 'required',
-            'prodi' => 'required',
-            'angkatan' => 'required',
-        ]);
-
-        Mahasiswa::create($validatedData);
-        return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully added');
+        //
     }
 
     /**
