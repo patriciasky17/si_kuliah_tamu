@@ -12,13 +12,13 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-            $mahasiswa = Mahasiswa::all();
-            return view('dashboard-admin.detail-mahasiswa',[
-                'title' => 'Mahasiswa',
-                'mahasiswa' => $mahasiswa,
-            ]);
+        $mahasiswa = Mahasiswa::all();
+        return view('dashboard-admin.mahasiswa.detail-mahasiswa.detail-mahasiswa',[
+            'title' => 'Data Mahasiswa - Pradita University\'s Guest Lecturers',
+            'mahasiswa' => $mahasiswa
+        ]);
     }
 
     /**
@@ -28,7 +28,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('dashboard-admin.input-mahasiswa');
+        return view('dashboard-admin.mahasiswa.input-mahasiswa.input-mahasiswa',[
+            'title' => 'Input Mahasiswa - Pradita University\'s Guest Lecturers',
+        ]);
     }
 
     /**
