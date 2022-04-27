@@ -42,14 +42,22 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|numeric',
-            'nama_mahasiswa' => 'required',
-            'jenis_kelamin' => 'required',
-            'prodi' => 'required',
-            'angkatan' => 'required',
+            'nim' => 'required|numeric|min:10|max:10',
+            'nama_mahasiswa' => 'required|string',
+            'jenis_kelamin' => 'required|string|min:1|max:1',
+            'prodi' => 'required|string',
+            'angkatan' => 'required|numeric|min:4|max:4',
         ]);
 
-        Mahasiswa::create($validatedData);
+        $mahasiswaAwal = [
+            'nim' => $validatedData['nim'],
+            'nama_mahasiswa' => $validatedData['nama_mahasiswa'],
+            'jenis_kelamin' => $validatedData['jenis_kelamin'],
+            'prodi' => $validatedData['prodi'],
+            'angkatan' => $validatedData['angkatan']
+        ];
+
+        Mahasiswa::create($mahasiswaAwal);
 
         return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully added');
     }
@@ -60,6 +68,10 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,9 +90,27 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nim)
     {
+        $validatedData = $request->validate([
+            'nim' => 'required|numeric|min:10|max:10',
+            'nama_mahasiswa' => 'required|string',
+            'jenis_kelamin' => 'required|string|min:1|max:1',
+            'prodi' => 'required|string',
+            'angkatan' => 'required|numeric|min:4|max:4',
+        ]);
 
+        $mahasiswaAwal = [
+            'nim' => $validatedData['nim'],
+            'nama_mahasiswa' => $validatedData['nama_mahasiswa'],
+            'jenis_kelamin' => $validatedData['jenis_kelamin'],
+            'prodi' => $validatedData['prodi'],
+            'angkatan' => $validatedData['angkatan']
+        ];
+
+        Mahasiswa::where('nim',$nim)->update($mahasiswaAwal);
+
+        return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully updated');
     }
 
     /**
@@ -89,8 +119,10 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nim)
     {
-        
+        $mahasiswa = Mahasiswa::where('nim', $nim);
+        Mahasiswa::where('nim', $nim)->delete();
+        return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully deleted');
     }
 }
