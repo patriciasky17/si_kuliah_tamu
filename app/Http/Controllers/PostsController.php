@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -13,7 +14,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Posts::all();
+        return view('dashboard-admin.posts.detail-article.search-article',[
+            'title' => 'Posts - Pradita University\'s Guest Lecturers',
+        'posts' => $posts
+        ]);
     }
 
     /**

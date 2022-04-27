@@ -13,7 +13,7 @@
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-10">
                                 <select class="form-select form-control" id="inputDokumentasiDariEvent" name='id_event'>
-                                    <option selected>Pilih...</option>
+                                    <option selected value=''>Pilih...</option>
                                     @forelse ($event as $e)
                                         <option value="{{ $e->id_event }}">
                                             <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
@@ -22,30 +22,45 @@
                                         
                                     @endforelse
                                 </select>
+                                @error('id_event')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputFotoDokumentasi1" class="col-sm-2 col-form-label">Foto 1</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFotoDokumentasi1" name='foto_1'>
+                                @error('foto_1')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputFotoDokumentasi2" class="col-sm-2 col-form-label">Foto 2</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFotoDokumentasi2" name='foto_2'>
+                                @error('foto_2')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputLinkVideoDokumentasi" class="col-sm-2 col-form-label">Link Video</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputLinkVideoDokumentasi" name="video">
+                                @error('video')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputFeedbackDokumentasi" class="col-sm-2 col-form-label">Feedback</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFeedbackDokumentasi" name="feedback">
+                                @error('feedback')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Dokumentasi</button>

@@ -72,8 +72,8 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-newspaper me-2"></i>Posts</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="create-article.html" class="dropdown-item">Create Article</a>
-                        <a href="search-article.html" class="dropdown-item">Search</a>
+                        <a href="{{ route('post.create') }}" class="dropdown-item">Create Article</a>
+                        <a href="{{ route('post.index') }}" class="dropdown-item">Search</a>
                     </div>
                 </div>
 

@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\DokumentasiController;
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\PICController;
-use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PICController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DokumentasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::resource('/admin/mahasiswa', MahasiswaController::class)->except(['show']
 Route::resource('/admin/proposal', ProposalController::class)->except(['show']);
 Route::resource('/admin/pic', PICController::class)->except(['show']);
 Route::resource('/admin/documentation', DokumentasiController::class)->except(['show']);
+Route::resource('/admin/post', PostsController::class)->except(['show']);
