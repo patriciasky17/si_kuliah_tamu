@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PICController;
+use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/admin/mahasiswa', MahasiswaController::class);
+
+Route::resource('/admin/proposal', ProposalController::class);
+
+Route::resource('/admin/pic', PICController::class);
