@@ -12,13 +12,13 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('dashboard-admin.detail-mahasiswa',[
-            'title' => 'Mahasiswa',
-            'mahasiswa' => $mahasiswa
-        ]);
+            $mahasiswa = Mahasiswa::all();
+            return view('dashboard-admin.detail-mahasiswa',[
+                'title' => 'Mahasiswa',
+                'mahasiswa' => $mahasiswa,
+            ]);
     }
 
     /**
@@ -48,6 +48,7 @@ class MahasiswaController extends Controller
         ]);
 
         Mahasiswa::create($validatedData);
+
         return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully added');
     }
 
@@ -57,10 +58,6 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -70,7 +67,6 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -82,7 +78,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -93,6 +89,6 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
