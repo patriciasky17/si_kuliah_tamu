@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PICController;
 use App\Http\Controllers\ProposalController;
@@ -20,8 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/admin/mahasiswa', MahasiswaController::class);
-
-Route::resource('/admin/proposal', ProposalController::class);
-
-Route::resource('/admin/pic', PICController::class);
+Route::resource('/admin/mahasiswa', MahasiswaController::class)->except(['show']);
+Route::resource('/admin/proposal', ProposalController::class)->except(['show']);
+Route::resource('/admin/pic', PICController::class)->except(['show']);
+Route::resource('/admin/documentation', DokumentasiController::class)->except(['show']);

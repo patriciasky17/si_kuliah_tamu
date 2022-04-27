@@ -40,56 +40,26 @@
                     </tfoot>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</td>
-                            <td><a href="#">feedback_(Define Design Develop Strategi Transformasi Digital).pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Social Engineering dengan Dana</td>
-                            <td><a href="#">feedback_(Social Engineering dengan Dana).pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Pengembangan Software dengan Metode Scrum bersama Metrodata</td>
-                            <td><a href="#">feedback_(Pengembangan Software dengan Metode Scrum bersama Metrodata).pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Effective Scheduling Program with C#</td>
-                            <td><a href="#">feedback_(Effective Scheduling Program with C#).pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Blockchain: Immutability, Security, Transparency</td>
-                            <td><a href="#">feedback_(Blockchain Immutability, Security, Transparency).pdf</a></td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
+                        @forelse ($documentation as $d)
+                            <tr>
+                                <td>{{ $d->id_dokumentasi }}</td>
+                                <td>{{ $d->nama_event }}</td>
+                                <td><a href="/dokumentasi/{{ $d->feedback }}">{{ $d->feedback }}</a></td>
+                                <td class="d-flex align-items-center">
+                                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route('documentation.index') . '?id_dokumentasi=' . $d->id_dokumentasi  }}">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('documentation.edit',$d->id_dokumentasi) }}">Edit</a>
+                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4">
+                                    <div class="alert alert-info text-center">
+                                        <h5 class="text-center">Tidak ada data</h5>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

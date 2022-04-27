@@ -36,8 +36,8 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user-circle me-2"></i>PIC</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="input-pic.html" class="dropdown-item">Input PIC</a>
-                        <a href="detail-pic.html" class="dropdown-item">Data PIC</a>
+                        <a href="{{ route('pic.create') }}" class="dropdown-item">Input PIC</a>
+                        <a href="{{ route('pic.index') }}" class="dropdown-item">Data PIC</a>
                     </div>
                 </div>
 
@@ -64,8 +64,8 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-camera me-2"></i>Documentation</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="input-documentation.html" class="dropdown-item">Input Documentation</a>
-                        <a href="download-documentation.html" class="dropdown-item">Download Documentation</a>
+                        <a href="{{ route('documentation.create') }}" class="dropdown-item">Input Documentation</a>
+                        <a href="{{ route('documentation.index') }}" class="dropdown-item">Download Documentation</a>
                     </div>
                 </div>
 
