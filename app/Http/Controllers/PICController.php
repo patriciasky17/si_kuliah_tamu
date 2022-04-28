@@ -75,7 +75,11 @@ class PICController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pic = PIC::where('id_pic',$id)->get()->first();
+        return view('dashboard-admin.pic.edit-pic.edit-pic',[
+            'title' => 'Edit PIC - Pradita University\'s Guest Lecturers',
+            'pic' => $pic
+        ]);
     }
 
     /**

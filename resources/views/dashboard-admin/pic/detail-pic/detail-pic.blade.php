@@ -37,51 +37,18 @@
                     </tfoot>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Aditya</td>
-                            <td>Teknik Informatika</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Arief</td>
-                            <td>Akuntansi</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Putri</td>
-                            <td>Sistem Informasi</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Aditya</td>
-                            <td>Teknik Informatika</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Nadia</td>
-                            <td>Teknik Sipil</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
+                        @forelse ( $pic as $personincharge)
+                            <tr>
+                                <td>{{ $personincharge->id_pic }}</td>
+                                <td>{{ $personincharge->nama_dosen }}</td>
+                                <td>{{ $personincharge->prodi }}</td>
+                                <td class="d-flex align-items-center">
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
+                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                </td>
+                            </tr>
+                            @empty
+                        @endforelse
 
                     </tbody>
                 </table>

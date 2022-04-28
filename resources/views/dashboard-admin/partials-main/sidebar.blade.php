@@ -20,8 +20,8 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file-alt me-2"></i>Proposal</a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="input-proposal.html" class="dropdown-item">Input Proposal</a>
-                        <a href="proposal-data.html" class="dropdown-item">Proposal Data</a>
+                        <a href="{{ route('proposal.create') }}" class="dropdown-item">Input Proposal</a>
+                        <a href="{{ route('proposal.index') }}" class="dropdown-item">Proposal Data</a>
                     </div>
                 </div>
 
