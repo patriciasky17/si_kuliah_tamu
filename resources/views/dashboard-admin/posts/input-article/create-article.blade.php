@@ -7,8 +7,8 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Dokumentasi Event</h6>
-                    <form>
-
+                    <form action="{{ route('post.store') }}" method='POST'>
+                        @csrf
                         <div class="row mb-3">
                             <label for="inputJudulArtikel" class="col-sm-2 col-form-label">Judul Artikel</label>
                             <div class="col-sm-10">
@@ -29,7 +29,6 @@
                                 <input type="text" class="form-control" id="inputAuthorArtikel" name="author">
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -53,14 +52,13 @@
                     <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 20px;">
                         <h6 class="mb-4" style="margin-top:15px">Input Foto 1</h6>
                     </div>
-                    <form>
                         <div class="row mb-3">
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-10" style="margin-bottom: 20px;">
                                 <select class="form-select form-control" id="inputDokumentasiDariEvent" name="id_event[]">
                                     <option selected>Pilih...</option>
                                 @forelse ($event as $e)
-                                    <option value="{{ $e->id_event }}">
+                                    <option value="{{ $e->id_dokumentasi }}">
                                         <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
                                     </option>
                                 @empty
@@ -70,23 +68,6 @@
                                     {{ $message }}
                                 @enderror
                                 </select>
-                            </div>
-
-                            <label for="inputFotoDariDokumentasiEvent" class="col-sm-2 col-form-label">Foto</label>
-                            <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputFotoDariDokumentasiEvent" name="id_event[]">
-                                    <option selected>Pilih...</option>
-                                    @forelse ($event as $e)
-                                    <option value="{{ $e->id_event }}">
-                                        <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
-                                    </option>
-                                @empty
-                                    
-                                @endforelse
-                                </select>
-                                @error('id_event')
-                                    {{ $message }}
-                                @enderror
                             </div>
                         </div>
                     </form>
@@ -104,49 +85,24 @@
                         <h6 class="mb-4" style="margin-top:15px">Input Foto 2</h6>
                         <button type="submit" class="btn btn-outline-danger">X</button>
                     </div>
-                    <form>
                         <div class="row mb-3">
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputDokumentasiDariEvent">
+                                <select class="form-select form-control" id="inputDokumentasiDariEvent" name="id_event[]">
                                     <option selected>Pilih...</option>
-                                    <option>
-                                        <span class="idEvent">1</span> - <span class="namaEvent">Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</span>
+                                    @forelse ($event as $e)
+                                    <option value="{{ $e->id_dokumentasi }}">
+                                        <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
                                     </option>
-                                    <option>
-                                        <span class="idEvent">2</span> - <span class="namaEvent">Social Engineering dengan Dana</span>
-                                    </option>
-                                    <option>
-                                        <span class="idEvent">3</span> - <span class="namaEvent">Pengembangan Software dengan Metode Scrum bersama Metrodata</span>
-                                    </option>
-                                    <option>
-                                        <span class="idEvent">4</span> - <span class="namaEvent">Effective Scheduling Program with C#</span>
-                                    </option>
-                                    <option>
-                                        <span class="idEvent">5</span> - <span class="namaEvent">Blockchain: Immutability, Security, Transparency</span>
-                                    </option>
+                                @empty
+                                    
+                                @endforelse
                                 </select>
+                                @error('id_event')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="inputFotoDariDokumentasiEvent" class="col-sm-2 col-form-label">Foto</label>
-                            <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputFotoDariDokumentasiEvent">
-                                    <option selected>Pilih...</option>
-                                    <option>
-                                        <span class="PilihanFotoDokumentasi">1</span>
-                                    </option>
-                                    <option>
-                                        <span class="PilihanFotoDokumentasi">2</span>
-                                    </option>
-                                    <option>
-                                        <span class="PilihanFotoDokumentasi">1 & 2</span>
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

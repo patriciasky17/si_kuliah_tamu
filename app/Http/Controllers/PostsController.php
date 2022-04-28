@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -29,7 +30,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $event = Event::all();
+        $event = DB::select('SELECT * FROM event, dokumentasi WHERE event.id_event = dokumentasi.id_event');
         return view('dashboard-admin.posts.input-article.create-article',[
             'title' => 'Input Posts - Pradita University\'s Guest Lecturers',
             'event' => $event
@@ -44,6 +45,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $validatedData = $request->validate([
             'judul' => 'required|string',
             'ringkasan' => 'required|string',
