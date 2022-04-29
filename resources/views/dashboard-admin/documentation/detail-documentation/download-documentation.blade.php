@@ -85,7 +85,7 @@
 
                         <div class="carousel-inner">
                             @forelse ($singleDocumentation as $d)
-                            <div class="carousel-item">
+                            <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
                                 <img class="img-fluid mx-auto documentation-photo" src="{{ asset('foto/' . $d->foto) }}">
                             </div>
                             @empty

@@ -74,11 +74,11 @@ class DokumentasiController extends Controller
         $idDokumentasi = Dokumentasi::create($documentation)->id_dokumentasi;
         $foto1 = [
             'id_dokumentasi' => $idDokumentasi,
-            'foto' => $request->file('foto_1')->store('public/dokumentasi')
+            'foto' => $request->file('foto_1')->store('dokumentasi')
         ];
         $foto2 = [
             'id_dokumentasi' => $idDokumentasi,
-            'foto' => $request->file('foto_2')->store('public/dokumentasi')
+            'foto' => $request->file('foto_2')->store('dokumentasi')
         ];
         Foto::create($foto1);
         Foto::create($foto2);
