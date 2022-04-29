@@ -11,14 +11,14 @@
                         <div class="row mb-3">
                             <label for="inputNamaPembicara" class="col-sm-2 col-form-label">Nama PIC</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaPembicara">
+                                <input type="text" class="form-control" id="inputNamaPembicara" name="nama_dosen">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputProdiPembicara" class="col-sm-2 col-form-label">Prodi</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputProdiPembicara">
+                                <input type="text" class="form-control" id="inputProdiPembicara" name="prodi">
                             </div>
                         </div>
 

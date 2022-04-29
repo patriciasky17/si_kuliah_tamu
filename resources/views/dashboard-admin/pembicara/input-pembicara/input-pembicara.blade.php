@@ -11,63 +11,63 @@
                         <div class="row mb-3">
                             <label for="inputNamaPembicara" class="col-sm-2 col-form-label">Nama Pembicara</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaPembicara">
+                                <input type="text" class="form-control" id="inputNamaPembicara" name="nama">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputInstitusiPembicara" class="col-sm-2 col-form-label">Institusi</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputInstitusiPembicara">
+                                <input type="text" class="form-control" id="inputInstitusiPembicara" name="institusi">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputJabatanPembicara" class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputJabatanPembicara">
+                                <input type="text" class="form-control" id="inputJabatanPembicara" name="jabatan">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputFotoPembicara" class="col-sm-2 col-form-label">Foto</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="inputFotoPembicara">
+                                <input class="form-control" type="file" id="inputFotoPembicara" name="foto">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputCVPembicara" class="col-sm-2 col-form-label">CV</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="inputCVPembicara">
+                                <input class="form-control" type="file" id="inputCVPembicara" name="cv">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputNPWPPembicara" class="col-sm-2 col-form-label">NPWP</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNPWPPembicara">
+                                <input type="number" class="form-control" id="inputNPWPPembicara" name="npwp">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputBankPembicara" class="col-sm-2 col-form-label">Bank</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputBankPembicara">
+                                <input type="text" class="form-control" id="inputBankPembicara" name="bank">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputNoRekeningPembicara" class="col-sm-2 col-form-label">No. Rekening</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNoRekeningPembicara">
+                                <input type="number" class="form-control" id="inputNoRekeningPembicara" name="no_rekening">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputSertifikatPembicara" class="col-sm-2 col-form-label">Sertifikat</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="inputSertifikatPembicara">
+                                <input class="form-control" type="file" id="inputSertifikatPembicara" name="sertifikat">
                             </div>
                         </div>
 
