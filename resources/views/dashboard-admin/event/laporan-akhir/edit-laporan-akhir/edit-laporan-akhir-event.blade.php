@@ -11,7 +11,7 @@
                         <div class="row mb-3">
                             <label for="inputProposalEvent" class="col-sm-2 col-form-label">Nama Event</label>
                             <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputProposalEvent">
+                                <select class="form-select form-control" id="inputProposalEvent" name="nama_event">
                                     <option selected>Pilih...</option>
                                     <option>
                                         <span class="id-event">1</span> -
@@ -45,7 +45,7 @@
                         <div class="row mb-3">
                             <label for="inputLaporanAkhirEvent" class="col-sm-2 col-form-label">Laporan Akhir</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="inputLaporanAkhirEvent">
+                                <input class="form-control" type="file" id="inputLaporanAkhirEvent" name="laporan_akhir">
                             </div>
                         </div>
 
