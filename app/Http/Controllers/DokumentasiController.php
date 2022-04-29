@@ -16,13 +16,24 @@ class DokumentasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $documentation = DB::select('SELECT * FROM dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi');
-        return view('dashboard-admin.documentation.detail-documentation.download-documentation',[
+        $id = $request->query('id_dokumentasi');
+        if($id){
+            $singleDocumentation = DB::select('SELECT * from dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi AND dokumentasi.id_dokumentasi = ?', [$id]);
+            $documentation = DB::select('SELECT * FROM dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi');
+            return view('dashboard-admin.documentation.detail-documentation.download-documentation',[
+            'title' => 'Data Dokumentasi - Pradita University\'s Guest Lecturers',
+            'documentation' => $documentation,
+            'singleDocumentation' => $singleDocumentation
+        ]);
+        }else{
+            $documentation = DB::select('SELECT * FROM dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi');
+            return view('dashboard-admin.documentation.detail-documentation.download-documentation',[
             'title' => 'Data Dokumentasi - Pradita University\'s Guest Lecturers',
             'documentation' => $documentation
         ]);
+        }
     }
 
     /**

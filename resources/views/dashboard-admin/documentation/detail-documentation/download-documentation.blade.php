@@ -77,11 +77,15 @@
 
             <div class="row">
                 <div class="col-md-5 col-sm-12 d-flex justify-content-center">
-                    <img class="img-fluid mx-auto documentation-photo" src="./assets/img/profile-picture-test1.jfif">
+                    @forelse ($singleDocumentation as $d)
+                        <img class="img-fluid mx-auto documentation-photo" src="{{ asset('foto/' . $d->foto) }}">
+                    @empty
+                        
+                    @endforelse
                 </div>
                 <div class="col-md-7 col-sm-12">
                     <div class="bg-light rounded h-100">
-                        <h6 class="mb-4"><span class="nama-pembicara">Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</span></h6>
+                        <h6 class="mb-4"><span class="nama-pembicara">{{ $singleDocumentation->nama_event }}</span></h6>
                         <dl class="row mb-0">
                             <dt class="col-sm-4">Foto Dokumentasi</dt>
                             <dd class="col-sm-8">
@@ -96,7 +100,7 @@
                             </dd>
 
                             <dt class="col-sm-4">Video Dokumentasi</dt>
-                            <dd class="col-sm-8"><a class="btn btn-sm btn-outline-warning" href="#">Download Video</a></dd>
+                            <dd class="col-sm-8"><a class="btn btn-sm btn-outline-warning" href="">Download Video</a></dd>
 
                             <dt class="col-sm-12" style="margin-bottom: 30px; margin-top: 30px;"></dt>
 
