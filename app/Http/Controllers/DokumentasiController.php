@@ -71,15 +71,19 @@ class DokumentasiController extends Controller
             'video' => $validatedData['video'],
             'feedback' => $validatedData['feedback']
         ];
+        if($validatedData['feedback']){
+            $file = $request->file('feedback')->store('dokumentasi');
+            $documentation['feedback'] = $file;
+        }
 
         $idDokumentasi = Dokumentasi::create($documentation)->id_dokumentasi;
         $foto1 = [
             'id_dokumentasi' => $idDokumentasi,
-            'foto' => $request->file('foto_1')->store('dokumentasi')
+            'foto' => $request->file('foto_1')->store('foto')
         ];
         $foto2 = [
             'id_dokumentasi' => $idDokumentasi,
-            'foto' => $request->file('foto_2')->store('dokumentasi')
+            'foto' => $request->file('foto_2')->store('foto')
         ];
         Foto::create($foto1);
         Foto::create($foto2);
