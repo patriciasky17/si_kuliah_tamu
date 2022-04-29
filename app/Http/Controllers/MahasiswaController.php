@@ -122,7 +122,7 @@ class MahasiswaController extends Controller
     public function destroy($nim)
     {
         $mahasiswa = Mahasiswa::where('nim', $nim);
-        Mahasiswa::where('nim', $nim)->delete();
+        $mahasiswa->delete();
         return redirect()->intended(route('mahasiswa.index'))->with('success','Mahasiswa has been successfully deleted');
     }
 }

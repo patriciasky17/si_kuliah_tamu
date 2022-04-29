@@ -48,8 +48,8 @@ class PostsController extends Controller
         dd($request->all());
         $validatedData = $request->validate([
             'judul' => 'required|string',
-            'ringkasan' => 'required|string',
-            'author' => 'required',
+            'ringkasan' => 'required|text',
+            'author' => 'required|string',
         ]);
 
         return redirect()->intended(route('posts.index'))->with('success','Posts has been successfully added');
@@ -97,6 +97,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $posts = Posts::where('id_posts', $id);
+        $posts->delete();
+        return redirect()->intended(route('post.index'))->with('success','Posts has been successfully deleted');
     }
 }
