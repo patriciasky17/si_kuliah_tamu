@@ -44,6 +44,7 @@
                             <th scope="col">Durasi</th>
                             <th scope="col">PIC</th>
                             <th scope="col">Proposal</th>
+                            <th scope="col">Pembicara</th>
                             <th scope="col">Details</th>
                         </tr>
                     </thead>
@@ -62,6 +63,7 @@
                             <th scope="col">Durasi</th>
                             <th scope="col">PIC</th>
                             <th scope="col">Proposal</th>
+                            <th scope="col">Pembicara</th>
                             <th scope="col">Details</th>
                         </tr>
                     </tfoot>
@@ -80,6 +82,7 @@
                             <td>1 Jam 30 Menit</td>
                             <td>Aditya</td>
                             <td><a href="#">proposal_hpc_1.pdf</a></td>
+                            <td></td>
                             <<td class="d-flex align-items-center">
                                 <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
                                 <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
@@ -98,6 +101,7 @@
                             <td>1 Jam 30 Menit</td>
                             <td>Candra</td>
                             <td><a href="#">proposal_se_1.pdf</a></td>
+                            <td></td>
                             <td class="d-flex align-items-center">
                                 <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
                                 <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
@@ -116,6 +120,7 @@
                             <td>1 Jam 30 Menit</td>
                             <td>Arief</td>
                             <td><a href="#">proposal_imk_1.pdf</a></td>
+                            <td></td>
                             <td class="d-flex align-items-center">
                                 <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
                                 <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
@@ -134,6 +139,7 @@
                             <td>1 Jam 30 Menit</td>
                             <td>David</td>
                             <td><a href="#">proposal_arsikom_1.pdf</a></td>
+                            <td></td>
                             <td class="d-flex align-items-center">
                                 <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
                                 <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
@@ -152,6 +158,7 @@
                             <td>2 Jam 0 Menit</td>
                             <td>Putri</td>
                             <td><a href="#">proposal_ml_1.pdf</a></td>
+                            <td></td>
                             <td class="d-flex align-items-center">
                                 <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
                                 <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
