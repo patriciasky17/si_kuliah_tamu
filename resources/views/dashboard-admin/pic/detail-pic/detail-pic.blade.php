@@ -43,8 +43,12 @@
                                 <td>{{ $personincharge->nama_dosen }}</td>
                                 <td>{{ $personincharge->prodi }}</td>
                                 <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                    <a class="btn btn-sm btn-outline-warning" href="{{ route('pic.edit',$personincharge->id_pic) }}">Edit</a>
+                                    <form action="{{ route('pic.destroy', $personincharge->id_pic) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-outline-danger w-100" type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty

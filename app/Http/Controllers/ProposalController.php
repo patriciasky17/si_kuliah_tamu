@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProposalController extends Controller
 {
@@ -52,7 +53,7 @@ class ProposalController extends Controller
             'mata_kuliah' => $validatedData['mata_kuliah'],
             'latar_belakang' => $validatedData['latar_belakang'],
             'tujuan_kegiatan' => $validatedData['tujuan_kegiatan'],
-            'file_proposal' => $validatedData['file_proposal']
+            'file_proposal' => $request->file('file_proposal')->store('public/proposal'),
         ];
 
         Proposal::create($proposalAwal);
@@ -79,7 +80,11 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proposal = Proposal::where('id_proposal',$id)->first();
+        return view('dashboard-admin.proposal.edit-proposal.edit-proposal',[
+            'title' => 'Edit Proposal - Pradita University\'s Guest Lecturers',
+            'proposal' => $proposal
+        ]);
     }
 
     /**
@@ -95,16 +100,19 @@ class ProposalController extends Controller
             'mata_kuliah' => 'required|string',
             'latar_belakang' => 'required|text',
             'tujuan_kegiatan' => 'required|text',
-            'file_proposal' => 'required'
+            'file_proposal' => 'required|mimes:pdf,docx,doc|max:2048',
+            'oldfile_proposal' => 'required'
         ]);
 
         $proposalAwal = [
             'mata_kuliah' => $validatedData['mata_kuliah'],
             'latar_belakang' => $validatedData['latar_belakang'],
             'tujuan_kegiatan' => $validatedData['tujuan_kegiatan'],
-            'file_proposal' => $validatedData['file_proposal']
+            'file_proposal' => $request->file('file_proposal')->store('public/proposal')
         ];
-
+        if($validatedData['oldfile_proposal']){
+            Storage::delete($validatedData['oldfile_proposal']);
+        }
         Proposal::where('id_proposal',$id)->update($proposalAwal);
 
         return redirect()->intended(route('proposal.index'))->with('success','Proposal has been successfully updated');
@@ -119,7 +127,8 @@ class ProposalController extends Controller
     public function destroy($id)
     {
         $proposal = Proposal::where('id_proposal', $id);
-        Proposal::where('id_proposal', $id)->delete();
+        Storage::delete($proposal->file_proposal);
+        $proposal->delete();
         return redirect()->intended(route('proposal.index'))->with('success','Proposal has been successfully deleted');
     }
 }

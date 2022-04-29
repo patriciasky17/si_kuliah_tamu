@@ -7,21 +7,28 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input PIC</h6>
-                    <form>
+                    <form action='{{ route('pic.update',$pic->id_pic) }}' method='post'>
+                        @method('PUT')
+                        @csrf
                         <div class="row mb-3">
                             <label for="inputNamaPembicara" class="col-sm-2 col-form-label">Nama PIC</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaPembicara">
+                                <input type="text" class="form-control" id="inputNamaPembicara" name='nama_dosen' value="{{ $pic->nama_dosen }}">
+                                @error('nama_dosen')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputProdiPembicara" class="col-sm-2 col-form-label">Prodi</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputProdiPembicara">
+                                <input type="text" class="form-control" id="inputProdiPembicara" name='prodi' value='{{ $pic->prodi }}'>
+                                @error('prodi')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-
                         <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Data</button>
                     </form>
                 </div>

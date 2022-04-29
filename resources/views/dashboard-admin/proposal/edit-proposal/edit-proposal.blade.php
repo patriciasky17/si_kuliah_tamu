@@ -7,33 +7,46 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Proposal</h6>
-                    <form action="{{ route("proposal.edit") }}" method='POST' enctype="multipart/form-data">
+                    <form action="{{ route("proposal.update",$proposal->id_proposal) }}" method='POST' enctype="multipart/form-data">
                         @method("PUT")
                         <div class="row mb-3">
                             <label for="inputMataKuliahProposal" class="col-sm-2 col-form-label">Mata Kuliah</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputMataKuliahProposal" name="mata_kuliah">
+                                <input type="email" class="form-control" id="inputMataKuliahProposal" name="mata_kuliah" value="{{ $proposal->mata_kuliah }}">
+                                @error('mata_kuliah')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputLatarBelakangProposal" class="col-sm-2 col-form-label">Latar Belakang</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" name="latar_belakang" ></textarea>
+                                <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" name="latar_belakang" value="{{ $proposal->latar_belakang }}"></textarea>
+                                @error('latar_belakang')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputTujuanKegiatanProposal" class="col-sm-2 col-form-label">Tujuan Kegiatan</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" name="tujuan_kegiatan"></textarea>
+                                <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" name="tujuan_kegiatan" value="{{ $proposal->tujuan_kegiatan }}"></textarea>
+                                @error('tujuan_kegiatan')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputFileProposal" class="col-sm-2 col-form-label">File Proposal</label>
                             <div class="col-sm-10">
+                                <input type="file" class="form-control" id="inputFileProposal" name="oldfile_proposal" value="{{ $proposal->file_proposal }}">
                                 <input class="form-control" type="file" id="inputFileProposal" name="file_proposal">
+                                @error('file_proposal')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>

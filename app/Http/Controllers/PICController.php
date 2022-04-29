@@ -115,7 +115,7 @@ class PICController extends Controller
     public function destroy($id)
     {
         $pic = PIC::where('id_pic', $id);
-        PIC::where('id_pic', $id)->delete();
+        $pic->delete();
         return redirect()->intended(route('pic.index'))->with('success','PIC has been successfully deleted');
     }
 }
