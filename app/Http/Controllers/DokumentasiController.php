@@ -21,7 +21,7 @@ class DokumentasiController extends Controller
         $id = $request->query('id_dokumentasi');
         if($id){
             $singleDocumentation = DB::select('SELECT * from dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi AND dokumentasi.id_dokumentasi = ?', [$id]);
-            $documentation = DB::select('SELECT * FROM dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi');
+            $documentation = DB::select('SELECT * FROM dokumentasi, event WHERE dokumentasi.id_event = event.id_event');
             return view('dashboard-admin.documentation.detail-documentation.download-documentation',[
             'title' => 'Data Dokumentasi - Pradita University\'s Guest Lecturers',
             'documentation' => $documentation,
@@ -76,7 +76,8 @@ class DokumentasiController extends Controller
             $documentation['feedback'] = $file;
         }
 
-        $idDokumentasi = Dokumentasi::create($documentation)->id_dokumentasi;
+        $idDokumentasi = Dokumentasi::create($documentation)->id;
+
         $foto1 = [
             'id_dokumentasi' => $idDokumentasi,
             'foto' => $request->file('foto_1')->store('foto')

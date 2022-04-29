@@ -25,7 +25,6 @@
                         <tr>
                             <th scope="col">ID Dokumentasi</th>
                             <th scope="col">Nama Event</th>
-                            <th scope="col">Feedback</th>
                             <th scope="col">Details</th>
                         </tr>
                     </thead>
@@ -34,7 +33,6 @@
                         <tr>
                             <th scope="col">ID Dokumentasi</th>
                             <th scope="col">Nama Event</th>
-                            <th scope="col">Feedback</th>
                             <th scope="col">Details</th>
                         </tr>
                     </tfoot>
@@ -44,7 +42,6 @@
                             <tr>
                                 <td>{{ $d->id_dokumentasi }}</td>
                                 <td>{{ $d->nama_event }}</td>
-                                <td><a href="/dokumentasi/{{ $d->feedback }}">{{ $d->feedback }}</a></td>
                                 <td class="d-flex align-items-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="{{ route('documentation.index') . '?id_dokumentasi=' . $d->id_dokumentasi  }}">Detail</a>
                                     <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('documentation.edit',$d->id_dokumentasi) }}">Edit</a>
@@ -108,7 +105,7 @@
 
                 <div class="col-md-7 col-sm-12">
                     <div class="bg-light rounded h-100">
-                        <h6 class="mb-4"><span class="nama-pembicara">{{ $singleDocumentation[0]->nama_event != null}}</span></h6>
+                        <h6 class="mb-4"><span class="nama-pembicara">{{ $singleDocumentation[0]->nama_event}}</span></h6>
                         <dl class="row mb-0">
                             <dt class="col-sm-4">Foto Dokumentasi</dt>
                             <dd class="col-sm-8 d-flex">
