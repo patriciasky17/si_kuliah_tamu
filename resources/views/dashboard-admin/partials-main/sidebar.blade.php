@@ -45,6 +45,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-day me-2"></i>Event</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="input-event.html" class="dropdown-item">Input Event</a>
+                        <a href="input-pembicara-ke-event.html" class="dropdown-item">Input Pembicara ke Event</a>
                         <a href="detail-event.html" class="dropdown-item">Data Event</a>
                         <a href="input-laporan-akhir-event.html" class="dropdown-item">Input Laporan Akhir</a>
                         <a href="detail-laporan-akhir-event.html" class="dropdown-item">Data Laporan Akhir</a>

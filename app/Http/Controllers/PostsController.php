@@ -99,6 +99,6 @@ class PostsController extends Controller
     {
         $posts = Posts::where('id_posts', $id);
         $posts->delete();
-        return redirect()->intended(route('post.index'))->with('success','Posts has been successfully deleted');
+        return redirect()->intended(route('posts.index'))->with('success','Posts has been successfully deleted');
     }
 }
