@@ -122,39 +122,6 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="inputPembicaraEvent" class="col-sm-2 col-form-label">Pembicara</label>
-                            <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputPembicaraEvent" multiple name="id_pembicara">
-                                    <option>
-                                        <span class="id-pembicara">1</span> -
-                                        <span class="nama-pembicara">Vina Fitria</span> -
-                                        <span class="institusi-pembicara">Dana</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">2</span> -
-                                        <span class="nama-pembicara">Misbah Munirin Alkhafadh</span> -
-                                        <span class="institusi-pembicara">Metrodata</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">3</span> -
-                                        <span class="nama-pembicara">Fahrizal Husein</span> -
-                                        <span class="institusi-pembicara">DANA</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">4</span> -
-                                        <span class="nama-pembicara">Antonio Andre</span> -
-                                        <span class="institusi-pembicara">DANA</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">5</span> -
-                                        <span class="nama-pembicara">Bpk. Ryan Ari Setyawan, S.Kom., M.Eng.</span> -
-                                        <span class="institusi-pembicara">Fakultas Teknik Universitas Janabadra</span>
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
 
                         <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Event</button>
                     </form>

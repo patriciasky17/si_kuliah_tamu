@@ -6,12 +6,24 @@
         <div class="row g-4">
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Input Event</h6>
+                    <h6 class="mb-4">Input Pembicara ke Event</h6>
                     <form>
                         <div class="row mb-3">
-                            <label for="inputNamaEvent" class="col-sm-2 col-form-label">Nama Event</label>
+                            <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaEvent" name="name_event">
+                                <select class="form-select form-control" id="inputDokumentasiDariEvent" name='id_event'>
+                                    <option selected value=''>Pilih...</option>
+                                    @forelse ($event as $e)
+                                        <option value="{{ $e->id_event }}">
+                                            <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
+                                        </option>
+                                    @empty
+
+                                    @endforelse
+                                </select>
+                                @error('id_event')
+                                    {{ $message }}
+                                @enderror
                             </div>
                         </div>
 
