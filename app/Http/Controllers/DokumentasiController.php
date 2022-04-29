@@ -31,7 +31,8 @@ class DokumentasiController extends Controller
             $documentation = DB::select('SELECT * FROM dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi');
             return view('dashboard-admin.documentation.detail-documentation.download-documentation',[
             'title' => 'Data Dokumentasi - Pradita University\'s Guest Lecturers',
-            'documentation' => $documentation
+            'documentation' => $documentation,
+            'singleDocumentation' => null
         ]);
         }
     }
@@ -70,7 +71,7 @@ class DokumentasiController extends Controller
             'video' => $validatedData['video'],
             'feedback' => $validatedData['feedback']
         ];
-        
+
         $idDokumentasi = Dokumentasi::create($documentation)->id_dokumentasi;
         $foto1 = [
             'id_dokumentasi' => $idDokumentasi,
