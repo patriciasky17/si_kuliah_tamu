@@ -187,6 +187,9 @@ class DokumentasiController extends Controller
         foreach($foto as $f){
             Storage::delete($f->foto);
         }
+        if($documentation->first()->feedback != null){
+            Storage::delete($documentation->first()->feedback);
+        }
         $documentation->delete();
         return redirect()->intended(route('documentation.index'))->with('success', 'Documentation has been successfully deleted');
     }
