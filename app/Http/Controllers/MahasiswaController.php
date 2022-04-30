@@ -81,7 +81,7 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        $mahasiswa = Mahasiswa::where("nim", $id)->get();
+        $mahasiswa = Mahasiswa::where("nim", $id)->get()->first();
         return view('dashboard-admin.mahasiswa.edit-mahasiswa.edit-mahasiswa',[
             'title' => 'Edit Mahasiswa - Pradita University\'s Guest Lecturers',
             'mahasiswa' => $mahasiswa

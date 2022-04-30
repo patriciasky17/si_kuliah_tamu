@@ -7,9 +7,9 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Data Mahasiswa</h6>
-                    <form action="{{ route('mahasiswa.store') }}" method='POST'>
-                        {{-- @method('DELETE') --}}
-                        {{-- enctype="multipart/form-data" --}}
+                    <form action="{{ route('mahasiswa.update', $mahasiswa->nim) }}" method='POST'>
+                        @method('PUT')
+                        {{-- enctype="multipart/form-data" --}} {{-- buat file --}}
                         @csrf
                         <div class="row mb-3">
                             <label for="inputNIMMahasiswa" class="col-sm-2 col-form-label">NIM</label>
@@ -31,10 +31,9 @@
                         <div class="row mb-3">
                             <label for="inputJenisKelaminMahasiswa" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputJenisKelaminMahasiswa" name="jenis_kelamin" value="{{ $mahasiswa->jenis_kelamin}}">
-                                    <option selected>Pilih...</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
+                                <select class="form-select form-control" id="inputJenisKelaminMahasiswa" name="jenis_kelamin">
+                                    <option value="L" {{ $mahasiswa->jenis_kelamin == "L" ? "selected" : ""}}>Laki-Laki</option>
+                                    <option value="P" {{ $mahasiswa->jenis_kelamin == "P" ? "selected" : ""}}>Perempuan</option>
                                 </select>
                                 @error('jenis_kelamin')
                                     <p class="text-danger"><i>{{ $message }}</i></p>

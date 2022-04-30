@@ -59,7 +59,7 @@
                                 <td>{{ $m->prodi }}</td>
                                 <td>{{ $m->angkatan }}</td>
                                 <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="admin/mahasiswa/{{ $m->nim }}/edit">Edit</a>
+                                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route("mahasiswa.edit", $m->nim) }}">Edit</a>
                                     <form action="{{ route("mahasiswa.destroy", $m->nim)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
