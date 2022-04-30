@@ -12,9 +12,9 @@
                         <div class="row mb-3">
                             <label for="inputMataKuliahProposal" class="col-sm-2 col-form-label">Mata Kuliah</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputMataKuliahProposal" name="mata_kuliah" value="{{ $proposal->mata_kuliah }}">
+                                <input type="text" class="form-control" id="inputMataKuliahProposal" name="mata_kuliah" value="{{ $proposal->mata_kuliah }}">
                                 @error('mata_kuliah')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                             <div class="col-sm-10">
                                 <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" name="latar_belakang" value="{{ $proposal->latar_belakang }}"></textarea>
                                 @error('latar_belakang')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="col-sm-10">
                                 <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" name="tujuan_kegiatan" value="{{ $proposal->tujuan_kegiatan }}"></textarea>
                                 @error('tujuan_kegiatan')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                 <input type="file" class="form-control" id="inputFileProposal" name="oldfile_proposal" value="{{ $proposal->file_proposal }}">
                                 <input class="form-control" type="file" id="inputFileProposal" name="file_proposal">
                                 @error('file_proposal')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
 

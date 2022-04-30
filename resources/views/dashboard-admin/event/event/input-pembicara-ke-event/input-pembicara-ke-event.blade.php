@@ -57,6 +57,9 @@
                                         <span class="institusi-pembicara">Fakultas Teknik Universitas Janabadra</span>
                                     </option>
                                 </select>
+                                @error('id_pembicara')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 

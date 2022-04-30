@@ -15,7 +15,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputNamaPembicara" name='nama_dosen' value="{{ $pic->nama_dosen }}">
                                 @error('nama_dosen')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputProdiPembicara" name='prodi' value='{{ $pic->prodi }}'>
                                 @error('prodi')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>

@@ -8,25 +8,34 @@
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Dokumentasi Event</h6>
                     <form>
-
+                        @csrf
                         <div class="row mb-3">
                             <label for="inputJudulArtikel" class="col-sm-2 col-form-label">Judul Artikel</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputJudulArtikel">
+                                <input type="text" class="form-control" id="inputJudulArtikel" name="judul">
+                                @error('judul')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputRingkasanArtikel" class="col-sm-2 col-form-label">Isi Artikel</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputRingkasanArtikel" style="height: 150px;"></textarea>
+                                <textarea class="form-control" id="inputRingkasanArtikel" style="height: 150px;" name="ringkasan"></textarea>
+                                @error('ringkasan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputAuthorArtikel" class="col-sm-2 col-form-label">Author</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputAuthorArtikel">
+                                <input type="text" class="form-control" id="inputAuthorArtikel" name="author">
+                                @error('author')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 

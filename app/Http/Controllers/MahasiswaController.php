@@ -42,7 +42,7 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|numeric',
+            'nim' => 'required|numeric|unique:mahasiswa',
             'nama_mahasiswa' => 'required|string',
             'jenis_kelamin' => 'required|string|min:1|max:1',
             'prodi' => 'required|string',
@@ -81,6 +81,11 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
+        $mahasiswa = Mahasiswa::where("nim", $id)->get();
+        return view('dashboard-admin.mahasiswa.edit-mahasiswa.edit-mahasiswa',[
+            'title' => 'Edit Mahasiswa - Pradita University\'s Guest Lecturers',
+            'mahasiswa' => $mahasiswa
+        ]);
     }
 
     /**
@@ -93,7 +98,6 @@ class MahasiswaController extends Controller
     public function update(Request $request, $nim)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|numeric',
             'nama_mahasiswa' => 'required|string',
             'jenis_kelamin' => 'required|string|min:1|max:1',
             'prodi' => 'required|string',
@@ -101,7 +105,6 @@ class MahasiswaController extends Controller
         ]);
 
         $mahasiswaAwal = [
-            'nim' => $validatedData['nim'],
             'nama_mahasiswa' => strtoupper($validatedData['nama_mahasiswa']),
             'jenis_kelamin' => $validatedData['jenis_kelamin'],
             'prodi' => $validatedData['prodi'],

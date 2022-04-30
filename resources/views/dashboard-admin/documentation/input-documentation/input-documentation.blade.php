@@ -19,11 +19,11 @@
                                             <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
                                         </option>
                                     @empty
-                                        
+
                                     @endforelse
                                 </select>
                                 @error('id_event')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFotoDokumentasi1" name='foto_1'>
                                 @error('foto_1')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFotoDokumentasi2" name='foto_2'>
                                 @error('foto_2')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputLinkVideoDokumentasi" name="video">
                                 @error('video')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFeedbackDokumentasi" name="feedback">
                                 @error('feedback')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
