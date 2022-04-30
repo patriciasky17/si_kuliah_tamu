@@ -37,7 +37,7 @@ Route::resource('/admin/mahasiswa', MahasiswaController::class)->except(['show']
 Route::resource('/admin/proposal', ProposalController::class)->except(['show']);
 Route::resource('/admin/pic', PICController::class)->except(['show']);
 Route::resource('/admin/documentation', DokumentasiController::class)->except(['show']);
-Route::resource('/admin/post', PostsController::class)->except(['show']);
+Route::resource('/admin/post', PostsController::class);
 
 //Download Images
 Route::get('/downloadfoto/{image}', [DownloadController::class, 'photoDokumentasi'])->name('download.photoDokumentasi');

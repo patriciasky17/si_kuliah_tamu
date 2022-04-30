@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Event;
 use App\Models\Posts;
+use App\Models\PostsDanDokumentasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,14 +47,27 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $validatedData = $request->validate([
-            'judul' => 'required|string',
-            'ringkasan' => 'required|text',
-            'author' => 'required|string',
+            'judul' => 'required',
+            'ringkasan' => 'required',
+            'author' => 'required',
+            'id_event' => 'required',
         ]);
-
-        return redirect()->intended(route('posts.index'))->with('success','Posts has been successfully added');
+        $posts = [
+            'judul' => $validatedData['judul'],
+            'ringkasan' => $validatedData['ringkasan'],
+            'author' => $validatedData['author'],
+            'waktu_publikasi' => Carbon::now(),
+        ];
+        $idPost = Posts::create($posts)->id;
+        for($i = 0; $i < count($validatedData['id_event']); $i++){
+            $batchEvent[$i] = [
+                'id_posts' => $idPost,
+                'id_dokumentasi' => $validatedData['id_event'][$i]
+            ];
+        }
+        PostsDanDokumentasi::insert($batchEvent);
+        return redirect()->intended(route('post.index'))->with('success','Posts has been successfully added');
     }
 
     /**
@@ -63,7 +78,11 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = DB::select('SELECT * FROM posts, posts_dan_dokumentasi, dokumentasi, foto WHERE posts.id_posts = posts_dan_dokumentasi.id_posts AND posts_dan_dokumentasi.id_dokumentasi = dokumentasi.id_dokumentasi AND dokumentasi.id_dokumentasi = foto.id_dokumentasi AND posts.id_posts = ?', [$id]);
+        return view('',[
+            'title' => 'Posts - Pradita University\'s Guest Lecturers',
+            'post' => $post
+        ]);
     }
 
     /**
@@ -74,7 +93,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = DB::select('SELECT * FROM posts, posts_dan_dokumentasi, dokumentasi, foto WHERE posts.id_posts = posts_dan_dokumentasi.id_posts AND posts_dan_dokumentasi.id_dokumentasi = dokumentasi.id_dokumentasi AND dokumentasi.id_dokumentasi = foto.id_dokumentasi AND posts.id_posts = ?', [$id]);
+        return view('',[
+            'title' => 'Posts - Pradita University\'s Guest Lecturers',
+            'post' => $post
+        ]);
     }
 
     /**
@@ -86,7 +109,19 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => 'required',
+            'ringkasan' => 'required',
+            'author' => 'required'
+        ]);
+        $posts = [
+            'judul' => $validatedData['judul'],
+            'ringkasan' => $validatedData['ringkasan'],
+            'author' => $validatedData['author'],
+            'waktu_pembaruan' => Carbon::now(),
+        ];
+        Posts::where('id_posts',$id)->update($posts);
+        return redirect()->intended(route('post.index'))->with('success','Posts has been successfully updated');
     }
 
     /**
