@@ -33,6 +33,7 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
                             <th scope="col">File Proposal</th>
@@ -42,6 +43,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
                             <th scope="col">File Proposal</th>
@@ -53,6 +55,7 @@
 
                         @forelse ( $proposal as $p)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->id_proposal }}</td>
                                 <td>{{ $p->mata_kuliah }}</td>
                                 <td><a href="{{ $p->file_proposal }}">{{ $p->file_proposal }}</a></td>
