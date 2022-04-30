@@ -16,10 +16,10 @@ class DownloadController extends Controller
         $image = $request->query('image');
         $pdf = $request->query('pdf');
         if($image){
-            $file = public_path('foto\\' . $image);
+            $file = public_path($image);
             return response()->download($file);
         }else if($pdf){
-            $file = public_path() . '\dokumentasi\\' . $pdf;
+            $file = public_path() . $pdf;
             return response()->download($file);
         }
     }
