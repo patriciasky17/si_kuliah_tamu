@@ -11,7 +11,10 @@
                         <div class="row mb-3">
                             <label for="inputNamaEvent" class="col-sm-2 col-form-label">Nama Event</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaEvent" name="name_event">
+                                <input type="text" class="form-control" id="inputNamaEvent" name="nama_event">
+                                @error('nama_event')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -24,6 +27,9 @@
                                     <option value="Online">Online</option>
                                     <option value="Hybrid">Hybrid</option>
                                 </select>
+                                @error('cara_pelaksanaan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -31,6 +37,9 @@
                             <label for="inputBackgroundEvent" class="col-sm-2 col-form-label">Background</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputBackgroundEvent" name="background">
+                                @error('background')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -38,6 +47,9 @@
                             <label for="inputFlyerEvent" class="col-sm-2 col-form-label">Flyer</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" id="inputFlyerEvent" name="flyer">
+                                @error('flyer')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -45,6 +57,9 @@
                             <label for="inputTempatPelaksanaanEvent" class="col-sm-2 col-form-label">Tempat Pelaksanaan</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputTempatPelaksanaanEvent" name="tempat_pelaksanaan">
+                                @error('tempat_pelaksanaan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -52,6 +67,9 @@
                             <label for="inputLinkEvent" class="col-sm-2 col-form-label">Link</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputLinkEvent" name="link">
+                                @error('link')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -59,6 +77,9 @@
                             <label for="inputTanggalPelaksanaanEvent" class="col-sm-2 col-form-label">Tanggal Pelaksanaan</label>
                             <div class="col-sm-10">
                                 <input type="date" placeholder="yyyy-mm-dd" class="form-control" min="1997-01-01" max="2080-12-31" id="inputTanggalPelaksanaanEvent" name="tanggal_pelaksanaan">
+                                @error('tanggal_pelaksanaan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -66,6 +87,9 @@
                             <label for="inputWaktuMulaiEvent" class="col-sm-2 col-form-label">Waktu Mulai</label>
                             <div class="col-sm-10">
                                 <input type="time"  class="form-control" id="inputWaktuMulaiEvent" name="jam_mulai">
+                                @error('jam_mulai')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -73,6 +97,9 @@
                             <label for="inputWaktuSelesaiEvent" class="col-sm-2 col-form-label">Waktu Selesai</label>
                             <div class="col-sm-10">
                                 <input type="time"  class="form-control" id="inputWaktuSelesaiEvent" name="jam_selesai">
+                                @error('jam_selesai')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -85,6 +112,9 @@
                                     <option>Arief</option>
                                     <option>Putri</option>
                                 </select>
+                                @error('id_pic')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -119,6 +149,9 @@
                                         <span class="file-proposal">proposal_hpc_1.pdf</span>
                                     </option>
                                 </select>
+                                @error('id_proposal')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 

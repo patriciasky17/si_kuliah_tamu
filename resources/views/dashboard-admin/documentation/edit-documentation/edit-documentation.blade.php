@@ -18,11 +18,11 @@
                                             <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
                                         </option>
                                     @empty
-                                        
+
                                     @endforelse
                                 </select>
                                 @error('id_event')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                 <input class="form-control" type="hidden" name='oldfoto_1' value='{{ $documentation[0]->foto != NULL ? $documentation[0]->foto : '' }}'>
                                 <input class="form-control" type="file" id="inputFotoDokumentasi1" name='foto_1'>
                                 @error('foto_1')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                                 @if ($documentation[0]->foto)
                                     {{ 'Ini adalah fotonya yang telah di upload ' . $documentation[0]->foto }}
@@ -45,7 +45,7 @@
                                 <input class="form-control" type="hidden" name='oldfoto_2' value='{{ $documentation[1]->foto != NULL ? $documentation[1]->foto : '' }}'>
                                 <input class="form-control" type="file" id="inputFotoDokumentasi2" name='foto_2'>
                                 @error('foto_2')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                                 @if ($documentation[1]->foto)
                                     {{ 'Ini adalah fotonya yang telah di upload ' . $documentation[1]->foto }}
@@ -57,7 +57,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputLinkVideoDokumentasi" name="video" value="{{ $documentation[0]->video }}">
                                 @error('video')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 <input class="form-control" type="hidden" name='oldfeedback' value='{{ $documentation[0]->feedback != NULL ? $documentation[0]->feedback : '' }}'>
                                 <input class="form-control" type="file" id="inputFeedbackDokumentasi" name="feedback" value="{{ $documentation[0]->feedback }}">
                                 @error('feedback')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                                 @if ($documentation[0]->feedback)
                                     {{ 'Ini adalah dokumen yang telah di upload ' . $documentation[0]->feedback }}

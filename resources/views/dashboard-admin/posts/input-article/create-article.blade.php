@@ -13,6 +13,9 @@
                             <label for="inputJudulArtikel" class="col-sm-2 col-form-label">Judul Artikel</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputJudulArtikel" name="judul">
+                                @error('judul')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -20,6 +23,9 @@
                             <label for="inputRingkasanArtikel" class="col-sm-2 col-form-label">Isi Artikel</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" id="inputRingkasanArtikel" style="height: 150px;" name="ringkasan"></textarea>
+                                @error('ringkasan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -27,6 +33,9 @@
                             <label for="inputAuthorArtikel" class="col-sm-2 col-form-label">Author</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputAuthorArtikel" name="author">
+                                @error('author')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 

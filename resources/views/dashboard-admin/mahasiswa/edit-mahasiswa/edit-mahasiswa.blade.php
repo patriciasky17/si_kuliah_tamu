@@ -14,42 +14,51 @@
                         <div class="row mb-3">
                             <label for="inputNIMMahasiswa" class="col-sm-2 col-form-label">NIM</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNIMMahasiswa" name="nim">
-                                @error('nim')
-                                    {{ $message }}
-                                @enderror
+                                <input type="text" class="form-control" id="inputNIMMahasiswa" name="nim" disabled value="{{ $mahasiswa->nim }}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputNamaMahasiswa" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaMahasiswa" name="nama_mahasiswa">
+                                <input type="text" class="form-control" id="inputNamaMahasiswa" name="nama_mahasiswa" value="{{ $mahasiswa->nama_mahasiswa }}">
+                                @error('nama_mahasiswa')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputJenisKelaminMahasiswa" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputJenisKelaminMahasiswa" name="jenis_kelamin">
+                                <select class="form-select form-control" id="inputJenisKelaminMahasiswa" name="jenis_kelamin" value="{{ $mahasiswa->jenis_kelamin}}">
                                     <option selected>Pilih...</option>
                                     <option value="L">Laki-Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
+                                @error('jenis_kelamin')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputProdiMahasiswa" class="col-sm-2 col-form-label">Prodi</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputProdiMahasiswa" name="prodi">
+                                <input type="text" class="form-control" id="inputProdiMahasiswa" name="prodi" value="{{ $mahasiswa->prodi }}">
+                                @error('prodi')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputAngkatanMahasiswa" class="col-sm-2 col-form-label">Angkatan</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputAngkatanMahasiswa" name='angkatan'>
+                                <input type="number" class="form-control" id="inputAngkatanMahasiswa" name='angkatan' value="{{ $mahasiswa->angkatan }}">
+                                @error('angkatan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 

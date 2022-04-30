@@ -59,57 +59,17 @@
                                 <td>{{ $m->prodi }}</td>
                                 <td>{{ $m->angkatan }}</td>
                                 <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="#">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                    <a class="btn btn-sm btn-outline-info w-100" href="admin/mahasiswa/{{ $m->nim }}/edit">Edit</a>
+                                    <form action="{{ route("mahasiswa.destroy", $m->nim)}}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                    </form>
+
                                 </td>
                             </tr>
                             @empty
                         @endforelse
-
-                        {{-- <tr>
-                            <td>2110101009</td>
-                            <td>DARREN VALENTIO</td>
-                            <td>L</td>
-                            <td>Informatika</td>
-                            <td>2021</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2110101015</td>
-                            <td>PATRICIA HO</td>
-                            <td>P</td>
-                            <td>Informatika</td>
-                            <td>2021</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2110101018</td>
-                            <td>GABRIELLE SHEILA SYLVAGNO</td>
-                            <td>P</td>
-                            <td>Informatika</td>
-                            <td>2021</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2110101038</td>
-                            <td>GRACE SALLY</td>
-                            <td>P</td>
-                            <td>Informatika</td>
-                            <td>2021</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                            </td>
-                        </tr> --}}
 
                     </tbody>
                 </table>

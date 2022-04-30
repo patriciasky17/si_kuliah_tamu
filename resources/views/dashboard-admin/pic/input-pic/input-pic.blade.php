@@ -13,6 +13,9 @@
                             <label for="inputNamaPembicara" class="col-sm-2 col-form-label">Nama PIC</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputNamaPembicara" name='nama_dosen'>
+                                @error('nama_dosen')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -20,6 +23,9 @@
                             <label for="inputProdiPembicara" class="col-sm-2 col-form-label">Prodi</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputProdiPembicara" name='prodi'>
+                                @error('prodi')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
