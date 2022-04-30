@@ -41,20 +41,28 @@
                         <div class="row mb-3">
                             <label for="inputFotoPembicara" class="col-sm-2 col-form-label">Foto</label>
                             <div class="col-sm-10">
+                                <input class="form-control" type="hidden" name='oldfoto' value='{{ $pembicara->foto != NULL ? $pembicara->foto : '' }}'>
                                 <input class="form-control" type="file" id="inputFotoPembicara" name="foto">
                                 @error('foto')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
+                                @if ($pembicara->foto)
+                                    {{ 'Foto yang telah diupload sebelumnya : ' . $pembicara->foto }}
+                                @endif
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputCVPembicara" class="col-sm-2 col-form-label">CV</label>
                             <div class="col-sm-10">
+                                <input class="form-control" type="hidden" name='oldcv' value='{{ $pembicara->cv != NULL ? $pembicara->cv : '' }}'>
                                 <input class="form-control" type="file" id="inputCVPembicara" name="cv">
                                 @error('cv')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
+                                @if ($pembicara->cv)
+                                    {{ 'CV yang telah diupload sebelumnya : ' . $pembicara->cv }}
+                                @endif
                             </div>
                         </div>
 
@@ -91,10 +99,14 @@
                         <div class="row mb-3">
                             <label for="inputSertifikatPembicara" class="col-sm-2 col-form-label">Sertifikat</label>
                             <div class="col-sm-10">
+                                <input class="form-control" type="hidden" name='oldsertifikat' value='{{ $pembicara->sertifikat != NULL ? $pembicara->sertifikat : '' }}'>
                                 <input class="form-control" type="file" id="inputSertifikatPembicara" name="sertifikat">
                                 @error('sertifikat')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
+                                @if ($pembicara->sertifikat)
+                                    {{ 'Sertifikat yang telah diupload sebelumnya : ' . $pembicara->sertifikat }}
+                                @endif
                             </div>
                         </div>
 
