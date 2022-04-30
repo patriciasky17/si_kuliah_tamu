@@ -131,7 +131,7 @@ class DokumentasiController extends Controller
         $validatedData = $request->validate([
             'id_event' => 'required',
             'video' => 'nullable',
-            'foto_1' => 'required|file|mimes:jpeg,png,jpg|max:3072',
+            'foto_1' => 'nullable|file|mimes:jpeg,png,jpg|max:3072',
             'foto_2' => 'nullable|file|mimes:jpeg,png,jpg|max:3072',
             'feedback' => 'nullable|mimes:pdf,docx,doc|max:2048',
             'oldfoto_1' => 'required',
@@ -141,25 +141,34 @@ class DokumentasiController extends Controller
         $documentation = [
             'id_event' => $validatedData['id_event'],
             'video' => $validatedData['video'],
-            'feedback' => $validatedData['feedback']
         ];
-        Dokumentasi::where('id_dokumentasi', $id)->update($documentation);
-        $foto1 = [
-            'id_dokumentasi' => $id,
-            'foto' => $request->file('foto_1')->store('public/dokumentasi')
-        ];
-        $foto2 = [
-            'id_dokumentasi' => $id,
-            'foto' => $request->file('foto_2')->store('public/dokumentasi')
-        ];
+        if($validatedData['feedback'] != null){
+            $file = $request->file('feedback')->store('dokumentasi');
+            $documentation['feedback'] = $file;
+            if($validatedData['oldfeedback']){
+                Storage::delete($validatedData['oldfeedback']);
+            }
+        }
+        if($validatedData['foto_1'] != null){
+            $foto1 = [
+                'id_dokumentasi' => $id,
+                'foto' => $request->file('foto_1')->store('foto')
+            ];
+            if($validatedData['oldfoto_1']){
+                Storage::delete($validatedData['oldfoto_1']);
+            }
+        }
 
-        Storage::delete($validatedData['oldfoto_1']);
-        if($request->file('oldfoto_2') != null){
-            Storage::delete($validatedData['oldfoto_2']);
+        if($validatedData['foto_2'] != null){
+            $foto2 = [
+                'id_dokumentasi' => $id,
+                'foto' => $request->file('foto_2')->store('foto')
+            ];
+            if($validatedData['oldfoto_2']){
+                Storage::delete($validatedData['oldfoto_2']);
+            }
         }
-        if($request->file('oldfeedback') != null){
-            Storage::delete($validatedData['oldfeedback']);
-        }
+        Dokumentasi::where('id_dokumentasi', $id)->update($documentation);
         Foto::where('id_dokumentasi', $id)->where('foto',$validatedData['oldfoto_1'])->update($foto1);
         Foto::where('id_dokumentasi', $id)->where('foto',$validatedData['oldfoto_2'])->update($foto2);
         return redirect()->intended(route('documentation.index'))->with('success', 'Documentation has been successfully updated');

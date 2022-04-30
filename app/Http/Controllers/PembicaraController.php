@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pembicara;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PembicaraController extends Controller
 {
@@ -58,10 +59,10 @@ class PembicaraController extends Controller
             'institusi' => $validatedData['institusi'],
             'jabatan' => $validatedData['jabatan'],
             'foto' => $validatedData['foto'],
-            'cv' => $validatedData['cv'],
-            'npwp' => $validatedData['npwp'],
+            'cv' => $request->file('cv')->store('cv'),
+            'npwp' => $request->file('npwp')->store('npwp'),
             'no_rekening' => $validatedData['no_rekening'],
-            'sertifikat' => $validatedData['sertifikat'],
+            'sertifikat' => $request->file('sertifikat')->store('sertifikat'),
             'bank' => $validatedData['bank']
         ];
 
@@ -105,11 +106,14 @@ class PembicaraController extends Controller
             'nama' => 'required|string',
             'institusi' => 'required|string',
             'jabatan' => 'required|string',
-            'foto' => 'required|file|mimes:jpeg,png,jpg|max:3072',
-            'cv' => 'required|file|mimes:pdf,docx,doc|max:3072',
+            'foto' => 'nullable|file|mimes:jpeg,png,jpg|max:3072',
+            'oldfoto' => 'required',
+            'cv' => 'nullable|file|mimes:pdf,docx,doc|max:3072',
+            'oldcv' => 'required',
             'npwp' => 'nullable|numeric',
             'no_rekening' => 'nullable|numeric',
             'sertifikat' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:3072',
+            'oldsertifikat' => 'nullable',
             'bank' => 'nullable|string',
         ]);
 
@@ -117,13 +121,31 @@ class PembicaraController extends Controller
             'nama' => $validatedData['nama'],
             'institusi' => $validatedData['institusi'],
             'jabatan' => $validatedData['jabatan'],
-            'foto' => $validatedData['foto'],
-            'cv' => $validatedData['cv'],
             'npwp' => $validatedData['npwp'],
             'no_rekening' => $validatedData['no_rekening'],
             'sertifikat' => $validatedData['sertifikat'],
             'bank' => $validatedData['bank']
         ];
+
+        if($validatedData['foto'] != null){
+            $pembicara['foto'] = $request->file('foto')->store('foto');
+            if($validatedData['oldfoto'] != null){
+                Storage::delete($validatedData['oldfoto']);
+            }
+        }
+        if($validatedData['cv'] != null){
+            $pembicara['cv'] = $request->file('cv')->store('cv');
+            if($validatedData['oldcv'] != null){
+                Storage::delete($validatedData['oldcv']);
+            }
+        }
+        if($validatedData['sertifikat'] != null){
+            $pembicara['sertifikat'] = $request->file('sertifikat')->store('sertifikat');
+            if($validatedData['oldsertifikat'] != null){
+                Storage::delete($validatedData['oldsertifikat']);
+            }
+        }
+
 
         Pembicara::where('id_pembicara',$id)->update($pembicara);
 
