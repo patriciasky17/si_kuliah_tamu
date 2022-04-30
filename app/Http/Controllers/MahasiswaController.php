@@ -51,7 +51,7 @@ class MahasiswaController extends Controller
 
         $mahasiswaAwal = [
             'nim' => $validatedData['nim'],
-            'nama_mahasiswa' => $validatedData['nama_mahasiswa'],
+            'nama_mahasiswa' => strtoupper($validatedData['nama_mahasiswa']),
             'jenis_kelamin' => $validatedData['jenis_kelamin'],
             'prodi' => $validatedData['prodi'],
             'angkatan' => $validatedData['angkatan']
@@ -102,7 +102,7 @@ class MahasiswaController extends Controller
 
         $mahasiswaAwal = [
             'nim' => $validatedData['nim'],
-            'nama_mahasiswa' => $validatedData['nama_mahasiswa'],
+            'nama_mahasiswa' => strtoupper($validatedData['nama_mahasiswa']),
             'jenis_kelamin' => $validatedData['jenis_kelamin'],
             'prodi' => $validatedData['prodi'],
             'angkatan' => $validatedData['angkatan']
