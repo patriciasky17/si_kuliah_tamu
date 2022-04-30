@@ -154,6 +154,7 @@ class DokumentasiController extends Controller
                 'id_dokumentasi' => $id,
                 'foto' => $request->file('foto_1')->store('foto')
             ];
+            Foto::where('id_dokumentasi', $id)->update($foto1);
             if($validatedData['oldfoto_1']){
                 Storage::delete($validatedData['oldfoto_1']);
             }
@@ -164,13 +165,12 @@ class DokumentasiController extends Controller
                 'id_dokumentasi' => $id,
                 'foto' => $request->file('foto_2')->store('foto')
             ];
+            Foto::where('id_dokumentasi', $id)->update($foto2);
             if($validatedData['oldfoto_2']){
                 Storage::delete($validatedData['oldfoto_2']);
             }
         }
         Dokumentasi::where('id_dokumentasi', $id)->update($documentation);
-        Foto::where('id_dokumentasi', $id)->where('foto',$validatedData['oldfoto_1'])->update($foto1);
-        Foto::where('id_dokumentasi', $id)->where('foto',$validatedData['oldfoto_2'])->update($foto2);
         return redirect()->intended(route('documentation.index'))->with('success', 'Documentation has been successfully updated');
     }
 
