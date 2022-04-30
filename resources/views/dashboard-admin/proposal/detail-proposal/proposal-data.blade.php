@@ -33,6 +33,7 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
                             <th scope="col">File Proposal</th>
@@ -42,6 +43,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
                             <th scope="col">File Proposal</th>
@@ -53,13 +55,18 @@
 
                         @forelse ( $proposal as $p)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->id_proposal }}</td>
                                 <td>{{ $p->mata_kuliah }}</td>
                                 <td><a href="{{ $p->file_proposal }}">{{ $p->file_proposal }}</a></td>
                                 <td class="d-flex align-items-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
                                     <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                    <form action="{{ route("proposal.destroy", $p->id_proposal)}}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty

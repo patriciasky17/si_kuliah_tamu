@@ -14,7 +14,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                         <a href="../website-for-user/index.html" class="dropdown-item">Website</a>
-                        <a href="login.html" class="dropdown-item">Log Out</a>
+                        <a href="{{ route("login.index") }}" class="dropdown-item">Log Out</a>
                     </div>
                 </div>
             </div>

@@ -30,6 +30,7 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama Mahasiswa</th>
                             <th scope="col">Jenis Kelamin</th>
@@ -41,6 +42,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama Mahasiswa</th>
                             <th scope="col">Jenis Kelamin</th>
@@ -53,6 +55,7 @@
                     <tbody>
                         @forelse ( $mahasiswa as $m)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $m->nim }}</td>
                                 <td>{{ $m->nama_mahasiswa }}</td>
                                 <td>{{ $m->jenis_kelamin }}</td>
