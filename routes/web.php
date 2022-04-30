@@ -40,6 +40,5 @@ Route::resource('/admin/documentation', DokumentasiController::class)->except(['
 Route::resource('/admin/post', PostsController::class)->except(['show']);
 
 //Download Images
-Route::get('/downloadphoto', DownloadController::class)->name('downloadPhoto');
-Route::get('/downloadpdf', DownloadController::class)->name('downloadPDF');
+Route::get('/download/{image}', [DownloadController::class, 'photoEvent'])->name('download.photoEvent');
 

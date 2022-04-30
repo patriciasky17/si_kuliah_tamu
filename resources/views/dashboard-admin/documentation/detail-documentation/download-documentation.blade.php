@@ -108,12 +108,12 @@
 
                 <div class="col-md-7 col-sm-12">
                     <div class="bg-light rounded h-100">
-                        <h6 class="mb-4"><span class="nama-pembicara">{{ $singleDocumentation[0]->nama_event != null}}</span></h6>
+                        <h6 class="mb-4"><span class="nama-pembicara">{{ $singleDocumentation[0]->nama_event }}</span></h6>
                         <dl class="row mb-0">
                             <dt class="col-sm-4">Foto Dokumentasi</dt>
                             <dd class="col-sm-8 d-flex">
                                 @forelse ($singleDocumentation as $d)
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('downloadPhoto') . '?image=' . $d->foto }}">Download Foto {{ $loop->iteration }}</a>
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('download.photoEvent',$d->foto) }}">Download Foto {{ $loop->iteration }}</a>
                                 @empty
                                 @endforelse
                             </dd>
