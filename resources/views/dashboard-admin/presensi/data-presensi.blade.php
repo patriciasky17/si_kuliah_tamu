@@ -20,6 +20,7 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Event</th>
                             <th scope="col">Nama Event</th>
                             <th scope="col">Jumlah Mahasiswa yang Hadir</th>
@@ -29,6 +30,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Event</th>
                             <th scope="col">Nama Event</th>
                             <th scope="col">Jumlah Mahasiswa yang Hadir</th>
@@ -39,6 +41,7 @@
                     <tbody>
                         <tr>
                             <td>1</td>
+                            <td>1</td>
                             <td>Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</td>
                             <td>3</td>
                             <td class="d-flex align-items-center">
@@ -46,6 +49,7 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>2</td>
                             <td>2</td>
                             <td>Social Engineering dengan Dana</td>
                             <td>2</td>
@@ -55,6 +59,7 @@
                         </tr>
                         <tr>
                             <td>3</td>
+                            <td>3</td>
                             <td>Pengembangan Software dengan Metode Scrum bersama Metrodata</td>
                             <td>3</td>
                             <td class="d-flex align-items-center">
@@ -63,6 +68,7 @@
                         </tr>
                         <tr>
                             <td>4</td>
+                            <td>4</td>
                             <td>Effective Scheduling Program with C#</td>
                             <td>2</td>
                             <td class="d-flex align-items-center">
@@ -70,6 +76,7 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>5</td>
                             <td>5</td>
                             <td>Blockchain: Immutability, Security, Transparency</td>
                             <td>3</td>
@@ -85,6 +92,31 @@
     </div>
     <!-- Data Presensi End -->
 
+    <!-- Summary Presensi Grid Starts -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-12 col-sm-6">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-line fa-3x text-warning"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Jumlah Mahasiswa Presensi</p>
+                        <h6 class="mb-0">53</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-bar fa-3x text-warning"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Estimasi Waktu Presensi</p>
+                        <h6 class="mb-0"><span class="jam_mulai">09:00</span> - <span class="jam_selesai">10:30</span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Summary Presensi Grid End -->
+
     <!-- Detail Presensi Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
@@ -96,6 +128,7 @@
                 <table id="detail-presensi" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama Mahasiswa</th>
                             <th scope="col">Waktu Presensi</th>
@@ -104,6 +137,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama Mahasiswa</th>
                             <th scope="col">Waktu Presensi</th>
@@ -112,16 +146,19 @@
 
                     <tbody>
                         <tr>
+                            <td>1</td>
                             <td>2110101003</td>
                             <td>AUSTIN NICHOLAS THAM</td>
                             <td>09:12:21</td>
                         </tr>
                         <tr>
+                            <td>2</td>
                             <td>2110101008</td>
                             <td>DANICA RECCA DANENDRA</td>
                             <td>09:17:14</td>
                         </tr>
                         <tr>
+                            <td>3</td>
                             <td>2110101024</td>
                             <td>RYAN CHRISTENSEN WANG</td>
                             <td>09:49:54</td>

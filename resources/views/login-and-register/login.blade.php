@@ -41,17 +41,21 @@
                                 <div class="input-group has-validation mb-3">
                                     <span class="input-group-text" id="inputUsername"><i class="bi bi-person-circle"></i></span>
                                     <input type="email" class="form-control" placeholder="Email" id="validationCustomUsername" aria-describedby="inputUsername" required name="email">
-                                    <div class="invalid-feedback">
-                                        Please choose a email.
-                                    </div>
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            Please choose a email.
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-group mb-3 has-validation">
                                     <span class="input-group-text" id="inputPassword"><i class="bi bi-lock"></i></span>
                                     <input type="password" class="form-control" placeholder="Password" id="password-field" aria-describedby="inputPassword" required name="password">
-                                    <div class="invalid-feedback">
-                                        Please input at least 8 characters.
-                                    </div>
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            Please input at least 8 characters.
+                                        </div>
+                                    @enderror
                                 </div>
 
 
@@ -79,7 +83,6 @@
 
                     <div class="another-page">
                         <p>Don't have an account? <span><a href="{{ route('register.index') }}">Sign Up</a></span></p>
-                        <p>Or <span><a href="index.html">Explore as Guest</a></span></p>
                     </div>
                 </div>
             </div>

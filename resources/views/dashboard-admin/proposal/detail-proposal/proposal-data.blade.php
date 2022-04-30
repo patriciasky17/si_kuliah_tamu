@@ -59,7 +59,11 @@
                                 <td class="d-flex align-items-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
                                     <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                                    <form action="{{ route("proposal.destroy", $p->id_proposal)}}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty

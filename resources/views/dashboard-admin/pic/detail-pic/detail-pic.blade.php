@@ -29,6 +29,7 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID PIC</th>
                             <th scope="col">Nama Dosen</th>
                             <th scope="col">Prodi</th>
@@ -38,6 +39,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID PIC</th>
                             <th scope="col">Nama Dosen</th>
                             <th scope="col">Prodi</th>
@@ -48,6 +50,7 @@
                     <tbody>
                         @forelse ( $pic as $personincharge)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $personincharge->id_pic }}</td>
                                 <td>{{ $personincharge->nama_dosen }}</td>
                                 <td>{{ $personincharge->prodi }}</td>
@@ -56,7 +59,7 @@
                                     <form action="{{ route('pic.destroy', $personincharge->id_pic) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="btn btn-sm btn-outline-danger w-100" type="submit">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
                                     </form>
                                 </td>
                             </tr>
