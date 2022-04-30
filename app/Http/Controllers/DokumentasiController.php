@@ -143,14 +143,14 @@ class DokumentasiController extends Controller
             'id_event' => $validatedData['id_event'],
             'video' => $validatedData['video'],
         ];
-        if($validatedData['feedback'] != null){
+        if($request->feedback != null){
             $file = $request->file('feedback')->store('dokumentasi');
             $documentation['feedback'] = $file;
             if($validatedData['oldfeedback']){
                 Storage::delete($validatedData['oldfeedback']);
             }
         }
-        if($validatedData['foto_1'] != null){
+        if($request->foto_1 != null){
             $foto1 = [
                 'id_dokumentasi' => $id,
                 'foto' => $request->file('foto_1')->store('foto')
@@ -160,7 +160,7 @@ class DokumentasiController extends Controller
             }
         }
 
-        if($validatedData['foto_2'] != null){
+        if($request->foto_2 != null){
             $foto2 = [
                 'id_dokumentasi' => $id,
                 'foto' => $request->file('foto_2')->store('foto')
