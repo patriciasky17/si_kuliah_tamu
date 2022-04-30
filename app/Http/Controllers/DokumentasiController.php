@@ -112,6 +112,7 @@ class DokumentasiController extends Controller
     {
         $documentation = DB::select('SELECT * FROM dokumentasi, foto WHERE dokumentasi.id_dokumentasi = foto.id_dokumentasi AND dokumentasi.id_dokumentasi = ?', [$id]);
         $event = Event::all();
+        // dd($documentation);
         return view('dashboard-admin.documentation.edit-documentation.edit-documentation',[
             'title' => 'Edit Dokumentasi - Pradita University\'s Guest Lecturers',
             'documentation' => $documentation,
