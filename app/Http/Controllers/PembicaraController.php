@@ -65,7 +65,8 @@ class PembicaraController extends Controller
             'bank' => $validatedData['bank']
         ];
 
-        
+        Pembicara::create($pembicara);
+
         return redirect()->intended(route('pembicara.index'))->with('success', 'Pembicara has been successfully added');
     }
 
@@ -100,7 +101,33 @@ class PembicaraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|string',
+            'institusi' => 'required|string',
+            'jabatan' => 'required|string',
+            'foto' => 'required|file|mimes:jpeg,png,jpg|max:3072',
+            'cv' => 'required|file|mimes:pdf,docx,doc|max:3072',
+            'npwp' => 'nullable|numeric',
+            'no_rekening' => 'nullable|numeric',
+            'sertifikat' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:3072',
+            'bank' => 'nullable|string',
+        ]);
+
+        $pembicara = [
+            'nama' => $validatedData['nama'],
+            'institusi' => $validatedData['institusi'],
+            'jabatan' => $validatedData['jabatan'],
+            'foto' => $validatedData['foto'],
+            'cv' => $validatedData['cv'],
+            'npwp' => $validatedData['npwp'],
+            'no_rekening' => $validatedData['no_rekening'],
+            'sertifikat' => $validatedData['sertifikat'],
+            'bank' => $validatedData['bank']
+        ];
+
+        Pembicara::where('id_pembicara',$id)->update($pembicara);
+
+        return redirect()->intended(route('pembicara.index'))->with('success', 'Pembicara has been successfully updated');
     }
 
     /**
