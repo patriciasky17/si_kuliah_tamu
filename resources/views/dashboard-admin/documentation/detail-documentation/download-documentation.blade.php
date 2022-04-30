@@ -11,6 +11,18 @@
 @endsection
 
 @section('main')
+
+    @if (session()->has('success'))
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light rounded p-4">
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div>
+    @endif
+
+
     <!-- Data Dokumentasi Starts -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
@@ -44,7 +56,7 @@
                                 <td>{{ $d->nama_event }}</td>
                                 <td class="d-flex align-items-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="{{ route('documentation.index') . '?id_dokumentasi=' . $d->id_dokumentasi  }}">Detail</a>
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('documentation.edit',$d->id_dokumentasi) }}">Edit</a>
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="admin/documentation/{{ $d->id_dokumentasi }}/edit">Edit</a>
                                     <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
                                 </td>
                             </tr>

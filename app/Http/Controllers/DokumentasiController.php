@@ -28,7 +28,7 @@ class DokumentasiController extends Controller
             'singleDocumentation' => $singleDocumentation
         ]);
         }else{
-            $documentation = DB::select('SELECT * FROM dokumentasi, event, foto WHERE dokumentasi.id_event = event.id_event AND dokumentasi.id_dokumentasi = foto.id_dokumentasi');
+            $documentation = DB::select('SELECT * FROM dokumentasi, event WHERE dokumentasi.id_event = event.id_event');
             return view('dashboard-admin.documentation.detail-documentation.download-documentation',[
             'title' => 'Data Dokumentasi - Pradita University\'s Guest Lecturers',
             'documentation' => $documentation,
