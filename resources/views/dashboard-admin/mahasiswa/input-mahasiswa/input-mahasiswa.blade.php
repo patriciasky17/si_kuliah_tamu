@@ -16,7 +16,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputNIMMahasiswa" name="nim">
                                 @error('nim')
-                                    {{ $message }}
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>
                         </div>
@@ -25,6 +25,9 @@
                             <label for="inputNamaMahasiswa" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputNamaMahasiswa" name="nama_mahasiswa">
+                                @error('nama_mahasiswa')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -36,6 +39,9 @@
                                     <option value="L">Laki-Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
+                                @error('jenis_kelamin')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -43,6 +49,9 @@
                             <label for="inputProdiMahasiswa" class="col-sm-2 col-form-label">Prodi</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputProdiMahasiswa" name="prodi">
+                                @error('prodi')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
@@ -50,11 +59,14 @@
                             <label for="inputAngkatanMahasiswa" class="col-sm-2 col-form-label">Angkatan</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="inputAngkatanMahasiswa" name='angkatan'>
+                                @error('angkatan')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
                             </div>
                         </div>
 
 
-                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Data</button>
+                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Data</button>
                     </form>
                 </div>
             </div>
