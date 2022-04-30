@@ -35,37 +35,22 @@
                     <h1 class="title">WELCOME BACK!</h1>
 
                     <div class="inner-form">
-                        <form class="row g-3 needs-validation" novalidate>
+                        <form class="row g-3 needs-validation" action="{{ route('login.authenticate') }}" method="POST">
+                            @csrf
                             <div class="container">
-                                <div class="input-group mb-3 has-validation ">
-                                    <span class="input-group-text" id="inputEmail">@</span>
-                                    <input type="text" class="form-control" placeholder="Email" id="validationCustomEmail" aria-describedby="inputEmail" required>
-                                    <div class="invalid-feedback">
-                                        Please write the valid email (ex: hello@gmail.com)
-                                    </div>
-                                </div>
-
-                                <div class="input-group mb-3 has-validation">
+                                <div class="input-group has-validation mb-3">
                                     <span class="input-group-text" id="inputUsername"><i class="bi bi-person-circle"></i></span>
-                                    <input type="text" class="form-control" placeholder="Username" id="validationCustomUsername" aria-describedby="inputUsername" required>
+                                    <input type="email" class="form-control" placeholder="Email" id="validationCustomUsername" aria-describedby="inputUsername" required name="email">
                                     <div class="invalid-feedback">
-                                        Please choose a valid username.
+                                        Please choose a email.
                                     </div>
                                 </div>
     
                                 <div class="input-group mb-3 has-validation">
                                     <span class="input-group-text" id="inputPassword"><i class="bi bi-lock"></i></span>
-                                    <input type="password" class="form-control" placeholder="Password" id="password-field" aria-describedby="inputPassword" required>
+                                    <input type="password" class="form-control" placeholder="Password" id="password-field" aria-describedby="inputPassword" required name="password">
                                     <div class="invalid-feedback">
                                         Please input at least 8 characters.
-                                    </div>
-                                </div>
-
-                                <div class="input-group mb-3 has-validation">
-                                    <span class="input-group-text" id="confirmPassword"><i class="bi bi-lock"></i></span>
-                                    <input type="password" class="form-control" placeholder="Confirm Password" id="password-field" aria-describedby="confirmPassword" required>
-                                    <div class="invalid-feedback">
-                                        The password don't match!
                                     </div>
                                 </div>
                                 
@@ -74,7 +59,7 @@
     
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="inlineFormCheck" required>
+                                        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
                                         <label class="form-check-label" for="inlineFormCheck">
                                             Remember me
                                         </label>
@@ -84,7 +69,7 @@
                                 <br> 
                                 <div class="col-12">
                                     <div class="d-grid gap-2">
-                                        <button class="login" type="submit">REGISTER</button>
+                                        <button class="login" type="submit">LOGIN</button>
                                     </div>
                                 </div>
                                 
@@ -93,7 +78,7 @@
                     </div>
                     
                     <div class="another-page">
-                        <p>Already have an account? <span><a href="login.html">Log In</a></span></p>
+                        <p>Don't have an account? <span><a href="{{ route('register.index') }}">Sign Up</a></span></p>
                         <p>Or <span><a href="index.html">Explore as Guest</a></span></p>
                     </div>
                 </div>
