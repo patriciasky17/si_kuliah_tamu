@@ -70,7 +70,7 @@ class DokumentasiController extends Controller
             'id_event' => $validatedData['id_event'],
             'video' => $validatedData['video'],
         ];
-        if($validatedData['feedback']){
+        if($request->feedback){
             $file = $request->file('feedback')->store('dokumentasi');
             $documentation['feedback'] = $file;
         }
