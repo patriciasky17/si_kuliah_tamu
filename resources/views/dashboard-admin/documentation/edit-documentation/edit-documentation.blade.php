@@ -6,8 +6,9 @@
         <div class="row g-4">
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Input Dokumentasi Event</h6>
-                    <form action="{{ route('documentation.store') }}" method="POST" enctype="multipart/form-data">
+                    <h6 class="mb-4">Edit Dokumentasi Event</h6>
+                    <form action="{{ route('documentation.update', $documentation[0]->id_dokumentasi) }}" method="POST" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <div class="row mb-3">
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
@@ -74,7 +75,7 @@
                                 @endif
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Dokumentasi</button>
+                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Dokumentasi</button>
                     </form>
                 </div>
             </div>
