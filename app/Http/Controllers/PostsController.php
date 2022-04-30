@@ -118,7 +118,7 @@ class PostsController extends Controller
             'judul' => $validatedData['judul'],
             'ringkasan' => $validatedData['ringkasan'],
             'author' => $validatedData['author'],
-            'waktu_pembaruan' => Carbon::now(),
+            'waktu_pembaruan' => Carbon::now(), 
         ];
         Posts::where('id_posts',$id)->update($posts);
         return redirect()->intended(route('post.index'))->with('success','Posts has been successfully updated');
