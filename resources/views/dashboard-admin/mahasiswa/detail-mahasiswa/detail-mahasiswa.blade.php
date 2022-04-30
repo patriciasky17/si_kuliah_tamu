@@ -8,15 +8,15 @@
 
 @section('main')
 
+    @if (session()->has('success'))
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
-            @if (session()->has('success'))
-            <div class="alert alert-success col-lg-8" role="alert">
+            <div class="alert alert-success" role="alert">
                 {{ session('success') }}
             </div>
-            @endif
         </div>
     </div>
+    @endif
 
     <!-- Data Mahasiswa Starts -->
     <div class="container-fluid pt-4 px-4">

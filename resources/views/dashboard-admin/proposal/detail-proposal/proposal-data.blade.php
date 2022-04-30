@@ -21,7 +21,6 @@
         </div>
     @endif
 
-
     <!-- Data Proposal Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">

@@ -42,11 +42,11 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|numeric|min:10|max:10',
+            'nim' => 'required|numeric',
             'nama_mahasiswa' => 'required|string',
             'jenis_kelamin' => 'required|string|min:1|max:1',
             'prodi' => 'required|string',
-            'angkatan' => 'required|numeric|min:4|max:4',
+            'angkatan' => 'required|numeric',
         ]);
 
         $mahasiswaAwal = [
@@ -93,11 +93,11 @@ class MahasiswaController extends Controller
     public function update(Request $request, $nim)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|numeric|min:10|max:10',
+            'nim' => 'required|numeric',
             'nama_mahasiswa' => 'required|string',
             'jenis_kelamin' => 'required|string|min:1|max:1',
             'prodi' => 'required|string',
-            'angkatan' => 'required|numeric|min:4|max:4',
+            'angkatan' => 'required|numeric',
         ]);
 
         $mahasiswaAwal = [

@@ -54,7 +54,7 @@
                         </div>
 
 
-                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Edit Data</button>
+                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Data</button>
                     </form>
                 </div>
             </div>

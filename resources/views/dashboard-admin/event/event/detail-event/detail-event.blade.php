@@ -9,6 +9,17 @@
 @endsection
 
 @section('main')
+
+    @if (session()->has('success'))
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light rounded p-4">
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div>
+    @endif
+
     <!-- Event Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
