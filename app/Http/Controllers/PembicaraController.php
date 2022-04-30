@@ -65,6 +65,7 @@ class PembicaraController extends Controller
             'bank' => $validatedData['bank']
         ];
 
+        
         return redirect()->intended(route('pembicara.index'))->with('success', 'Pembicara has been successfully added');
     }
 
