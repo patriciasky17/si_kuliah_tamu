@@ -36,7 +36,6 @@
                             <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
-                            <th scope="col">File Proposal</th>
                             <th scope="col">Details</th>
                         </tr>
                     </thead>
@@ -46,7 +45,6 @@
                             <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
-                            <th scope="col">File Proposal</th>
                             <th scope="col">Details</th>
                         </tr>
                     </tfoot>
@@ -58,7 +56,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->id_proposal }}</td>
                                 <td>{{ $p->mata_kuliah }}</td>
-                                <td><a href="{{ $p->file_proposal }}">{{ $p->file_proposal }}</a></td>
+
                                 <td class="d-flex align-items-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="{{ route('proposal.index') . '?id_proposal=' . $p->id_proposal }}">Detail</a>
                                     <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('proposal.edit',$p->id_proposal) }}">Edit</a>
@@ -87,8 +85,8 @@
                     <h6 class="mb-0">Latar Belakang dan Tujuan Kegiatan -
                         <span class="Mata Kuliah">{{ $singleProposal[0]->mata_kuliah }}</span>
                     </h6>
+                    <a class="btn btn-sm btn-outline-warning" href="{{ $p->file_proposal }}">Download Proposal</a>
                 </div>
-    
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
@@ -107,7 +105,6 @@
                         </div>
                     </div>
                 </div>
-    
             </div>
         </div>
     @endif

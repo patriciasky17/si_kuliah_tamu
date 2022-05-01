@@ -42,9 +42,7 @@
                         <br>
 
                         <div class="d-flex justify-content-between">
-                            <h6 class="mb-4" style="margin-top:15px;">Input Foto untuk Artikel</h6>
-                            <button type="button" id="add-documentation-event"
-                                class="add btn btn-outline-success m-2 add_field">Tambah dokumentasi foto</button>
+                            <h6 class="mb-4" style="margin-top:15px;">Foto Artikel</h6>
                         </div>
 
                         <br>
@@ -52,20 +50,7 @@
                         <div class="row mb-3" id="input-multiple-foto">
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-9" style="margin-bottom: 20px;">
-                                <select class="form-select form-control" id="inputDokumentasiDariEvent" name="id_event[]">
-                                    <option selected>Pilih...</option>
-                                    @forelse ($event as $e)
-                                        <option value="{{ $e->id_dokumentasi }}">
-                                            <span class="idEvent">{{ $e->id_event }}</span> - <span
-                                                class="namaEvent">{{ $e->nama_event }}</span>
-                                        </option>
-                                    @empty
-                                    @endforelse
 
-                                    @error('id_event')
-                                        {{ $message }}
-                                    @enderror
-                                </select>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-outline-warning m-2 float-end w-100">Submit Dokumentasi</button>
