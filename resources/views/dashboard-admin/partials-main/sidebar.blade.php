@@ -34,7 +34,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file-alt me-2"></i>Proposal</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('proposal.create') }}" class="dropdown-item">Input Proposal</a>
-                        <a href="{{ route('proposal.index') }}" class="dropdown-item">Proposal Data</a>
+                        <a href="{{ route('proposal.index') }}" class="dropdown-item">Data Proposal</a>
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <a href="{{ route('presensi.index') }}" class="nav-item nav-link"><i class="fa fa-check-square me-2"></i>Data Presensi</a>
+                <a href="{{ route("presensi.index") }}" class="nav-item nav-link"><i class="fa fa-check-square me-2"></i>Data Presensi</a>
 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-camera me-2"></i>Documentation</a>
