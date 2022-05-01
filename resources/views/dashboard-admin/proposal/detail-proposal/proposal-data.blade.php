@@ -60,8 +60,8 @@
                                 <td>{{ $p->mata_kuliah }}</td>
                                 <td><a href="{{ $p->file_proposal }}">{{ $p->file_proposal }}</a></td>
                                 <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
+                                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route('proposal.index') . '?id_proposal=' . $p->id_proposal }}">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('proposal.edit',$p->id_proposal) }}">Edit</a>
                                     <form action="{{ route("proposal.destroy", $p->id_proposal)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
@@ -79,44 +79,40 @@
     </div>
     <!-- Data Proposal End -->
 
-    <!-- Latar Belakang & Tujuan Kegiatan Starts Here -->
-    <div class="container-fluid pt-4 px-4">
-        <div class="bg-light text-center rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Latar Belakang dan Tujuan Kegiatan -
-                    <span class="Mata Kuliah">Social Engineering</span>
-                </h6>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
-                        <h6 class="mb-4">Latar Belakang</h6>
-                        <p class="isi-latar-belakang-proposal text-muted">
-                            Dalam menciptakan sumber daya manusia yang berkualitas, perguruan tinggi perlu bekerja
-                            sama dengan dunia industri untuk menyelaraskan pengetahuan dan keterampilan yang
-                            diberikan kepada mahasiswa. Dalam proses pembelajaran, mahasiswa diharapkan memahami dan
-                            memperluas wawasan dalam menerapkan pengetahuan yang telah diperoleh dalam perkuliahan
-                            ke dalam dunia kerja yang sesungguhnya. Oleh karena itu, sharing best practice dari
-                            dunia industri diperlukan. Dengan adanya kuliah tamu ini program studi informatika
-                            mengundang narasumber langsung dari dunia industri untuk berbagi pengalaman dalam
-                            mengantisipasi dan memitigasi bahaya social engineering.
-                        </p>
+    @if ($singleProposal != null)
+        <!-- Detail Proposal Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Latar Belakang dan Tujuan Kegiatan -
+                        <span class="Mata Kuliah">{{ $singleProposal[0]->mata_kuliah }}</span>
+                    </h6>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
+                            <h6 class="mb-4">Latar Belakang</h6>
+                            <p class="isi-latar-belakang-proposal text-muted">
+                                {{ $singleProposal[0]->latar_belakang }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
+                            <h6 class="mb-4">Tujuan Kegiatan</h6>
+                            <p class="isi-tujuan-kegiatan-proposal text-muted">
+                                {{ $singleProposal[0]->tujuan_kegiatan }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="bg-light rounded h-100 p-4" style="border: 1px solid rgb(193, 193, 193); border-radius: 10px;">
-                        <h6 class="mb-4">Tujuan Kegiatan</h6>
-                        <p class="isi-tujuan-kegiatan-proposal text-muted">
-                            Mahasiswa mendapatkan sharing best practice bagaimana indsutri mengantisipasi dan
-                            memitigasi bahaya social engineering.
-                        </p>
-                    </div>
-                </div>
+    
             </div>
-
         </div>
-    </div>
+    @endif
+    <!-- Latar Belakang & Tujuan Kegiatan Starts Here -->
+    
     <!-- Latar Belakang & Tujuan Kegiatan Ends Here -->
 
 

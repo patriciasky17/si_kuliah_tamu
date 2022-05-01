@@ -7,7 +7,7 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Proposal</h6>
-                    <form action="{{ route("proposal.store") }}" method='POST'>
+                    <form action="{{ route("proposal.store") }}" method='POST' enctype="multipart/form-data">
                         <div class="row mb-3">
                             <label for="inputMataKuliahProposal" class="col-sm-2 col-form-label">Mata Kuliah</label>
                             <div class="col-sm-10">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProposalController extends Controller
@@ -13,13 +14,25 @@ class ProposalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $proposal = Proposal::all();
-        return view('dashboard-admin.proposal.detail-proposal.proposal-data',[
+        $id = $request->query('id_proposal');
+        if($id){
+            $singleProposal = DB::select('SELECT * from proposal WHERE proposal.id_proposal = ?', [$id]);
+            $proposal = Proposal::all();
+            return view('dashboard-admin.proposal.detail-proposal.proposal-data',[
             'title' => 'Data Proposal - Pradita University\'s Guest Lecturers',
-            'proposal' => $proposal
+            'proposal' => $proposal,
+            'singleProposal' => $singleProposal
         ]);
+        }else{
+            $proposal = Proposal::all();
+            return view('dashboard-admin.proposal.detail-proposal.proposal-data',[
+            'title' => 'Data Proposal - Pradita University\'s Guest Lecturers',
+            'proposal' => $proposal,
+            'singleProposal' => null
+        ]);
+        }
     }
 
     /**
@@ -53,7 +66,7 @@ class ProposalController extends Controller
             'mata_kuliah' => $validatedData['mata_kuliah'],
             'latar_belakang' => $validatedData['latar_belakang'],
             'tujuan_kegiatan' => $validatedData['tujuan_kegiatan'],
-            'file_proposal' => $request->file('file_proposal')->store('public/proposal'),
+            'file_proposal' => $request->file('file_proposal')->store('proposal'),
         ];
 
         Proposal::create($proposalAwal);
@@ -108,13 +121,12 @@ class ProposalController extends Controller
             'mata_kuliah' => $validatedData['mata_kuliah'],
             'latar_belakang' => $validatedData['latar_belakang'],
             'tujuan_kegiatan' => $validatedData['tujuan_kegiatan'],
-            'file_proposal' => $request->file('file_proposal')->store('public/proposal')
+            'file_proposal' => $request->file('file_proposal')->store('proposal')
         ];
         if($validatedData['oldfile_proposal']){
             Storage::delete($validatedData['oldfile_proposal']);
         }
         Proposal::where('id_proposal',$id)->update($proposalAwal);
-
         return redirect()->intended(route('proposal.index'))->with('success','Proposal has been successfully updated');
     }
 
