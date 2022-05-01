@@ -36,7 +36,6 @@
                             <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
-                            <th scope="col">File Proposal</th>
                             <th scope="col">Details</th>
                         </tr>
                     </thead>
@@ -46,7 +45,6 @@
                             <th scope="col">Num.</th>
                             <th scope="col">ID Proposal</th>
                             <th scope="col">Mata Kuliah</th>
-                            <th scope="col">File Proposal</th>
                             <th scope="col">Details</th>
                         </tr>
                     </tfoot>
@@ -58,10 +56,10 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->id_proposal }}</td>
                                 <td>{{ $p->mata_kuliah }}</td>
-                                <td><a href="{{ $p->file_proposal }}">{{ $p->file_proposal }}</a></td>
+
                                 <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
+                                    <a class="btn btn-sm btn-outline-info" href="#">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning" href="#">Edit</a>
                                     <form action="{{ route("proposal.destroy", $p->id_proposal)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
@@ -83,9 +81,10 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Latar Belakang dan Tujuan Kegiatan -
+                <h6 class="mb-0">Proposal Kuliah Tamu -
                     <span class="Mata Kuliah">Social Engineering</span>
                 </h6>
+                <a class="btn btn-sm btn-outline-warning" href="{{ $p->file_proposal }}">Download Proposal</a>
             </div>
 
             <div class="row">
