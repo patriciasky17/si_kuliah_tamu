@@ -29,6 +29,7 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Pembicara</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Institusi</th>
@@ -39,6 +40,7 @@
 
                     <tfoot>
                         <tr>
+                            <th scope="col">Num.</th>
                             <th scope="col">ID Pembicara</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Institusi</th>
@@ -48,7 +50,26 @@
                     </tfoot>
 
                     <tbody>
+                        @forelse ($pembicara as $p)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $p->id_pembicara }}</td>
+                            <td>{{ $p->nama_pembicara }}</td>
+                            <td>{{ $p->institusi }}</td>
+                            <td>{{ $p->jabatan }}</td>
+                            <td class="d-flex align-items-center">
+                                <a href="{{ route('pembicara.show', $p->id_pembicara) }}" class="btn btn-sm btn-primary mr-2">Details</a>
+                                <a class="btn btn-sm btn-outline-info w-100" href="{{ route("pembicara.edit", $p->id_pembicara)) }}">Edit</a>
+                                <form action="{{ route('pembicara.destroy', $p->id_pembicara) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        @endforelse
+                        {{-- <tr>
                             <td>1</td>
                             <td>Vina Fitria</td>
                             <td>DANA</td>
@@ -102,7 +123,7 @@
                                 <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
                                 <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
                             </td>
-                        </tr>
+                        </tr> --}}
 
                     </tbody>
                 </table>

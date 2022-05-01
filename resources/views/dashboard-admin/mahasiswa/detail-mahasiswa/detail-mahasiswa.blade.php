@@ -68,7 +68,6 @@
                                         @method("DELETE")
                                         <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
                                     </form>
-
                                 </td>
                             </tr>
                             @empty
