@@ -20,17 +20,18 @@
         </div>
     </div>
     @endif
-    <!-- Artikel Starts -->
+    @forelse ( $posts as $p )
     <div class="container-fluid pt-4 px-4">
         <div class="top-article">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h5 class="mb-0" style="margin-top: 10px;">Artikel Kuliah Tamu</h5>
             </div>
             <div class="search-area">
-                <form class="search-article">
+                <form class="search-article" action="{{ route('post.index') }}" method="GET">
+                    @csrf
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:190px;">
-                        <button type="button" class="btn btn-outline-warning">Search</button>
+                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:190px;" name="search">
+                        <button type="submit" class="btn btn-outline-warning">Search</button>
                     </div>
                 </form>
             </div>
@@ -51,6 +52,10 @@
             </div>
         </div>
     </div>
+    @empty
+    @endforelse
+    <!-- Artikel Starts -->
+
 
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
