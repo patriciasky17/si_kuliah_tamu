@@ -20,76 +20,49 @@
         </div>
     </div>
     @endif
-    <!-- Artikel Starts -->
     <div class="container-fluid pt-4 px-4">
         <div class="top-article">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h5 class="mb-0" style="margin-top: 10px;">Artikel Kuliah Tamu</h5>
             </div>
             <div class="search-area">
-                <form class="search-article">
+                <form class="search-article" action="{{ route('post.index') }}" method="GET">
+                    @csrf
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:190px;">
-                        <button type="button" class="btn btn-outline-warning">Search</button>
+                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:190px;" name="search">
+                        <button type="submit" class="btn btn-outline-warning">Search</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+@forelse ( $posts as $p )
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
             <div class="container">
                 <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
                 <div class="article-detail">
-                    <p class = "tanggal">July, 19 2019</p>
-                    <p class = "judul">JUDUL ARTIKEL</p>
-                    <p class = "isi">Universitas Pradita turut serta dalam memajukan bangsa dalam bidang pendidikan dengan mengadakan event kuliah tamu dari berbagai mitra di seluruh penjuru dunia. Dengan adanya event-event ini Universitas</p>
+                    <p class = "tanggal">{{ date("M-d-Y",strtotime($p->waktu_publikasi)) }}</p>
+                    <p class = "judul">{{ $p->judul }}</p>
+                    <p class = "isi">{{ Str::limit($p->ringkasan, 140, ' ...') }}</p>
                 </div>
                 <div class="d-flex">
-                    <a class="btn btn-sm btn-outline-info w-100" href="#">Show</a>
-                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
+                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route('post.show',$p->id_posts) }}">Show</a>
+                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('post.edit',$p->id_posts) }}">Edit</a>
+                    <form action="{{ route('post.destroy',$p->id_posts) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-outline-danger w-100">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="container-fluid pt-4 px-4">
-        <div class="bg-light rounded p-4">
-            <div class="container">
-                <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
-                <div class="article-detail">
-                    <p class = "tanggal">July, 19 2019</p>
-                    <p class = "judul">JUDUL ARTIKEL</p>
-                    <p class = "isi">Universitas Pradita turut serta dalam memajukan bangsa dalam bidang pendidikan dengan mengadakan event kuliah tamu dari berbagai mitra di seluruh penjuru dunia. Dengan adanya event-event ini Universitas</p>
-                </div>
-                <div class="d-flex">
-                    <a class="btn btn-sm btn-outline-info w-100" href="#">Show</a>
-                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid pt-4 px-4">
-        <div class="bg-light rounded p-4">
-            <div class="container">
-                <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
-                <div class="article-detail">
-                    <p class = "tanggal">July, 19 2019</p>
-                    <p class = "judul">JUDUL ARTIKEL</p>
-                    <p class = "isi">Universitas Pradita turut serta dalam memajukan bangsa dalam bidang pendidikan dengan mengadakan event kuliah tamu dari berbagai mitra di seluruh penjuru dunia. Dengan adanya event-event ini Universitas</p>
-                </div>
-                <div class="d-flex">
-                    <a class="btn btn-sm btn-outline-info w-100" href="#">Show</a>
-                    <a class="btn btn-sm btn-outline-warning w-100" href="#">Edit</a>
-                    <a class="btn btn-sm btn-outline-danger w-100" href="#">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
+@empty
+    
+@endforelse
+    
+    <!-- Artikel Starts -->
 
     <div class="col-sm-12">
         <ul class="pagination justify-content-center" style="margin-top: 30px;">
