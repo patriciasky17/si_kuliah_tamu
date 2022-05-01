@@ -54,7 +54,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $p->id_pembicara }}</td>
-                            <td>{{ $p->nama_pembicara }}</td>
+                            <td>{{ $p->nama }}</td>
                             <td>{{ $p->institusi }}</td>
                             <td>{{ $p->jabatan }}</td>
                             <td class="d-flex align-items-center">
@@ -107,10 +107,10 @@
                             <dd class="col-sm-8">{{ $singlePembicara[0]->bank }}</dd>
 
                             <dt class="col-sm-4">No. Rekening</dt>
-                            <dd class="col-sm-8">{{ $pembicara[0]->no_rekening }}</dd>
+                            <dd class="col-sm-8">{{ $singlePembicara[0]->no_rekening }}</dd>
 
                             <dt class="col-sm-4">CV</dt>
-                            <dd class="col-sm-8"><a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfCV', substr($pembicara[0]->cv,3)) }}">Download CV</a></dd>
+                            <dd class="col-sm-8"><a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfCV', substr($singlePembicara[0]->cv,3)) }}">Download CV</a></dd>
                         </dl>
                     </div>
                 </div>
@@ -118,6 +118,7 @@
 
         </div>
     </div>
+    @endif
     <!-- Data Detail Pembicara Ends Here -->
 
 
