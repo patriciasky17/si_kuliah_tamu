@@ -77,7 +77,7 @@
                     <i class="fa fa-chart-bar fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Estimasi Waktu Presensi</p>
-                        <h6 class="mb-0"><span class="jam_mulai">{{ $summarySinglePresensi[0]->jam_mulai }}</span> - <span class="jam_selesai">{{ $summarySinglePresensi[0]->jam_selesai }}</span></h6>
+                        <h6 class="mb-0"><span class="jam_mulai">{{ date('H:i',strtotime($summarySinglePresensi[0]->jam_mulai)) }}</span> - <span class="jam_selesai">{{  date('H:i',strtotime($summarySinglePresensi[0]->jam_selesai)) }}</span></h6>
                     </div>
                 </div>
             </div>
