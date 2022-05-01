@@ -85,7 +85,7 @@
                     <h6 class="mb-0">Latar Belakang dan Tujuan Kegiatan -
                         <span class="Mata Kuliah">{{ $singleProposal[0]->mata_kuliah }}</span>
                     </h6>
-                    <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfProposal',substr($p->file_proposal,9)) }}">Download Proposal</a>
+                    <a class="btn btn-sm btn-outline-warning" href="{{ route("download.pdfProposal",substr($p->file_proposal,9)) }}">Download Proposal</a>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -109,7 +109,7 @@
         </div>
     @endif
     <!-- Latar Belakang & Tujuan Kegiatan Starts Here -->
-    
+
     <!-- Latar Belakang & Tujuan Kegiatan Ends Here -->
 
 
