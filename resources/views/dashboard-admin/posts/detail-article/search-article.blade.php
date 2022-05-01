@@ -29,7 +29,7 @@
                 <form class="search-article" action="{{ route('post.index') }}" method="GET">
                     @csrf
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:190px;" name="search">
+                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:190px;" name="search" value="{{ request('search') }}">
                         <button type="submit" class="btn btn-outline-warning">Search</button>
                     </div>
                 </form>
@@ -64,18 +64,8 @@
 
     <!-- Artikel Starts -->
 
-    <div class="col-sm-12">
-        <ul class="pagination justify-content-center" style="margin-top: 30px;">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
+    <div class="col-sm-12 d-flex justify-content-center">
+        {{ $posts->links() }}
     </div>
     <!-- Artikel Ends -->
 

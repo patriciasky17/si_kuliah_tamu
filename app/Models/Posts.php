@@ -17,4 +17,16 @@ class Posts extends Model
         'waktu_publikasi',
         'author'
     ];
+
+    public function scopeFilter($query, Array $filters)
+    {
+        $query->when( $filters['search'] ?? false, function($query, $search)
+        {
+            return $query->where(function($query) use ($search) {
+                $query->where('judul', 'LIKE', '%' . $search . '%')
+                            ->orWhere('ringkasan', 'LIKE', '%' . $search . '%')
+                            ->orWhere('author', 'LIKE', '%' . $search . '%');
+            });
+        });
+    }
 }

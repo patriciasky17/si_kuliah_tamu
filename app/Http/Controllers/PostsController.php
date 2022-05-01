@@ -19,14 +19,16 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
+        
         if($search != null){
-            $posts = DB::select("SELECT * FROM posts WHERE posts.judul LIKE ? OR posts.ringkasan LIKE ? OR posts.author LIKE ?", ["%".$search."%", "%".$search."%", "%".$search."%"]);
+            $posts = Posts::filter(request(['search']))->paginate(5)->withQueryString();
             return view('dashboard-admin.posts.detail-article.search-article',[
                 'title' => 'Data Posts - Pradita University\'s Guest Lecturers',
                 'posts' => $posts,
             ]);
+            
         }
-        $posts = Posts::all();
+        $posts = Posts::paginate(5);
         return view('dashboard-admin.posts.detail-article.search-article',[
             'title' => 'Posts - Pradita University\'s Guest Lecturers',
         'posts' => $posts
