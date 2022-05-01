@@ -57,8 +57,8 @@ class ProposalController extends Controller
     {
         $validatedData = $request->validate([
             'mata_kuliah' => 'required|string',
-            'latar_belakang' => 'required|text',
-            'tujuan_kegiatan' => 'required|text',
+            'latar_belakang' => 'required|string',
+            'tujuan_kegiatan' => 'required|string',
             'file_proposal' => 'required|mimes:pdf,docx,doc|max:2048'
         ]);
 
@@ -94,6 +94,7 @@ class ProposalController extends Controller
     public function edit($id)
     {
         $proposal = Proposal::where('id_proposal',$id)->first();
+        // dd($proposal);
         return view('dashboard-admin.proposal.edit-proposal.edit-proposal',[
             'title' => 'Edit Proposal - Pradita University\'s Guest Lecturers',
             'proposal' => $proposal
@@ -111,9 +112,9 @@ class ProposalController extends Controller
     {
         $validatedData = $request->validate([
             'mata_kuliah' => 'required|string',
-            'latar_belakang' => 'required|text',
-            'tujuan_kegiatan' => 'required|text',
-            'file_proposal' => 'required|mimes:pdf,docx,doc|max:2048',
+            'latar_belakang' => 'required|string',
+            'tujuan_kegiatan' => 'required|string',
+            'file_proposal' => 'nullable|mimes:pdf,docx,doc|max:2048',
             'oldfile_proposal' => 'required'
         ]);
 
@@ -121,11 +122,16 @@ class ProposalController extends Controller
             'mata_kuliah' => $validatedData['mata_kuliah'],
             'latar_belakang' => $validatedData['latar_belakang'],
             'tujuan_kegiatan' => $validatedData['tujuan_kegiatan'],
-            'file_proposal' => $request->file('file_proposal')->store('proposal')
         ];
-        if($validatedData['oldfile_proposal']){
-            Storage::delete($validatedData['oldfile_proposal']);
+
+        if($request->file_proposal != null){
+            $proposalAwal['file_proposal'] = $request->file('file_proposal')->store('proposal');
+            if($validatedData['oldfile_proposal']){
+                Storage::delete($validatedData['oldfile_proposal']);
+            }
         }
+
+
         Proposal::where('id_proposal',$id)->update($proposalAwal);
         return redirect()->intended(route('proposal.index'))->with('success','Proposal has been successfully updated');
     }
@@ -136,11 +142,12 @@ class ProposalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idProposal)
     {
-        $proposal = Proposal::where('id_proposal', $id);
+        $proposal = Proposal::where('id_proposal', $idProposal)->get()->first();
+        // dd($proposal);
         Storage::delete($proposal->file_proposal);
-        $proposal->delete();
+        Proposal::where('id_proposal', $idProposal)->delete();
         return redirect()->intended(route('proposal.index'))->with('success','Proposal has been successfully deleted');
     }
 }

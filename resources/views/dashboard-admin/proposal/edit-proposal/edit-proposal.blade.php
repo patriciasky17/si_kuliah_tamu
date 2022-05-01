@@ -6,9 +6,10 @@
         <div class="row g-4">
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Input Proposal</h6>
+                    <h6 class="mb-4">Edit Proposal</h6>
                     <form action="{{ route("proposal.update",$proposal->id_proposal) }}" method='POST' enctype="multipart/form-data">
                         @method("PUT")
+                        @csrf
                         <div class="row mb-3">
                             <label for="inputMataKuliahProposal" class="col-sm-2 col-form-label">Mata Kuliah</label>
                             <div class="col-sm-10">
@@ -22,7 +23,7 @@
                         <div class="row mb-3">
                             <label for="inputLatarBelakangProposal" class="col-sm-2 col-form-label">Latar Belakang</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" name="latar_belakang" value="{{ $proposal->latar_belakang }}"></textarea>
+                                <textarea class="form-control" id="inputLatarBelakangProposal" style="height: 150px; min-height: 50px;" name="latar_belakang">{{ $proposal->latar_belakang }}</textarea>
                                 @error('latar_belakang')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
@@ -32,7 +33,7 @@
                         <div class="row mb-3">
                             <label for="inputTujuanKegiatanProposal" class="col-sm-2 col-form-label">Tujuan Kegiatan</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" name="tujuan_kegiatan" value="{{ $proposal->tujuan_kegiatan }}"></textarea>
+                                <textarea class="form-control" id="inputTujuanKegiatanProposal" style="height: 150px; min-height: 50px;" name="tujuan_kegiatan">{{ $proposal->tujuan_kegiatan }}</textarea>
                                 @error('tujuan_kegiatan')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
@@ -42,11 +43,14 @@
                         <div class="row mb-3">
                             <label for="inputFileProposal" class="col-sm-2 col-form-label">File Proposal</label>
                             <div class="col-sm-10">
-                                <input type="hidden" class="form-control" id="inputFileProposal" name="oldfile_proposal" value="{{ $proposal->file_proposal }}">
+                                <input type="hidden" class="form-control" id="inputFileProposal" name="oldfile_proposal" value="{{ $proposal->file_proposal != NULL ? $proposal->file_proposal : ''  }}">
                                 <input class="form-control" type="file" id="inputFileProposal" name="file_proposal">
                                 @error('file_proposal')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
+                                @if ($proposal->file_proposal)
+                                    {{ 'Ini adalah fotonya yang telah di upload ' . $proposal->file_proposal }}
+                                @endif
                             </div>
 
                         </div>
