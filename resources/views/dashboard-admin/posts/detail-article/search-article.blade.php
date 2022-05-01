@@ -59,9 +59,9 @@
         </div>
     </div>
 @empty
-    
+
 @endforelse
-    
+
     <!-- Artikel Starts -->
 
     <div class="col-sm-12">

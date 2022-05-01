@@ -144,23 +144,22 @@ class PembicaraController extends Controller
             'jabatan' => $validatedData['jabatan'],
             'npwp' => $validatedData['npwp'],
             'no_rekening' => $validatedData['no_rekening'],
-            'sertifikat' => $validatedData['sertifikat'],
             'bank' => $validatedData['bank']
         ];
 
-        if($validatedData['foto'] != null){
+        if($request->foto != null){
             $pembicara['foto'] = $request->file('foto')->store('foto');
             if($validatedData['oldfoto'] != null){
                 Storage::delete($validatedData['oldfoto']);
             }
         }
-        if($validatedData['cv'] != null){
+        if($request->cv != null){
             $pembicara['cv'] = $request->file('cv')->store('cv');
             if($validatedData['oldcv'] != null){
                 Storage::delete($validatedData['oldcv']);
             }
         }
-        if($validatedData['sertifikat'] != null){
+        if($request->sertifikat != null){
             $pembicara['sertifikat'] = $request->file('sertifikat')->store('sertifikat');
             if($validatedData['oldsertifikat'] != null){
                 Storage::delete($validatedData['oldsertifikat']);

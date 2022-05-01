@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+    <!-- Custom CSS by Group 2 -->
+    <link href="/assets/css/style-detail-pembicara.css" rel="stylesheet">
 @endsection
 
 @section('main')
@@ -63,7 +66,7 @@
                                 <form action="{{ route('pembicara.destroy', $p->id_pembicara) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-outline-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -88,7 +91,7 @@
 
             <div class="row">
                 <div class="col-md-4 col-sm-12 d-flex justify-content-center">
-                    <img class="img-fluid  mx-auto  pembicara-photo" src="./assets/img/profile-picture-test1.jfif">
+                    <img class="img-fluid  mx-auto  pembicara-photo" src="{{ asset("storage/" . $singlePembicara[0]->foto) }}">
                 </div>
                 <div class="col-md-8 col-sm-12">
                     <div class="bg-light rounded h-100">
@@ -111,6 +114,9 @@
 
                             <dt class="col-sm-4">CV</dt>
                             <dd class="col-sm-8"><a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfCV', substr($singlePembicara[0]->cv,3)) }}">Download CV</a></dd>
+
+                            <dt class="col-sm-4">Sertifikat</dt>
+                            <dd class="col-sm-8"><a class="btn btn-sm btn-outline-warning" href="{{ route('download.photoSertifikat', substr($singlePembicara[0]->sertifikat,11)) }}">Download Sertifikat</a></dd>
                         </dl>
                     </div>
                 </div>

@@ -7,7 +7,8 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Pembicara</h6>
-                    <form>
+                    <form action="{{ route('pembicara.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="row mb-3">
                             <label for="inputNamaPembicara" class="col-sm-2 col-form-label">Nama Pembicara</label>
                             <div class="col-sm-10">
