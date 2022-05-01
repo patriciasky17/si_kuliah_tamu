@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pembicara;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PembicaraController extends Controller
@@ -13,13 +14,25 @@ class PembicaraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pembicara = Pembicara::all();
-        return view('dashboard-admin.pembicara.detail-pembicara.detail-pembicara',[
-            'title' => 'Data Pembicara - Pradita University\'s Guest Lecturers',
-            'pembicara' => $pembicara
-        ]);
+        $id = $request->query('id_pembicara');
+        if($id){
+            $singlePembicara = DB::select('SELECT * from pembicara WHERE id_pembicara = ?', [$id]);
+            $pembicara = Pembicara::all();
+            return view('dashboard-admin.pembicara.detail-pembicara.detail-pembicara',[
+                'title' => 'Data Pembicara - Pradita University\'s Guest Lecturers',
+                'pembicara' => $pembicara,
+                'singlePembicara' => $singlePembicara
+            ]);
+        }else{
+            $pembicara = Pembicara::all();
+            return view('dashboard-admin.pembicara.detail-pembicara.detail-pembicara',[
+                'title' => 'Data Pembicara - Pradita University\'s Guest Lecturers',
+                'pembicara' => $pembicara,
+                'singlePembicara' => null
+            ]);
+        }
     }
 
     /**
@@ -58,13 +71,17 @@ class PembicaraController extends Controller
             'nama' => $validatedData['nama'],
             'institusi' => $validatedData['institusi'],
             'jabatan' => $validatedData['jabatan'],
-            'foto' => $validatedData['foto'],
+            'foto' => $request->file('foto')->store('pembicara'),
             'cv' => $request->file('cv')->store('cv'),
-            'npwp' => $request->file('npwp')->store('npwp'),
             'no_rekening' => $validatedData['no_rekening'],
-            'sertifikat' => $request->file('sertifikat')->store('sertifikat'),
             'bank' => $validatedData['bank']
         ];
+        if($request->npwp != null){
+            $pembicara['npwp'] = $validatedData['npwp'];
+        }
+        if($request->sertifikat != null){
+            $pembicara['sertifikat'] = $request->file('sertifikat')->store('sertifikat');
+        }
 
         Pembicara::create($pembicara);
 
@@ -90,7 +107,11 @@ class PembicaraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pembicara = Pembicara::where('id_pembicara',$id)->get()->first();
+        return view('dashboard-admin.pembicara.edit-pembicara.edit-pembicara',[
+            'title' => 'Edit Pembicara - Pradita University\'s Guest Lecturers',
+            'pembicara' => $pembicara
+        ]);
     }
 
     /**
@@ -160,6 +181,17 @@ class PembicaraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pembicara = Pembicara::where('id_pembicara',$id)->get()->first();
+        if($pembicara->foto != null){
+            Storage::delete($pembicara->foto);
+        }
+        if($pembicara->cv != null){
+            Storage::delete($pembicara->cv);
+        }
+        if($pembicara->sertifikat != null){
+            Storage::delete($pembicara->sertifikat);
+        }
+        Pembicara::where('id_pembicara',$id)->delete();
+        return redirect()->intended(route('pembicara.index'))->with('success', 'Pembicara has been successfully deleted');
     }
 }
