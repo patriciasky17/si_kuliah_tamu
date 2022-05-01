@@ -9,6 +9,7 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DokumentasiController;
+use App\Http\Controllers\PresensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::resource('/admin/proposal', ProposalController::class)->except(['show']);
 Route::resource('/admin/pic', PICController::class)->except(['show']);
 Route::resource('/admin/documentation', DokumentasiController::class)->except(['show']);
 Route::resource('/admin/post', PostsController::class);
+Route::resource('/admin/presensi', PresensiController::class)->only('index');
 
 //Download Images
 Route::get('/downloadfoto/{image}', [DownloadController::class, 'photoDokumentasi'])->name('download.photoDokumentasi');

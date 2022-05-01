@@ -39,51 +39,19 @@
                     </tfoot>
 
                     <tbody>
+                        @forelse ($presensi as $p)
                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</td>
-                            <td>3</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $p->id_event }}</td>
+                            <td>{{ $p->nama_event }}</td>
+                            <td>{{ $p->jumlah_mahasiswa_hadir }}</td>
                             <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
+                                <a class="btn btn-sm btn-outline-info w-100" href="{{ route('presensi.index') . '?id_event=' . $p->id_event }}">Detail</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>Social Engineering dengan Dana</td>
-                            <td>2</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>3</td>
-                            <td>Pengembangan Software dengan Metode Scrum bersama Metrodata</td>
-                            <td>3</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>4</td>
-                            <td>Effective Scheduling Program with C#</td>
-                            <td>2</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>5</td>
-                            <td>Blockchain: Immutability, Security, Transparency</td>
-                            <td>3</td>
-                            <td class="d-flex align-items-center">
-                                <a class="btn btn-sm btn-outline-info w-100" href="#">Detail</a>
-                            </td>
-                        </tr>
+                        @empty
+                            
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -91,7 +59,7 @@
         </div>
     </div>
     <!-- Data Presensi End -->
-
+    @if ($singlePresensi != null)
     <!-- Summary Presensi Grid Starts -->
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
@@ -100,7 +68,7 @@
                     <i class="fa fa-chart-line fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Jumlah Mahasiswa Presensi</p>
-                        <h6 class="mb-0">53</h6>
+                        <h6 class="mb-0">{{ $summarySinglePresensi[0]->jumlah_mahasiswa_hadir }}</h6>
                     </div>
                 </div>
             </div>
@@ -109,7 +77,7 @@
                     <i class="fa fa-chart-bar fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Estimasi Waktu Presensi</p>
-                        <h6 class="mb-0"><span class="jam_mulai">09:00</span> - <span class="jam_selesai">10:30</span></h6>
+                        <h6 class="mb-0"><span class="jam_mulai">{{ $summarySinglePresensi[0]->jam_mulai }}</span> - <span class="jam_selesai">{{ $summarySinglePresensi[0]->jam_selesai }}</span></h6>
                     </div>
                 </div>
             </div>
@@ -121,7 +89,7 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Detail Presensi - <span class="nama-event">Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</span></h6>
+                <h6 class="mb-0">Detail Presensi - <span class="nama-event">{{ $singlePresensi[0]->nama_event }}</span></h6>
             </div>
 
             <div class="table-responsive">
@@ -145,24 +113,16 @@
                     </tfoot>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2110101003</td>
-                            <td>AUSTIN NICHOLAS THAM</td>
-                            <td>09:12:21</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2110101008</td>
-                            <td>DANICA RECCA DANENDRA</td>
-                            <td>09:17:14</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2110101024</td>
-                            <td>RYAN CHRISTENSEN WANG</td>
-                            <td>09:49:54</td>
-                        </tr>
+
+                            @forelse ($singlePresensi as $s)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $s->nim }}</td>
+                                    <td>{{ $s->nama_mahasiswa }}</td>
+                                    <td>{{ $s->waktu_presensi }}</td>
+                                </tr>
+                            @empty
+                            @endforelse
                     </tbody>
                 </table>
             </div>
@@ -170,7 +130,7 @@
         </div>
     </div>
     <!-- Detail Presensi End -->
-
+    @endif
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>

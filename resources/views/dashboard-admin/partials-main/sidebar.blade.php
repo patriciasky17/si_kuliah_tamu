@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <a href="data-presensi.html" class="nav-item nav-link"><i class="fa fa-check-square me-2"></i>Data Presensi</a>
+                <a href="{{ route('presensi.index') }}" class="nav-item nav-link"><i class="fa fa-check-square me-2"></i>Data Presensi</a>
 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-camera me-2"></i>Documentation</a>
