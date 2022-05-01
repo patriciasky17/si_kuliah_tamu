@@ -42,7 +42,7 @@
                         <div class="row mb-3">
                             <label for="inputFileProposal" class="col-sm-2 col-form-label">File Proposal</label>
                             <div class="col-sm-10">
-                                <input type="file" class="form-control" id="inputFileProposal" name="oldfile_proposal" value="{{ $proposal->file_proposal }}">
+                                <input type="hidden" class="form-control" id="inputFileProposal" name="oldfile_proposal" value="{{ $proposal->file_proposal }}">
                                 <input class="form-control" type="file" id="inputFileProposal" name="file_proposal">
                                 @error('file_proposal')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
