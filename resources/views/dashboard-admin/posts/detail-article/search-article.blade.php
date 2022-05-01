@@ -36,6 +36,9 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
             <div class="container">
                 <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">

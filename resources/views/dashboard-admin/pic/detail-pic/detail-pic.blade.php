@@ -59,7 +59,7 @@
                                     <form action="{{ route('pic.destroy', $personincharge->id_pic) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
                                     </form>
                                 </td>
                             </tr>
