@@ -54,4 +54,10 @@ class DownloadController extends Controller
         $file = 'sertifikat/' . $id;
         return Storage::download($file);
     }
+
+    public function pdfProposal(Request $request,$id)
+    {
+        $file = 'proposal/' . $id;
+        return Storage::download($file);
+    }
 }

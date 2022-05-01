@@ -48,4 +48,5 @@ Route::get('/downloadlaporanakhir/{image}', [DownloadController::class, 'pdfLapo
 Route::get('/downloadpembicara/{image}', [DownloadController::class, 'photoPembicara'])->name('download.photoPembicara');
 Route::get('/downloadcv/{image}', [DownloadController::class, 'pdfCV'])->name('download.pdfCV');
 Route::get('/downloadsertifikat/{image}', [DownloadController::class, 'photoSertifikat'])->name('download.photoSertifikat');
+Route::get('/downloadproposal/{image}', [DownloadController::class, 'pdfProposal'])->name('download.pdfProposal');
 
