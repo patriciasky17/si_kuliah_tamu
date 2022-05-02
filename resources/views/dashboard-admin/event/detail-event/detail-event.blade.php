@@ -183,12 +183,21 @@
                         <dd class="col-sm-8"><span class="jam_mulai">09:00</span> - <span class="jam_selesai">10:30</span> WIB</dd>
 
                         <dt class="col-sm-4">Pembicara</dt>
-                        <dd class="col-sm-8">-</dd>
+                        <dd class="col-sm-8">
+                            <a class="btn btn-sm btn-outline-info" href="#">Show Pembicara</a>
+                            <a class="btn btn-sm btn-outline-warning" href="#">Edit Pembicara</a>
+                            <form>
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Delete Pembicara</button>
+                            </form>
+                        </dd>
 
                         <dt class="col-sm-4">Laporan Akhir</dt>
                         <dd class="col-sm-8">
                             <a class="btn btn-sm btn-outline-info" href="#">Show Laporan Akhir</a>
-                            <a class="btn btn-sm btn-outline-info" href="#">Show Laporan Akhir</a>
+                            <a class="btn btn-sm btn-outline-warning" href="#">Edit Laporan Akhir</a>
+                            <form>
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Delete Laporan Akhir</button>
+                            </form>
                         </dd>
 
                         <dt class="col-sm-4">Proposal</dt>
