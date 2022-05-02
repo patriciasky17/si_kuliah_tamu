@@ -82,8 +82,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'nama_event' => 'required',
+            'cara_pelaksanaan' => 'required',
+            'background' => 'required|mimes:jpg|png|jpeg|max:2048',
+            'flyer' => 'required|mimes:jpg|png|jpeg|max:2048',
+            'tempat_pelaksanaan' => 'required',
+            'link' => 'nullable',
+            'tanggal_pelaksanaan' => 'required',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
+            'id_pic' => 'required',
+            'id_proposal' => 'required',
+        ]);
 
+        Event::create($validatedData);
+        return redirect()->route('event.index')->with('success','Data Event has been added successfully');
     }
 
     public function storePembicara(Request $request)
@@ -92,8 +106,13 @@ class EventController extends Controller
             'id_event' => 'required',
             'id_pembicara' => 'required'
         ]);
-
-        PembicaraDanEvent::create($validatedData);
+        for($i = 0; $i < count($validatedData['id_pembicara']); $i++){
+            $batchPembicara[$i] = [
+                'id_event' => $validatedData['id_event'],
+                'id_pembicara' => $validatedData['id_pembicara'][$i]
+            ];
+        }
+        PembicaraDanEvent::insert($batchPembicara);
         return redirect()->route('event.index')->with('success', 'Data Pembicara has been added successfully');
     }
 
@@ -139,16 +158,20 @@ class EventController extends Controller
     
     public function editPembicara($id){
         $event = Event::where('id_event', $id)->get()->first();
+        $pembicara = Pembicara::all();
         return view('dashboard-admin.event.edit-pembicara-ke-event.edit-pembicara-ke-event',[
             'title' => 'Edit Pembicara - Pradita University\'s Guest Lecturers',
-            'event' => $event]);
+            'event' => $event,
+            'pembicara' => $pembicara
+        ]);
     }
 
     public function editLaporanAkhir($id){
         $event = Event::where('id_event', $id)->get()->first();
         return view('dashboard-admin.event.edit-laporan-akhir.edit-laporan-akhir',[
             'title' => 'Edit Laporan Akhir - Pradita University\'s Guest Lecturers',
-            'event' => $event]);
+            'event' => $event
+        ]);
     }
 
     /**
@@ -160,7 +183,23 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_event' => 'required',
+            'cara_pelaksanaan' => 'required',
+            'background' => 'nullable|mimes:jpg|png|jpeg|max:2048',
+            'flyer' => 'nullable|mimes:jpg|png|jpeg|max:2048',
+            'tempat_pelaksanaan' => 'required',
+            'link' => 'nullable',
+            'tanggal_pelaksanaan' => 'required',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
+            'id_pic' => 'required',
+            'id_proposal' => 'required',
+        ]);
+        
+        Event::where('id_event', $id)->update($validatedData);
+        return redirect()->route('event.index')->with('success', 'Data Event has been updated successfully');
+
     }
 
     public function updatePembicara(Request $request, $id){
@@ -194,6 +233,13 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        
+        $event = Event::where('id_event', $id)->get()->first();
+        Storage::delete($event->background);
+        Storage::delete($event->flyer);
+        if($event->laporan_akhir != null){
+            Storage::delete($event->laporan_akhir);
+        }
+        Event::where('id_event', $id)->delete();
+        return redirect()->route('event.index')->with('success', 'Data Event has been deleted successfully');
     }
 }
