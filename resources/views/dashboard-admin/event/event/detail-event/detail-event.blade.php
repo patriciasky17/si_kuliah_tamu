@@ -187,6 +187,9 @@
 
                         <dt class="col-sm-4">Laporan Akhir</dt>
                         <dd class="col-sm-8"><a class="btn btn-sm btn-outline-info" href="#">Show Laporan Akhir</a></dd>
+
+                        <dt class="col-sm-4">Proposal</dt>
+                        <dd class="col-sm-8"><a class="btn btn-sm btn-outline-info" href="#">Show Proposal</a></dd>
                     </dl>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6" style="margin-top:30px">

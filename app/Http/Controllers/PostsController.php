@@ -19,14 +19,14 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        
+
         if($search != null){
             $posts = Posts::filter(request(['search']))->paginate(5)->withQueryString();
             return view('dashboard-admin.posts.detail-article.search-article',[
                 'title' => 'Data Posts - Pradita University\'s Guest Lecturers',
                 'posts' => $posts,
             ]);
-            
+
         }
         $posts = Posts::paginate(5);
         return view('dashboard-admin.posts.detail-article.search-article',[
@@ -103,8 +103,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = DB::select('SELECT * FROM posts, posts_dan_dokumentasi, dokumentasi, foto WHERE posts.id_posts = posts_dan_dokumentasi.id_posts AND posts_dan_dokumentasi.id_dokumentasi = dokumentasi.id_dokumentasi AND dokumentasi.id_dokumentasi = foto.id_dokumentasi AND posts.id_posts = ?', [$id]);
-        return view('',[
+        $post = DB::select('SELECT * FROM posts, posts_dan_dokumentasi, dokumentasi, event WHERE posts.id_posts = posts_dan_dokumentasi.id_posts AND posts_dan_dokumentasi.id_dokumentasi = dokumentasi.id_dokumentasi AND event.id_event = dokumentasi.id_event AND posts.id_posts = ? ', [$id]);
+        return view('dashboard-admin.posts.edit-article.edit-article',[
             'title' => 'Posts - Pradita University\'s Guest Lecturers',
             'post' => $post
         ]);
@@ -128,7 +128,7 @@ class PostsController extends Controller
             'judul' => $validatedData['judul'],
             'ringkasan' => $validatedData['ringkasan'],
             'author' => $validatedData['author'],
-            'waktu_pembaruan' => Carbon::now(), 
+            'waktu_pembaruan' => Carbon::now(),
         ];
         Posts::where('id_posts',$id)->update($posts);
         return redirect()->intended(route('post.index'))->with('success','Posts has been successfully updated');
@@ -144,6 +144,6 @@ class PostsController extends Controller
     {
         $posts = Posts::where('id_posts', $id);
         $posts->delete();
-        return redirect()->intended(route('posts.index'))->with('success','Posts has been successfully deleted');
+        return redirect()->intended(route('post.index'))->with('success','Posts has been successfully deleted');
     }
 }
