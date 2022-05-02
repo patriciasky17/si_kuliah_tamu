@@ -186,7 +186,10 @@
                         <dd class="col-sm-8">-</dd>
 
                         <dt class="col-sm-4">Laporan Akhir</dt>
-                        <dd class="col-sm-8"><a class="btn btn-sm btn-outline-info" href="#">Show Laporan Akhir</a></dd>
+                        <dd class="col-sm-8">
+                            <a class="btn btn-sm btn-outline-info" href="#">Show Laporan Akhir</a>
+                            <a class="btn btn-sm btn-outline-info" href="#">Show Laporan Akhir</a>
+                        </dd>
 
                         <dt class="col-sm-4">Proposal</dt>
                         <dd class="col-sm-8"><a class="btn btn-sm btn-outline-info" href="#">Show Proposal</a></dd>
