@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PICController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\DownloadController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PembicaraController;
 use App\Http\Controllers\DokumentasiController;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,17 @@ Route::resource('/admin/documentation', DokumentasiController::class)->except(['
 Route::resource('/admin/post', PostsController::class);
 Route::resource('/admin/presensi', PresensiController::class)->only('index');
 Route::resource('/admin/pembicara', PembicaraController::class)->except(['show']);
+Route::resource('/admin/event', EventController::class)->except(['show']);
+
+Route::get('/admin/event/pembicara', [EventController::class, 'createPembicara'])->name('event.createPembicara');
+Route::post('/admin/event/pembicara', [EventController::class, 'storePembicara'])->name('event.storePembicara');
+Route::get('/admin/event/pembicara/{id}', [EventController::class, 'editPembicara'])->name('event.editPembicara');
+Route::put('/admin/event/pembicara/{id}', [EventController::class, 'updatePembicara'])->name('event.updatePembicara');
+
+Route::get('/admin/event/laporanakhir', [EventController::class, 'createLaporanAkhir'])->name('event.createLaporanAkhir');
+Route::post('/admin/event/laporanakhir', [EventController::class, 'storeLaporanAkhir'])->name('event.storeLaporanAkhir');
+Route::get('/admin/event/laporanakhir/{id}', [EventController::class, 'editLaporanAkhir'])->name('event.editLaporanAkhir');
+Route::put('/admin/event/laporanakhir/{id}', [EventController::class, 'updateLaporanAkhir'])->name('event.updateLaporanAkhir');
 
 //Download Images
 Route::get('/downloadfoto/{image}', [DownloadController::class, 'photoDokumentasi'])->name('download.photoDokumentasi');
