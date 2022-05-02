@@ -76,17 +76,20 @@ class DokumentasiController extends Controller
         }
 
         $idDokumentasi = Dokumentasi::create($documentation)->id;
-
+        if($request->foto_1){
         $foto1 = [
             'id_dokumentasi' => $idDokumentasi,
             'foto' => $request->file('foto_1')->store('foto')
         ];
+        Foto::create($foto1);
+        }
+        if($request->foto_2){
         $foto2 = [
             'id_dokumentasi' => $idDokumentasi,
             'foto' => $request->file('foto_2')->store('foto')
         ];
-        Foto::create($foto1);
         Foto::create($foto2);
+        }
         return redirect()->intended(route('documentation.index'))->with('success', 'Documentation has been successfully added');
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +68,7 @@ class ProposalController extends Controller
             'latar_belakang' => $validatedData['latar_belakang'],
             'tujuan_kegiatan' => $validatedData['tujuan_kegiatan'],
             'file_proposal' => $request->file('file_proposal')->store('proposal'),
+            'waktu_pengunggahan' => Carbon::now(),
         ];
 
         Proposal::create($proposalAwal);
