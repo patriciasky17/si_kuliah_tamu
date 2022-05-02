@@ -1,17 +1,17 @@
 @extends('dashboard-admin.partials-main.main')
 
 @section('main')
-    <!-- Form Laporan Akhir Event Starts -->
+    <!-- Form Event Starts -->
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Input Laporan Akhir Event</h6>
+                    <h6 class="mb-4">Input Pembicara ke Event</h6>
                     <form>
                         <div class="row mb-3">
-                            <label for="inputProposalEvent" class="col-sm-2 col-form-label">Nama Event</label>
+                            <label for="inputEvent" class="col-sm-2 col-form-label">Nama Event</label>
                             <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputProposalEvent" name="nama_event">
+                                <select class="form-select form-control" id="inputEvent">
                                     <option selected>Pilih...</option>
                                     <option>
                                         <span class="id-event">1</span> -
@@ -45,15 +45,15 @@
                         <div class="row mb-3">
                             <label for="inputLaporanAkhirEvent" class="col-sm-2 col-form-label">Laporan Akhir</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="inputLaporanAkhirEvent" name="laporan_akhir">
+                                <input class="form-control" type="file" id="inputLaporanAkhirEvent">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Laporan Akhir</button>
+                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Event</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Form Laporan Akhir Event Ends -->
+    <!-- Form Event Ends -->
 @endsection
