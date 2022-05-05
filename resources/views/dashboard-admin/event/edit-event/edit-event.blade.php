@@ -134,9 +134,8 @@
                             <label for="inputProposalEvent" class="col-sm-2 col-form-label">Proposal</label>
                             <div class="col-sm-10">
                                 <select class="form-select form-control" id="inputProposalEvent" name="id_proposal">
-                                    <option selected>Pilih...</option>
                                     @forelse ($proposal as $p)
-                                    <option value="{{ $p->id_proposal }}">
+                                    <option value="{{ $p->id_proposal }}" {{ $event[0]->id_proposal == $p->id_proposal ? 'selected' : '' }}>
                                         <span class="id-proposal">{{ $p->id_proposal }}</span> -
                                         <span class="mata-kuliah">{{ $p->mata_kuliah }}</span> -
                                         <span class="waktu-pengunggahan">{{ $p->waktu_pengunggahan }}</span>
