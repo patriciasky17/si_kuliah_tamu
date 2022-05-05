@@ -85,7 +85,13 @@
                                 <td>{{ date('H:i',strtotime($e->jam_mulai))}}</td>
                                 <td>{{ date('G \j\a\m i \m\e\n\i\t', strtotime($e->jam_selesai) - strtotime($e->jam_mulai))}}</td>
                                 <td>{{ $e->nama_dosen }}</td>
-                                <td>{{ $e->nama }}</td>
+                                <td>
+                                    @forelse ($e->pembicara as $p)
+                                        {{ $p->nama }}<br>
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
                                 <td class="d-flex align-items-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="{{ route('event.index') . '?id_event=' . $e->id_event  }}">Detail</a>
                                     <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('event.edit', $e->id_event) }}">Edit</a>

@@ -26,4 +26,9 @@ class Event extends Model
         'id_proposal',
         'laporan_akhir'
     ];
+
+    public function pembicara()
+    {
+        return $this->belongsToMany(Pembicara::class, 'pembicara_dan_event', 'id_event', 'id_pembicara', 'id_event', 'id_pembicara');
+    }
 }
