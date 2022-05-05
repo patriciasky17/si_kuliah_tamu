@@ -7,7 +7,9 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Event</h6>
-                    <form>
+                    <form action="{{ route('event.update', $event->id_event) }}" method='POST' enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
                         <div class="row mb-3">
                             <label for="inputNamaEvent" class="col-sm-2 col-form-label">Nama Event</label>
                             <div class="col-sm-10">
@@ -36,20 +38,28 @@
                         <div class="row mb-3">
                             <label for="inputBackgroundEvent" class="col-sm-2 col-form-label">Background</label>
                             <div class="col-sm-10">
+                                <input class="form-control" type="hidden" name='oldbackground' value='{{ $event->background != NULL ? $event->background : '' }}'>
                                 <input class="form-control" type="file" id="inputBackgroundEvent" name="background">
                                 @error('background')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
+                                @if ($event->background)
+                                    {{ 'Ini adalah fotonya yang telah di upload ' . $event->background }}
+                                @endif
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputFlyerEvent" class="col-sm-2 col-form-label">Flyer</label>
                             <div class="col-sm-10">
+                                <input class="form-control" type="hidden" name='oldbackground' value='{{ $event->flyer != NULL ? $event->flyer : '' }}'>
                                 <input class="form-control" type="file" id="inputFlyerEvent" name="flyer">
                                 @error('flyer')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
+                                @if ($event->flyer)
+                                    {{ 'Ini adalah fotonya yang telah di upload ' . $event->flyer }}
+                                @endif
                             </div>
                         </div>
 
@@ -107,10 +117,12 @@
                             <label for="inputPICEvent" class="col-sm-2 col-form-label">PIC</label>
                             <div class="col-sm-10">
                                 <select class="form-select form-control" id="inputPICEvent" name="id_pic">
-                                    <option selected>Pilih...</option>
-                                    <option>Aditya</option>
-                                    <option>Arief</option>
-                                    <option>Putri</option>
+                                    @forelse ($pic as $personincharge)
+                                        <option value="{{ $personincharge->id_pic }}" {{ $personincharge->id_pic == "#" ? "selected" : ""}}>
+                                            <span class="namaPIC">{{ $personincharge->nama_dosen }}</span> - <span class="prodiPIC">{{ $personincharge->prodi }}</span>
+                                        </option>
+                                    @empty
+                                    @endforelse
                                 </select>
                                 @error('id_pic')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
@@ -124,69 +136,16 @@
                             <div class="col-sm-10">
                                 <select class="form-select form-control" id="inputProposalEvent" name="id_proposal">
                                     <option selected>Pilih...</option>
-                                    <option>
-                                        <span class="id-proposal">1</span> -
-                                        <span class="mata-kuliah">Social Engineering</span> -
-                                        <span class="file-proposal">proposal_se_1.pdf</span>
+                                    @forelse ($event as $e)
+                                    <option value="{{ $e->id_proposal }}">
+                                        <span class="id-proposal">{{ $e->id_proposal }}</span> -
+                                        <span class="mata-kuliah">{{ $e->mata_kuliah }}</span> -
+                                        <span class="waktu-pengunggahan">{{ $e->waktu_pengunggahan }}</span>
                                     </option>
-                                    <option>
-                                        <span class="id-proposal">2</span> -
-                                        <span class="mata-kuliah">Interaksi Manusia dan Komputer</span> -
-                                        <span class="file-proposal">proposal_imk_1.pdf</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-proposal">3</span> -
-                                        <span class="mata-kuliah">Arsitektur komputer</span> -
-                                        <span class="file-proposal">proposal_arsikom_1.pdf</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-proposal">4</span> -
-                                        <span class="mata-kuliah">Pemrograman Web</span> -
-                                        <span class="file-proposal">proposal_pemrograman_website_1.pdf</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-proposal">5</span> -
-                                        <span class="mata-kuliah">Komputasi Kinerja Tinggi</span> -
-                                        <span class="file-proposal">proposal_hpc_1.pdf</span>
-                                    </option>
+                                    @empty
+                                    @endforelse
                                 </select>
                                 @error('id_proposal')
-                                    <p class="text-danger"><i>{{ $message }}</i></p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="inputPembicaraEvent" class="col-sm-2 col-form-label">Pembicara</label>
-                            <div class="col-sm-10">
-                                <select class="form-select form-control" id="inputPembicaraEvent" multiple name="id_pembicara">
-                                    <option>
-                                        <span class="id-pembicara">1</span> -
-                                        <span class="nama-pembicara">Vina Fitria</span> -
-                                        <span class="institusi-pembicara">Dana</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">2</span> -
-                                        <span class="nama-pembicara">Misbah Munirin Alkhafadh</span> -
-                                        <span class="institusi-pembicara">Metrodata</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">3</span> -
-                                        <span class="nama-pembicara">Fahrizal Husein</span> -
-                                        <span class="institusi-pembicara">DANA</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">4</span> -
-                                        <span class="nama-pembicara">Antonio Andre</span> -
-                                        <span class="institusi-pembicara">DANA</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-pembicara">5</span> -
-                                        <span class="nama-pembicara">Bpk. Ryan Ari Setyawan, S.Kom., M.Eng.</span> -
-                                        <span class="institusi-pembicara">Fakultas Teknik Universitas Janabadra</span>
-                                    </option>
-                                </select>
-                                @error('id_pembicara')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
                                 @enderror
                             </div>

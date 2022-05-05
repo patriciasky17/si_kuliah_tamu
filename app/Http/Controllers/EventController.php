@@ -51,7 +51,7 @@ class EventController extends Controller
         return view('dashboard-admin.event.input-event.input-event',[
             'title' => 'Input Event - Pradita University\'s Guest Lecturers',
             'pic' => $pic,
-            'proposal' => $proposal
+            'proposal' => $proposal,
         ]);
     }
 
@@ -85,8 +85,8 @@ class EventController extends Controller
         $validatedData = $request->validate([
             'nama_event' => 'required',
             'cara_pelaksanaan' => 'required',
-            'background' => 'required|mimes:jpg|png|jpeg|max:2048',
-            'flyer' => 'required|mimes:jpg|png|jpeg|max:2048',
+            'background' => 'required|mimes:jpg,png,jpeg|max:2048',
+            'flyer' => 'required|mimes:jpg,png,jpeg|max:2048',
             'tempat_pelaksanaan' => 'required',
             'link' => 'nullable',
             'tanggal_pelaksanaan' => 'required',
@@ -152,10 +152,11 @@ class EventController extends Controller
         $event = Event::where('id_event', $id)->get()->first();
         return view('dashboard-admin.event.edit-event.edit-event',[
             'title' => 'Edit Event - Pradita University\'s Guest Lecturers',
-            'event' => $event]);
+            'event' => $event
+        ]);
 
     }
-    
+
     public function editPembicara($id){
         $event = Event::where('id_event', $id)->get()->first();
         $pembicara = Pembicara::all();
@@ -186,8 +187,8 @@ class EventController extends Controller
         $validatedData = $request->validate([
             'nama_event' => 'required',
             'cara_pelaksanaan' => 'required',
-            'background' => 'nullable|mimes:jpg|png|jpeg|max:2048',
-            'flyer' => 'nullable|mimes:jpg|png|jpeg|max:2048',
+            'background' => 'nullable|mimes:jpg,png,jpeg|max:2048',
+            'flyer' => 'nullable|mimes:jpg,png,jpeg|max:2048',
             'tempat_pelaksanaan' => 'required',
             'link' => 'nullable',
             'tanggal_pelaksanaan' => 'required',
@@ -195,8 +196,26 @@ class EventController extends Controller
             'jam_selesai' => 'required',
             'id_pic' => 'required',
             'id_proposal' => 'required',
+            'oldbackground' => 'required',
+            'oldflyer' => 'required'
         ]);
-        
+
+        if($request->background != null){
+            $file = $request->file('background')->store('background');
+            $event['background'] = $file;
+            if($validatedData['oldbackground'] != null){
+                Storage::delete($validatedData['oldbackground']);
+            }
+        }
+
+        if($request->flyer != null){
+            $file = $request->file('flyer')->store('flyer');
+            $event['flyer'] = $file;
+            if($validatedData['oldflyer'] != null){
+                Storage::delete($validatedData['oldflyer']);
+            }
+        }
+
         Event::where('id_event', $id)->update($validatedData);
         return redirect()->route('event.index')->with('success', 'Data Event has been updated successfully');
 

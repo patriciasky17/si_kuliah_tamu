@@ -58,8 +58,6 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-day me-2"></i>Event</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('event.create') }}" class="dropdown-item">Input Event</a>
-                        <a href="{{ route('event.createPembicara') }}" class="dropdown-item">Input Pembicara ke Event</a>
-                        <a href="{{ route('event.createLaporanAkhir') }}" class="dropdown-item">Input Laporan Akhir</a>
                         <a href="{{ route('event.index') }}" class="dropdown-item">Data Event</a>
                     </div>
                 </div>
