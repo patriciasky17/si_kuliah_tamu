@@ -95,7 +95,8 @@ class EventController extends Controller
             'id_pic' => 'required',
             'id_proposal' => 'required',
         ]);
-
+        $validatedData['background'] = $request->file('background')->store('background');
+        $validatedData['flyer'] = $request->file('flyer')->store('flyer');
         Event::create($validatedData);
         return redirect()->route('event.index')->with('success','Data Event has been added successfully');
     }
