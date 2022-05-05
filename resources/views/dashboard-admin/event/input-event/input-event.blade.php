@@ -7,7 +7,9 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Event</h6>
-                    <form>
+                    <form action="{{ route('event.store')}}" method='POST' enctype="multipart/form-data">
+                        @csrf
+
                         <div class="row mb-3">
                             <label for="inputNamaEvent" class="col-sm-2 col-form-label">Nama Event</label>
                             <div class="col-sm-10">
@@ -108,9 +110,12 @@
                             <div class="col-sm-10">
                                 <select class="form-select form-control" id="inputPICEvent" name="id_pic">
                                     <option selected>Pilih...</option>
-                                    <option>Aditya</option>
-                                    <option>Arief</option>
-                                    <option>Putri</option>
+                                    @forelse ($pic as $personincharge)
+                                        <option value="{{ $personincharge->id_pic }}">
+                                            <span class="namaPIC">{{ $personincharge->nama_dosen }}</span> - <span class="prodiPIC">{{ $personincharge->prodi }}</span>
+                                        </option>
+                                    @empty
+                                    @endforelse
                                 </select>
                                 @error('id_pic')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
@@ -123,31 +128,14 @@
                             <div class="col-sm-10">
                                 <select class="form-select form-control" id="inputProposalEvent" name="id_proposal">
                                     <option selected>Pilih...</option>
-                                    <option>
-                                        <span class="id-proposal">1</span> -
-                                        <span class="mata-kuliah">Social Engineering</span> -
-                                        <span class="file-proposal">proposal_se_1.pdf</span>
+                                    @forelse ($proposal as $p)
+                                    <option value="{{ $p->id_proposal }}">
+                                        <span class="id-proposal">{{ $p->id_proposal }}</span> -
+                                        <span class="mata-kuliah">{{ $p->mata_kuliah }}</span> -
+                                        <span class="waktu-pengunggahan">{{ date('d/M/Y',strtotime($p->waktu_pengunggahan ))}}</span>
                                     </option>
-                                    <option>
-                                        <span class="id-proposal">2</span> -
-                                        <span class="mata-kuliah">Interaksi Manusia dan Komputer</span> -
-                                        <span class="file-proposal">proposal_imk_1.pdf</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-proposal">3</span> -
-                                        <span class="mata-kuliah">Arsitektur komputer</span> -
-                                        <span class="file-proposal">proposal_arsikom_1.pdf</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-proposal">4</span> -
-                                        <span class="mata-kuliah">Pemrograman Web</span> -
-                                        <span class="file-proposal">proposal_pemrograman_website_1.pdf</span>
-                                    </option>
-                                    <option>
-                                        <span class="id-proposal">5</span> -
-                                        <span class="mata-kuliah">Komputasi Kinerja Tinggi</span> -
-                                        <span class="file-proposal">proposal_hpc_1.pdf</span>
-                                    </option>
+                                    @empty
+                                    @endforelse
                                 </select>
                                 @error('id_proposal')
                                     <p class="text-danger"><i>{{ $message }}</i></p>
