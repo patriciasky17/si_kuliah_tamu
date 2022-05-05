@@ -89,7 +89,7 @@
                                     @forelse ($e->pembicara as $p)
                                         {{ $p->nama }}<br>
                                     @empty
-                                        
+
                                     @endforelse
                                 </td>
                                 <td class="d-flex align-items-center">
@@ -125,60 +125,67 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-justify rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Data Event - <span class="nama-event">{{ $singleEvent[0]->nama_event }}</span></h6>
+                <h6 class="mb-0">Data Event - <span class="nama-event">{{ $singleEvent->nama_event }}</span></h6>
             </div>
 
             <div class="row">
                 <div class="col-12" style="margin-bottom:30px">
                     <dl class="row mb-0 d-flex">
                         <dt class="col-sm-4">Cara Pelaksanaan</dt>
-                        <dd class="col-sm-8">{{ $singleEvent[0]->cara_pelaksanaan }}</dd>
+                        <dd class="col-sm-8">{{ $singleEvent->cara_pelaksanaan }}</dd>
 
                         <dt class="col-sm-4">Tempat/Media Pelaksanaan</dt>
-                        <dd class="col-sm-8">{{ $singleEvent[0]->tempat_pelaksanaan }}</dd>
+                        <dd class="col-sm-8">{{ $singleEvent->tempat_pelaksanaan }}</dd>
 
                         <dt class="col-sm-4">Link</dt>
                         <dd class="col-sm-8">
-                            @if ($singleEvent[0]->link == null)
+                            @if ($singleEvent->link == null)
                                 -
                             @endif
-                            {{ $singleEvent[0]->link }}
+                            {{ $singleEvent->link }}
                         </dd>
 
                         <dt class="col-sm-4">Estimasi Waktu</dt>
-                        <dd class="col-sm-8"><span class="jam_mulai">{{ date('H:i',strtotime($singleEvent[0]->jam_mulai)) }}</span> - <span class="jam_selesai">{{ date('H:i',strtotime($singleEvent[0]->jam_selesai)) }}</span> WIB</dd>
+                        <dd class="col-sm-8"><span class="jam_mulai">{{ date('H:i',strtotime($singleEvent->jam_mulai)) }}</span> - <span class="jam_selesai">{{ date('H:i',strtotime($singleEvent->jam_selesai)) }}</span> WIB</dd>
 
                         <dt class="col-sm-4">Pembicara</dt>
-                        <dd class="col-sm-8 d-flex align-items-center">
-                            @foreach ($singleEvent as $se){{-- bingung --}}
-                                {{ $singleEvent[0]->nama }}
-                            @endforeach
+                        <dd class="col-sm-8 ">
+                            @forelse ($singleEvent->pembicara as $p)
+                                {{ $p->nama }}<br>
+                                <form action="/admin/event/{{$singleEvent->id_event}}/pembicara/{{$p->id_pembicara}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                </form>
+                            @empty
 
-                            <a class="btn btn-sm btn-outline-warning" style = "margin-left:20px" href="{{ route("event.editPembicara", $singleEvent[0]->id_event) }}">Edit</a>
+                            @endforelse
+
+                            <a class="btn btn-sm btn-outline-info" style = "margin-left:20px" href="{{ route("event.editPembicara", $singleEvent->id_event) }}">Input</a>
                         </dd>
 
                         <dt class="col-sm-4">Laporan Akhir</dt>
                         <dd class="col-sm-8">
-                            <a class="btn btn-sm btn-outline-warning" href="{{ route("event.editLaporanAkhir", $singleEvent[0]->id_event) }}">Edit</a>
-                            <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfLaporanAkhir',substr($singleEvent[0]->laporan_akhir, 14)) }}">Download</a>
+                            <a class="btn btn-sm btn-outline-warning" href="{{ route("event.editLaporanAkhir", $singleEvent->id_event) }}">Edit</a>
+                            <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfLaporanAkhir',substr($singleEvent->laporan_akhir, 14)) }}">Download</a>
                         </dd>
 
                         <dt class="col-sm-4">Proposal</dt>
                         <dd class="col-sm-8">
-                            <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfProposal',substr($singleEvent[0]->file_proposal, 9)) }}">Download</a>
+                            <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfProposal',substr($singleEvent->file_proposal, 9)) }}">Download</a>
                         </dd>
                     </dl>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6" style="margin-top:30px">
                     <h6 class="text-center" style="margin-bottom: 20px;">Background</h6>
                     <div class="group-contains d-flex justify-content-center">
-                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $singleEvent[0]->background) }}">
+                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $singleEvent->background) }}">
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6" style="margin-top:30px">
                     <h6 class="text-center" style="margin-bottom: 20px;">Flyer</h6>
                     <div class="group-contains d-flex justify-content-center">
-                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $singleEvent[0]->flyer) }}">
+                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $singleEvent->flyer) }}">
                     </div>
                 </div>
             </div>

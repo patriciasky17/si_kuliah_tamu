@@ -13,9 +13,9 @@
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-10">
                                 <select data-placeholder="Pilih 1 atau lebih pembicara" class="form-select form-control" id="inputDokumentasiDariEvent chosen-select" name='id_event'>
-                                        <option value="{{ $event[0]->id_event }}">
-                                            <span class="idEvent">{{ $event[0]->id_event }}</span> - <span class="namaEvent">{{ $event[0]->nama_event }}</span>
-                                        </option>
+                                    <option value="{{ $singleEvent[0]->id_event }}">
+                                        <span class="idEvent">{{ $singleEvent[0]->id_event }}</span> - <span class="namaEvent">{{ $singleEvent[0]->nama_event }}</span>
+                                    </option>
                                 </select>
                                 @error('id_event')
                                     {{ $message }}
@@ -27,12 +27,23 @@
                             <label for="inputPembicaraEvent" class="col-sm-2 col-form-label select-label">Pembicara</label>
                             <div class="col-sm-10" style="margin-top: 10px">
                                     @forelse ($pembicara as $p)
-                                    <div class="multiple-checkbox" style="margin-bottom: 5px">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckBox1" name="id_pembicara[]" value="{{ $p->id_pembicara }}">
-                                        <span class="id-pembicara">{{ $p->id_pembicara }}</span> - <span class="nama-pembicara">{{ $p->nama }}</span> - <span class="institusi-pembicara">{{ $p->institusi }}</span>
-                                    </div>
+                                        @forelse ($singleEvent as $se)
+                                            @if ($p->id_pembicara != $se->id_pembicara )
+                                                @if ($loop->iteration == $loop->last)
+                                                <div class="multiple-checkbox" style="margin-bottom: 5px">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheckBox1" name="id_pembicara[]" value="{{ $p->id_pembicara }}">
+                                                    <span class="id-pembicara">{{ $p->id_pembicara }}</span> - <span class="nama-pembicara">{{ $p->nama }}</span> - <span class="institusi-pembicara">{{ $p->institusi }}</span>
+                                                </div>
+                                                @endif
+                                            @elseif($p->id_pembicara == $se->id_pembicara)
+                                                @break(1)
+                                            @endif
+                                        @empty
+                                        @endforelse
+
                                     @empty
                                     @endforelse
+
                                 </select>
                                 @error('id_pembicara[]')
                                     {{ $message }}

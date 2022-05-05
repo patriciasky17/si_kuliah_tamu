@@ -22,8 +22,5 @@ class Pembicara extends Model
         'sertifikat',
         'bank'
     ];
-    public function event()
-    {
-        return $this->belongsToMany(PembicaraDanEvent::class, 'pembicara_dan_event', 'id_pembicara', 'id_event');
-    }
+
 }

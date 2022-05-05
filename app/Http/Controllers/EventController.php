@@ -22,8 +22,8 @@ class EventController extends Controller
     {
         $id = $request->query('id_event');
         if($id){
-            $singleEvent = DB::select('SELECT event.nama_event, event.cara_pelaksanaan, event.tempat_pelaksanaan, event.link, event.jam_mulai, event.jam_selesai, pembicara.nama, event.laporan_akhir, proposal.file_proposal, event.background, event.flyer FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal WHERE event.id_event = ?', [$id]);
-            // dd($singleEvent);
+            $singleEvent = Event::select("id_event","nama_event", "cara_pelaksanaan", "tempat_pelaksanaan","link","jam_mulai", "jam_selesai", "laporan_akhir", "background", "flyer")->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->where('id_event', $id)->get()->first();
+            // dd($singleEvent); //pake Event karena ada relasi di model Event
             $event = Event::select('*')->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->get();
             return view('dashboard-admin.event.detail-event.detail-event',[
             'title' => 'Data Event - Pradita University\'s Guest Lecturers',
@@ -31,7 +31,7 @@ class EventController extends Controller
             'singleEvent' => $singleEvent,
             ]);
         }else{
-            $event = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal ORDER BY event.id_event');
+            $event = Event::select('*')->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->get();
             return view('dashboard-admin.event.detail-event.detail-event',[
                 'title' => 'Data Event - Pradita University\'s Guest Lecturers',
                 'event' => $event,
@@ -133,9 +133,10 @@ class EventController extends Controller
     public function editPembicara($id){
         $singleEvent = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event WHERE event.id_event = ?', [$id]);
         $pembicara = Pembicara::all();
+        // dd($singleEvent);
         return view('dashboard-admin.event.edit-pembicara-ke-event.edit-pembicara-ke-event',[
             'title' => 'Edit Pembicara - Pradita University\'s Guest Lecturers',
-            'event' => $singleEvent,
+            'singleEvent' => $singleEvent,
             'pembicara' => $pembicara
         ]);
     }
