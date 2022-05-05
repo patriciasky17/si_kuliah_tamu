@@ -28,10 +28,10 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="index.html" class="nav-item nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file-alt me-2"></i>Proposal</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/proposal*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-file-alt me-2"></i>Proposal</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('proposal.create') }}" class="dropdown-item">Input Proposal</a>
                         <a href="{{ route('proposal.index') }}" class="dropdown-item">Data Proposal</a>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user me-2"></i>Pembicara</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/pembicara*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-user me-2"></i>Pembicara</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('pembicara.create') }}" class="dropdown-item">Input Pembicara</a>
                         <a href="{{ route('pembicara.index') }}" class="dropdown-item">Data Pembicara</a>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user-circle me-2"></i>PIC</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/pic*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-user-circle me-2"></i>PIC</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('pic.create') }}" class="dropdown-item">Input PIC</a>
                         <a href="{{ route('pic.index') }}" class="dropdown-item">Data PIC</a>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-day me-2"></i>Event</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/event*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-calendar-day me-2"></i>Event</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('event.create') }}" class="dropdown-item">Input Event</a>
                         <a href="{{ route('event.index') }}" class="dropdown-item">Data Event</a>
@@ -63,17 +63,17 @@
                 </div>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-users me-2"></i>Mahasiswa</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/mahasiswa*') ? 'active' : '' }}" data-bs-toggle="dropdown"><i class="fa fa-users me-2"></i>Mahasiswa</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route("mahasiswa.create") }}" class="dropdown-item">Input Mahasiswa</a>
                         <a href="{{ route("mahasiswa.index") }}" class="dropdown-item">Data Mahasiswa</a>
                     </div>
                 </div>
 
-                <a href="{{ route("presensi.index") }}" class="nav-item nav-link"><i class="fa fa-check-square me-2"></i>Data Presensi</a>
+                <a href="{{ route("presensi.index") }}" class="nav-item nav-link {{ Request::is('admin/presensi') ? 'active' : '' }}""><i class="fa fa-check-square me-2"></i>Data Presensi</a>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-camera me-2"></i>Documentation</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/documentation*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-camera me-2"></i>Documentation</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('documentation.create') }}" class="dropdown-item">Input Documentation</a>
                         <a href="{{ route('documentation.index') }}" class="dropdown-item">Download Documentation</a>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-newspaper me-2"></i>Posts</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/post*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-newspaper me-2"></i>Posts</a>
                     <div class="dropdown-menu bg-transparent border-0">
                         <a href="{{ route('post.create') }}" class="dropdown-item">Create Article</a>
                         <a href="{{ route('post.index') }}" class="dropdown-item">Search</a>

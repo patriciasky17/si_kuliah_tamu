@@ -22,16 +22,16 @@ class EventController extends Controller
     {
         $id = $request->query('id_event');
         if($id){
-            $singleEvent = Event::select("id_event","nama_event", "cara_pelaksanaan", "tempat_pelaksanaan","link","jam_mulai", "jam_selesai", "laporan_akhir", "background", "flyer")->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->where('id_event', $id)->get()->first();
+            $singleEvent = Event::select("id_event","nama_event", "cara_pelaksanaan", "tempat_pelaksanaan","link","jam_mulai", "jam_selesai", "laporan_akhir", "background", "flyer", "file_proposal")->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->where('id_event', $id)->with('pembicara')->get()->first();
             // dd($singleEvent); //pake Event karena ada relasi di model Event
-            $event = Event::select('*')->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->get();
+            $event = Event::select('*')->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->with('pembicara')->get();
             return view('dashboard-admin.event.detail-event.detail-event',[
             'title' => 'Data Event - Pradita University\'s Guest Lecturers',
             'event' => $event,
             'singleEvent' => $singleEvent,
             ]);
         }else{
-            $event = Event::select('*')->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->get();
+            $event = Event::select('*')->leftJoin('pic', 'event.id_pic', '=', 'pic.id_pic')->leftJoin('proposal', 'event.id_proposal', '=', 'proposal.id_proposal')->with('pembicara')->get();
             return view('dashboard-admin.event.detail-event.detail-event',[
                 'title' => 'Data Event - Pradita University\'s Guest Lecturers',
                 'event' => $event,
@@ -208,9 +208,10 @@ class EventController extends Controller
     }
 
     public function updateLaporanAkhir(Request $request, $id){
+        // dd($request->all());
         $validatedData = $request->validate([
             'laporan_akhir' => 'required|mimes:pdf,docx,doc|max:2048',
-            'oldlaporan_akhir' => 'required'
+            'oldlaporan_akhir' => 'nullable'
         ]);
         $proposal = [
             'laporan_akhir' => $request->file('laporan_akhir')->store('laporan_akhir'),
