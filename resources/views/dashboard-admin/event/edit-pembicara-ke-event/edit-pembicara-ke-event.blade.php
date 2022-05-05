@@ -6,9 +6,9 @@
         <div class="row g-4">
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
-                    @if ($event->id_pembicara != null)
-                    <h6 class="mb-4">Edit Pembicara ke Event - {{ $event->nama_event }}</h6>
-                    <form action="{{ route('event.editPembicara', $event->id_event) }}" method='POST' enctype="multipart/form-data">
+                    @if ($event[0]->id_pembicara != null)
+                    <h6 class="mb-4">Edit Pembicara ke Event - {{ $event[0]->nama_event }}</h6>
+                    <form action="{{ route('event.editPembicara', $event[0]->id_event) }}" method='POST' enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="row mb-3">
@@ -31,7 +31,7 @@
                     </form>
                     @endif
 
-                    @if ($event->id_pembicara == null)
+                    @if ($event[0]->id_pembicara == null)
                     <h6 class="mb-4">Input Pembicara ke Event</h6>
                     <form action="{{ route('event.storePembicara') }}" method="POST">
                         @csrf
@@ -39,14 +39,9 @@
                             <label for="inputDokumentasiDariEvent" class="col-sm-2 col-form-label">Event</label>
                             <div class="col-sm-10">
                                 <select data-placeholder="Pilih 1 atau lebih pembicara" class="form-select form-control" id="inputDokumentasiDariEvent chosen-select" name='id_event'>
-                                    <option selected value=''>Pilih...</option>
-                                    @forelse ($event as $e)
-                                        <option value="{{ $e->id_event }}">
-                                            <span class="idEvent">{{ $e->id_event }}</span> - <span class="namaEvent">{{ $e->nama_event }}</span>
+                                        <option value="{{ $event[0]->id_event }}">
+                                            <span class="idEvent">{{ $event[0]->id_event }}</span> - <span class="namaEvent">{{ $event[0]->nama_event }}</span>
                                         </option>
-                                    @empty
-
-                                    @endforelse
                                 </select>
                                 @error('id_event')
                                     {{ $message }}

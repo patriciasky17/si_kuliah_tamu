@@ -22,15 +22,15 @@ class EventController extends Controller
     {
         $id = $request->query('id_event');
         if($id){
-            $singleEvent = DB::select('SELECT event.nama_event, event.cara_pelaksanaan, event.tempat_pelaksanaan, event.link, event.jam_mulai, event.jam_selesai, pembicara.nama, event.laporan_akhir, proposal.file_proposal FROM event, pembicara_dan_event, pembicara, pic, proposal WHERE event.id_event = pembicara_dan_event.id_event AND pembicara_dan_event.id_pembicara = pembicara.id_pembicara AND event.id_pic = pic.id_pic AND event.id_proposal = proposal.id_proposal AND event.id_event = ?', [$id]);
-            $event = DB::select('SELECT * FROM event, pembicara_dan_event, pembicara, pic, proposal WHERE event.id_event = pembicara_dan_event.id_event AND pembicara_dan_event.id_pembicara = pembicara.id_pembicara AND event.id_pic = pic.id_pic AND event.id_proposal = proposal.id_proposal ORDER BY event.id_event');
+            $singleEvent = DB::select('SELECT event.nama_event, event.cara_pelaksanaan, event.tempat_pelaksanaan, event.link, event.jam_mulai, event.jam_selesai, pembicara.nama, event.laporan_akhir, proposal.file_proposal FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal WHERE event.id_event = ?', [$id]);
+            $event = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal ORDER BY event.id_event');
             return view('dashboard-admin.event.detail-event.detail-event',[
             'title' => 'Data Event - Pradita University\'s Guest Lecturers',
             'event' => $event,
             'singleEvent' => $singleEvent
         ]);
         }else{
-            $event = DB::select('SELECT * FROM event, pembicara_dan_event, pembicara, pic, proposal WHERE event.id_event = pembicara_dan_event.id_event AND pembicara_dan_event.id_pembicara = pembicara.id_pembicara AND event.id_pic = pic.id_pic AND event.id_proposal = proposal.id_proposal ORDER BY event.id_event');
+            $event = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal ORDER BY event.id_event');
             return view('dashboard-admin.event.detail-event.detail-event',[
                 'title' => 'Data Event - Pradita University\'s Guest Lecturers',
                 'event' => $event,
@@ -55,25 +55,6 @@ class EventController extends Controller
         ]);
     }
 
-    public function createPembicara()
-    {
-        $event = Event::all();
-        $pembicara = Pembicara::all();
-        return view('dashboard-admin.event.input-pembicara-ke-event.input-pembicara-ke-event',[
-            'title' => 'Input Pembicara - Pradita University\'s Guest Lecturers',
-            'event' => $event,
-            'pembicara' => $pembicara
-        ]);
-    }
-
-    public function createLaporanAkhir()
-    {
-        $event = Event::all();
-        return view('dashboard-admin.event.input-laporan-akhir.input-laporan-akhir',[
-            'title' => 'Input Laporan Akhir - Pradita University\'s Guest Lecturers',
-            'event' => $event
-        ]);
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -150,20 +131,24 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $event = Event::where('id_event', $id)->get()->first();
+        $event = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal WHERE event.id_event = ?', [$id]);
+        $pic = PIC::all();
+        $proposal = Proposal::all();
         return view('dashboard-admin.event.edit-event.edit-event',[
             'title' => 'Edit Event - Pradita University\'s Guest Lecturers',
-            'event' => $event
+            'event' => $event,
+            'pic' => $pic,
+            'proposal' => $proposal
         ]);
 
     }
 
     public function editPembicara($id){
-        $event = Event::where('id_event', $id)->get()->first();
+        $singleEvent = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event WHERE event.id_event = ?', [$id]);
         $pembicara = Pembicara::all();
         return view('dashboard-admin.event.edit-pembicara-ke-event.edit-pembicara-ke-event',[
             'title' => 'Edit Pembicara - Pradita University\'s Guest Lecturers',
-            'event' => $event,
+            'event' => $singleEvent,
             'pembicara' => $pembicara
         ]);
     }
@@ -217,7 +202,19 @@ class EventController extends Controller
             }
         }
 
-        Event::where('id_event', $id)->update($validatedData);
+        $event = [
+            'nama_event' => $validatedData['nama_event'],
+            'cara_pelaksanaan' => $validatedData['cara_pelaksanaan'],
+            'tempat_pelaksanaan' => $validatedData['tempat_pelaksanaan'],
+            'link' => $validatedData['link'],
+            'tanggal_pelaksanaan' => $validatedData['tanggal_pelaksanaan'],
+            'jam_mulai' => $validatedData['jam_mulai'],
+            'jam_selesai' => $validatedData['jam_selesai'],
+            'id_pic' => $validatedData['id_pic'],
+            'id_proposal' => $validatedData['id_proposal'],
+        ];
+
+        Event::where('id_event', $id)->update($event);
         return redirect()->route('event.index')->with('success', 'Data Event has been updated successfully');
 
     }
