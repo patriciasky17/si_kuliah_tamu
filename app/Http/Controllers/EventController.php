@@ -22,7 +22,8 @@ class EventController extends Controller
     {
         $id = $request->query('id_event');
         if($id){
-            $singleEvent = DB::select('SELECT event.nama_event, event.cara_pelaksanaan, event.tempat_pelaksanaan, event.link, event.jam_mulai, event.jam_selesai, pembicara.nama, event.laporan_akhir, proposal.file_proposal FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal WHERE event.id_event = ?', [$id]);
+            $singleEvent = DB::select('SELECT event.nama_event, event.cara_pelaksanaan, event.tempat_pelaksanaan, event.link, event.jam_mulai, event.jam_selesai, pembicara.nama, event.laporan_akhir, proposal.file_proposal, event.background, event.flyer FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal WHERE event.id_event = ?', [$id]);
+            // dd($singleEvent);
             $event = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal ORDER BY event.id_event');
             return view('dashboard-admin.event.detail-event.detail-event',[
             'title' => 'Data Event - Pradita University\'s Guest Lecturers',
