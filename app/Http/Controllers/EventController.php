@@ -27,8 +27,8 @@ class EventController extends Controller
             return view('dashboard-admin.event.detail-event.detail-event',[
             'title' => 'Data Event - Pradita University\'s Guest Lecturers',
             'event' => $event,
-            'singleEvent' => $singleEvent
-        ]);
+            'singleEvent' => $singleEvent,
+            ]);
         }else{
             $event = DB::select('SELECT * FROM event NATURAL LEFT JOIN pembicara_dan_event NATURAL LEFT JOIN pembicara NATURAL LEFT JOIN pic NATURAL LEFT JOIN proposal ORDER BY event.id_event');
             return view('dashboard-admin.event.detail-event.detail-event',[
@@ -96,20 +96,6 @@ class EventController extends Controller
         }
         PembicaraDanEvent::insert($batchPembicara);
         return redirect()->route('event.index')->with('success', 'Data Pembicara has been added successfully');
-    }
-
-    public function storeLaporanAkhir(Request $request)
-    {
-        $validatedData = $request->validate([
-            'id_event' => 'required',
-            'laporan_akhir' => 'required|mimes:pdf,docx,doc|max:2048',
-        ]);
-        $proposal = [
-            'laporan_akhir' => $request->file('laporan_akhir')->store('laporan_akhir'),
-            // ->getClientOriginalName(),
-        ];
-        Event::where('id_event', $validatedData['id_event'])->update($proposal);
-        return redirect()->route('event.index')->with('success', 'Data Laporan Akhir has been added successfully');
     }
 
     /**
@@ -219,17 +205,8 @@ class EventController extends Controller
 
     }
 
-    public function updatePembicara(Request $request, $id){
-        $validatedData = $request->validate([
-            'id_pembicara' => 'required'
-        ]);
-        $validatedData['id_event'] = $id;
-        // PembicaraDanEvent::where('id_event', $id)->update($validatedData);
-    }
-
     public function updateLaporanAkhir(Request $request, $id){
         $validatedData = $request->validate([
-            'id_event' => 'required',
             'laporan_akhir' => 'required|mimes:pdf,docx,doc|max:2048',
             'oldlaporan_akhir' => 'required'
         ]);
@@ -237,8 +214,8 @@ class EventController extends Controller
             'laporan_akhir' => $request->file('laporan_akhir')->store('laporan_akhir'),
             // ->getClientOriginalName(),
         ];
-        Storage::delete($request->file('oldlaporan_akhir'));
-        Event::where('id_event', $validatedData['id_event'])->update($proposal);
+        Storage::delete($request->oldlaporan_akhir);
+        Event::where('id_event',$id)->update($proposal);
         return redirect()->route('event.index')->with('success', 'Data Laporan Akhir has been updated successfully');
     }
 
@@ -258,5 +235,11 @@ class EventController extends Controller
         }
         Event::where('id_event', $id)->delete();
         return redirect()->route('event.index')->with('success', 'Data Event has been deleted successfully');
+    }
+
+    public function destroyPembicara($id_event, $id_pembicara)
+    {
+        PembicaraDanEvent::where('id_event', $id_event)->where('id_pembicara', $id_pembicara)->delete();
+        return redirect()->route('event.index')->with('success', 'Data Pembicara has been deleted successfully');
     }
 }

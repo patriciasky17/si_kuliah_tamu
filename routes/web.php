@@ -46,13 +46,10 @@ Route::resource('/admin/presensi', PresensiController::class)->only('index');
 Route::resource('/admin/pembicara', PembicaraController::class)->except(['show']);
 Route::resource('/admin/event', EventController::class)->except(['show']);
 
-Route::get('/admin/event/pembicara', [EventController::class, 'createPembicara'])->name('event.createPembicara');
 Route::post('/admin/event/pembicara', [EventController::class, 'storePembicara'])->name('event.storePembicara');
 Route::get('/admin/event/pembicara/{id}', [EventController::class, 'editPembicara'])->name('event.editPembicara');
-Route::put('/admin/event/pembicara/{id}', [EventController::class, 'updatePembicara'])->name('event.updatePembicara');
+Route::delete('/admin/event/{id_event}/pembicara/{id_pembicara}', [EventController::class, 'destroyPembicara'])->name('event.destroyPembicara');
 
-Route::get('/admin/event/laporanakhir', [EventController::class, 'createLaporanAkhir'])->name('event.createLaporanAkhir');
-Route::post('/admin/event/laporanakhir', [EventController::class, 'storeLaporanAkhir'])->name('event.storeLaporanAkhir');
 Route::get('/admin/event/laporanakhir/{id}', [EventController::class, 'editLaporanAkhir'])->name('event.editLaporanAkhir');
 Route::put('/admin/event/laporanakhir/{id}', [EventController::class, 'updateLaporanAkhir'])->name('event.updateLaporanAkhir');
 

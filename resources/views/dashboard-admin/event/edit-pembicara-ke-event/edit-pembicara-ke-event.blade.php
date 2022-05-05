@@ -6,32 +6,6 @@
         <div class="row g-4">
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
-                    @if ($event[0]->id_pembicara != null)
-                    <h6 class="mb-4">Edit Pembicara ke Event - {{ $event[0]->nama_event }}</h6>
-                    <form action="{{ route('event.editPembicara', $event[0]->id_event) }}" method='POST' enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <div class="row mb-3">
-                            <label for="inputPembicaraEvent" class="col-sm-2 col-form-label select-label">Pembicara</label>
-                            <div class="col-sm-10" style="margin-top: 10px">
-                                    @forelse ($pembicara as $p)
-                                    <div class="multiple-checkbox" style="margin-bottom: 5px">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckBox1" name="id_pembicara[]" value="{{ $p->id_pembicara }}">
-                                        <span class="id-pembicara">{{ $p->id_pembicara }}</span> - <span class="nama-pembicara">{{ $p->nama }}</span> - <span class="institusi-pembicara">{{ $p->institusi }}</span>
-                                    </div>
-                                    @empty
-                                    @endforelse
-                                </select>
-                                @error('id_pembicara[]')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Pembicara ke Event</button>
-                    </form>
-                    @endif
-
-                    @if ($event[0]->id_pembicara == null)
                     <h6 class="mb-4">Input Pembicara ke Event</h6>
                     <form action="{{ route('event.storePembicara') }}" method="POST">
                         @csrf
@@ -68,8 +42,6 @@
 
                         <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Event</button>
                     </form>
-                    @endif
-
                 </div>
             </div>
         </div>
