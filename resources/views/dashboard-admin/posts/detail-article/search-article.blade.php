@@ -40,20 +40,30 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
             <div class="container">
-                <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
-                <div class="d-flex float-end">
-                    <a class="btn btn-sm btn-outline-info" href="{{ route('post.show',$p->id_posts) }}">Show</a>
-                    <a class="btn btn-sm btn-outline-warning" href="{{ route('post.edit',$p->id_posts) }}">Edit</a>
-                    <form action="{{ route('post.destroy',$p->id_posts) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-outline-danger w-100">Delete</button>
-                    </form>
-                </div>
-                <div class="article-detail">
-                    <p class = "tanggal">{{ date("M-d-Y",strtotime($p->waktu_publikasi)) }}</p>
-                    <p class = "judul">{{ $p->judul }}</p>
-                    <p class = "isi">{{ Str::limit($p->ringkasan, 140, ' ...') }}</p>
+                <div class="row">
+                    <div class="col-12">
+                        <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
+                        <div class="article-detail">
+                            <p class = "tanggal">{{ date("M-d-Y",strtotime($p->waktu_publikasi)) }}</p>
+                            <p class = "judul">{{ $p->judul }}</p>
+                            <p class = "isi">{{ Str::limit($p->ringkasan, 140, ' ...') }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12" style="padding-top: 10px">
+                        <div class="d-flex" style="margin-bottom: 10px">
+                            <a class="btn btn-sm btn-outline-info w-50" href="{{ route('post.show',$p->id_posts) }}">Show</a>
+                            <a class="btn btn-sm btn-outline-warning w-50" href="{{ route('post.edit',$p->id_posts) }}">Edit</a>
+                        </div>
+                        <div class="gap">
+                            <form action="{{ route('post.destroy',$p->id_posts) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-outline-danger w-100">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -64,7 +74,7 @@
 
     <!-- Artikel Starts -->
 
-    <div class="col-sm-12 d-flex justify-content-center">
+    <div class="col-sm-12 d-flex justify-content-center" style="margin-top: 10px">
         {{ $posts->links() }}
     </div>
     <!-- Artikel Ends -->
