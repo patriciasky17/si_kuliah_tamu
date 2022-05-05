@@ -8,7 +8,7 @@
                 <div class="bg-light rounded h-100 p-4">
 
                     {{-- Jika laporan akhir sudah ada --}}
-                    <h6 class="mb-4">Edit Laporan Akhir Event</h6>
+                    <h6 class="mb-4">Edit Laporan Akhir Event - <span class="nama-event">{{ $event->nama_event }}</span></h6>
                     <form action="{{ route('event.updateLaporanAkhir', $event->id_event) }}" method='POST' enctype="multipart/form-data">
                         @method('PUT')
                         @csrf

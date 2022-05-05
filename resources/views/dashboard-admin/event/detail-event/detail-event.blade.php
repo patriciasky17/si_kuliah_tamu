@@ -148,13 +148,13 @@
                                 {{ $singleEvent[0]->nama }}
                             @endforeach
 
-                            <a class="btn btn-sm btn-outline-warning" style = "margin-left:20px" href="{{ route("event.editPembicara", $event[0]->id_event) }}">Edit</a>
+                            <a class="btn btn-sm btn-outline-warning" style = "margin-left:20px" href="{{ route("event.editPembicara", $singleEvent[0]->id_event) }}">Edit</a>
                         </dd>
 
                         <dt class="col-sm-4">Laporan Akhir</dt>
                         <dd class="col-sm-8">
-                            <a class="btn btn-sm btn-outline-warning" href="{{ route("event.editLaporanAkhir", $event[0]->id_event) }}">Edit</a>
-                            <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfLaporanAkhir',substr($event[0]->laporan_akhir, 14)) }}">Download</a>
+                            <a class="btn btn-sm btn-outline-warning" href="{{ route("event.editLaporanAkhir", $singleEvent[0]->id_event) }}">Edit</a>
+                            <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfLaporanAkhir',substr($singleEvent[0]->laporan_akhir, 14)) }}">Download</a>
                         </dd>
 
                         <dt class="col-sm-4">Proposal</dt>
