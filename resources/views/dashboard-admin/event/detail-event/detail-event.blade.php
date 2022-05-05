@@ -166,13 +166,13 @@
                 <div class="col-12 col-sm-12 col-md-6" style="margin-top:30px">
                     <h6 class="text-center" style="margin-bottom: 20px;">Background</h6>
                     <div class="group-contains d-flex justify-content-center">
-                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $event[0]->foto) }}">
+                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $singleEvent[0]->background) }}">
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6" style="margin-top:30px">
                     <h6 class="text-center" style="margin-bottom: 20px;">Flyer</h6>
                     <div class="group-contains d-flex justify-content-center">
-                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $event[1]->foto) }}">
+                        <img class="img-fluid  mx-auto  bg-flyer-photo" src="{{ asset("storage/" . $singleEvent[0]->flyer) }}">
                     </div>
                 </div>
             </div>
