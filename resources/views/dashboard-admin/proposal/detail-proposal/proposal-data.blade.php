@@ -30,7 +30,7 @@
 
 
             <div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th scope="col">Num.</th>
@@ -57,13 +57,13 @@
                                 <td>{{ $p->id_proposal }}</td>
                                 <td>{{ $p->mata_kuliah }}</td>
 
-                                <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route('proposal.index') . '?id_proposal=' . $p->id_proposal }}">Detail</a>
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('proposal.edit',$p->id_proposal) }}">Edit</a>
+                                <td class="d-flex justify-content-center">
+                                    <a class="btn btn-sm btn-outline-info" href="{{ route('proposal.index') . '?id_proposal=' . $p->id_proposal }}">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning" href="{{ route('proposal.edit',$p->id_proposal) }}">Edit</a>
                                     <form action="{{ route("proposal.destroy", $p->id_proposal)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
-                                        <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
                                     </form>
                                 </td>
                             </tr>

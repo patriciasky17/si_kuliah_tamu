@@ -43,7 +43,7 @@
                     </tbody>
                 </table>
 
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th scope="col">Num.</th>
@@ -92,13 +92,13 @@
 
                                     @endforelse
                                 </td>
-                                <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route('event.index') . '?id_event=' . $e->id_event  }}">Detail</a>
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('event.edit', $e->id_event) }}">Edit</a>
+                                <td class="d-flex justify-content-center">
+                                    <a class="btn btn-sm btn-outline-info" href="{{ route('event.index') . '?id_event=' . $e->id_event  }}">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning" href="{{ route('event.edit', $e->id_event) }}">Edit</a>
                                     <form action="{{ route("event.destroy", $e->id_event)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
-                                        <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -149,24 +149,27 @@
                         <dd class="col-sm-8"><span class="jam_mulai">{{ date('H:i',strtotime($singleEvent->jam_mulai)) }}</span> - <span class="jam_selesai">{{ date('H:i',strtotime($singleEvent->jam_selesai)) }}</span> WIB</dd>
 
                         <dt class="col-sm-4">Pembicara</dt>
-                        <dd class="col-sm-8 ">
-                            @forelse ($singleEvent->pembicara as $p)
-                                {{ $p->nama }}<br>
-                                <form action="/admin/event/{{$singleEvent->id_event}}/pembicara/{{$p->id_pembicara}}" method="POST">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
-                                </form>
-                            @empty
+                        <dd class="col-sm-8">
+                            <a class="btn btn-sm btn-outline-info w-100" style="margin-bottom: 5px" href="{{ route("event.editPembicara", $singleEvent->id_event) }}">Input Pembicara</a>
+                            <br>
+                                @forelse ($singleEvent->pembicara as $p)
+                                <div class="d-flex justify-content-between align-content-center" style="margin-bottom: 5px">
+                                    {{ $p->nama }}<br>
+                                    <form action="/admin/event/{{$singleEvent->id_event}}/pembicara/{{$p->id_pembicara}}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                                @empty
+                                @endforelse
 
-                            @endforelse
 
-                            <a class="btn btn-sm btn-outline-info" style = "margin-left:20px" href="{{ route("event.editPembicara", $singleEvent->id_event) }}">Input</a>
                         </dd>
 
                         <dt class="col-sm-4">Laporan Akhir</dt>
                         <dd class="col-sm-8">
-                            <a class="btn btn-sm btn-outline-warning" href="{{ route("event.editLaporanAkhir", $singleEvent->id_event) }}">Edit</a>
+                            <a class="btn btn-sm btn-outline-info" href="{{ route("event.editLaporanAkhir", $singleEvent->id_event) }}">Input/Edit</a>
                             <a class="btn btn-sm btn-outline-warning" href="{{ route('download.pdfLaporanAkhir',substr($singleEvent->laporan_akhir, 14)) }}">Download</a>
                         </dd>
 

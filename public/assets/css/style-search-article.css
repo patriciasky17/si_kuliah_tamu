@@ -25,7 +25,7 @@
         display: flex;
         justify-content: space-between;
     }
-    
+
     .article-detail{
         display: flex;
         flex-direction: column;
@@ -33,7 +33,7 @@
 
     .article-photo{
         width: 240px;
-        height: 218px;
+        height: 12rem;
         object-fit: cover;
         border-radius: 20px;
         float : left;

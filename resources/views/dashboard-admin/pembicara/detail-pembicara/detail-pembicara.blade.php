@@ -29,7 +29,7 @@
 
 
             <div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th scope="col">Num.</th>
@@ -60,8 +60,8 @@
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->institusi }}</td>
                             <td>{{ $p->jabatan }}</td>
-                            <td class="d-flex align-items-center">
-                                <a href="{{ route('pembicara.index') . '?id_pembicara=' . $p->id_pembicara }}" class="btn btn-sm btn-outline-info">Details</a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('pembicara.index') . '?id_pembicara=' . $p->id_pembicara }}" class="btn btn-sm btn-outline-info">Detail</a>
                                 <a class="btn btn-sm btn-outline-warning w-100" href="{{ route("pembicara.edit", $p->id_pembicara) }}">Edit</a>
                                 <form action="{{ route('pembicara.destroy', $p->id_pembicara) }}" method="POST">
                                     @csrf

@@ -29,7 +29,7 @@
 
 
             <div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th scope="col">Num.</th>
@@ -54,9 +54,9 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->id_dokumentasi }}</td>
                                 <td>{{ $d->nama_event }}</td>
-                                <td class="d-flex align-items-center">
-                                    <a class="btn btn-sm btn-outline-info w-100" href="{{ route('documentation.index') . '?id_dokumentasi=' . $d->id_dokumentasi  }}">Detail</a>
-                                    <a class="btn btn-sm btn-outline-warning w-100" href="{{ route('documentation.edit',$d->id_dokumentasi) }}">Edit</a>
+                                <td class="d-flex justify-content-center">
+                                    <a class="btn btn-sm btn-outline-info" href="{{ route('documentation.index') . '?id_dokumentasi=' . $d->id_dokumentasi  }}">Detail</a>
+                                    <a class="btn btn-sm btn-outline-warning" href="{{ route('documentation.edit',$d->id_dokumentasi) }}">Edit</a>
                                     <form action="{{ route("documentation.destroy", $d->id_dokumentasi)}}" method="POST">
                                         @csrf
                                         @method("DELETE")

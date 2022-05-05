@@ -27,7 +27,7 @@
 
 
             <div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th scope="col">Num.</th>
@@ -61,7 +61,7 @@
                                 <td>{{ $m->jenis_kelamin }}</td>
                                 <td>{{ $m->prodi }}</td>
                                 <td>{{ $m->angkatan }}</td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex justify-content-center">
                                     <a class="btn btn-sm btn-outline-info w-100" href="{{ route("mahasiswa.edit", $m->nim) }}">Edit</a>
                                     <form action="{{ route("mahasiswa.destroy", $m->nim)}}" method="POST">
                                         @csrf

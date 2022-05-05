@@ -26,7 +26,7 @@
 
 
             <div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%">
+                <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th scope="col">Num.</th>
@@ -49,12 +49,12 @@
 
                     <tbody>
                         @forelse ( $pic as $personincharge)
-                            <tr>
+                            <tr style="text-align: center">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $personincharge->id_pic }}</td>
                                 <td>{{ $personincharge->nama_dosen }}</td>
                                 <td>{{ $personincharge->prodi }}</td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex justify-content-center">
                                     <a class="btn btn-sm btn-outline-warning" href="{{ route('pic.edit',$personincharge->id_pic) }}">Edit</a>
                                     <form action="{{ route('pic.destroy', $personincharge->id_pic) }}" method="POST">
                                         @method('DELETE')
