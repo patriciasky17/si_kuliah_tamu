@@ -9,7 +9,7 @@
                     <i class="fa fa-chart-line fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Jumlah Kuliah Tamu</p>
-                        <h6 class="mb-0">43</h6>
+                        <h6 class="mb-0">{{ $event[0]->jumlah_kuliah_tamu }}</h6>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <i class="fa fa-chart-bar fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Jumlah Mahasiswa</p>
-                        <h6 class="mb-0">65</h6>
+                        <h6 class="mb-0">{{ $mahasiswa[0]->jumlah_mahasiswa }}</h6>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <i class="fa fa-chart-area fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Jumlah Artikel Post</p>
-                        <h6 class="mb-0">17</h6>
+                        <h6 class="mb-0">{{ $posts[0]->jumlah_post }}</h6>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     <i class="fa fa-chart-pie fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Jumlah Dokumentasi</p>
-                        <h6 class="mb-0">24</h6>
+                        <h6 class="mb-0">{{ $dokumentasi[0]->jumlah_dokumentasi }}</h6>
                     </div>
                 </div>
             </div>

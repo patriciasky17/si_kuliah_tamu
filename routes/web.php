@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleUserController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PICController;
 use App\Http\Controllers\EventController;
@@ -12,7 +14,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PembicaraController;
 use App\Http\Controllers\DokumentasiController;
-use App\Models\Event;
+use App\Http\Controllers\DashboardAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,7 @@ Route::get('/register',[ RegisterController::class, 'index'])->name('register.in
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
 
 
+Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('dashboardadmin.index');
 Route::resource('/admin/mahasiswa', MahasiswaController::class)->except(['show']);
 Route::resource('/admin/proposal', ProposalController::class)->except(['show']);
 Route::resource('/admin/pic', PICController::class)->except(['show']);
@@ -63,4 +66,9 @@ Route::get('/downloadpembicara/{image}', [DownloadController::class, 'photoPembi
 Route::get('/downloadcv/{image}', [DownloadController::class, 'pdfCV'])->name('download.pdfCV');
 Route::get('/downloadsertifikat/{image}', [DownloadController::class, 'photoSertifikat'])->name('download.photoSertifikat');
 Route::get('/downloadproposal/{image}', [DownloadController::class, 'pdfProposal'])->name('download.pdfProposal');
+
+// Dashboard User 
+Route::get('/user/dashboard', [DashboardUserController::class, 'index'])->name('dashboarduser.index');
+Route::get('/user/article', [ArticleUserController::class, 'index'])->name('article.index');
+Route::get('/user/article/{id}', [ArticleUserController::class, 'show'])->name('article.show');
 

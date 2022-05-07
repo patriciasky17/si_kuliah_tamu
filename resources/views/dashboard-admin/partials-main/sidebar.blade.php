@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="{{ route('dashboardadmin.index') }}" class="nav-item nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/proposal*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-file-alt me-2"></i>Proposal</a>
