@@ -31,7 +31,7 @@ class EventUserController extends Controller
 
     public function create($id)
     {
-        $pembicara = DB::select('SELECT pembicara.nama, event.nama_event, event.tanggal_pelaksanaan FROM pembicara, pembicara_dan_event, event WHERE pembicara.id_pembicara = pembicara_dan_event.id_pembicara AND pembicara_dan_event.id_event = event.id_event AND event.id_event = ?', [$id]);
+        $pembicara = DB::select('SELECT event.id_event, pembicara.nama, event.nama_event, event.tanggal_pelaksanaan FROM pembicara, pembicara_dan_event, event WHERE pembicara.id_pembicara = pembicara_dan_event.id_pembicara AND pembicara_dan_event.id_event = event.id_event AND event.id_event = ?', [$id]);
         return view('website-for-user.event.presensi',[
             'title' => 'Input Presensi - Pradita University\'s Guest Lecturers',
             'pembicara' => $pembicara,
@@ -49,7 +49,7 @@ class EventUserController extends Controller
             'waktu_presensi' => Carbon::now(),
         ];
         Presensi::create($presensi);
-        return redirect()->route('event.index')->with('success', 'Presensi has been added successfully');
+        return redirect()->route('eventuser.index')->with('success', 'Presensi has been added successfully');
     }
 
     public function nim($nim)

@@ -11,9 +11,15 @@
 
 @section('main')
     <!-- Event Start -->
-        <div class="container">
-            <div class="top-event">
-                <h1 class="event-section">EVENT LIST</h1>
+        <div class="container" style="margin-top: 150px">
+            @if (session()->has('success'))
+                <div class="alert alert-success" role="alert" >
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <div class="top-event" style="margin-bottom: 30px">
+                <h1 class="event-section" style="margin-bottom: 30px">EVENT LIST</h1>
                 <div class="search-area">
                     <form class="search-event">
                         <div class="row">
@@ -63,8 +69,9 @@
                             <td>{{ $e->tanggal_pelaksanaan }}</td>
                             <td><span class="jam_mulai">{{ date('H:i',strtotime($e->jam_mulai)) }}</span> - <span class="jam_selesai">{{  date('H:i',strtotime($e->jam_selesai)) }}</td>
                             <td>{{ date('G \j\a\m i \m\e\n\i\t', strtotime($e->jam_selesai) - strtotime($e->jam_mulai))}}</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="#">Presensi</a></td>
-                            <td><a class="btn btn-sm btn-outline-info w-100" href="#">Show</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="{{ route('eventuser.create', $e->id_event) }}">Presensi</a></td>
+                            {{-- nanti diloop --}}
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="user/eventuser/{{ $e->id_pembicara }}">Nama Pembicara</a></td>
                         </tr>
                         @endforeach
                     </tbody>
