@@ -7,7 +7,7 @@
             <div class="col-sm-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Input Data Admin</h6>
-                    <form action="{{ route('user.store') }}" method='POST'>
+                    <form action="{{ route('registeradmin.store') }}" method='POST'>
                         {{-- @method('DELETE') --}}
                         {{-- enctype="multipart/form-data" --}}
                         @csrf
