@@ -10,10 +10,10 @@
             <div class="col-12 top-documentation">
                 <h1 class="judul">DOKUMENTASI</h1>
                 <div class="search-area">
-                    <form class="search-documentation">
+                    <form class="search-documentation" action='{{ route('documentationuser.index') }}' method='get'>
                         <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search for Documentation.." aria-label="Search" aria-describedby="search-addon" style="width:250px;">
-                        <button type="button" class="btn btn-outline-warning">Search</button>
+                        <input type="search" class="form-control rounded" placeholder="Search for Documentation.." aria-label="Search" aria-describedby="search-addon" style="width:250px;" name="search" value="{{ old('search') }}">
+                        <button type="submit" class="btn btn-outline-warning">Search</button>
                         </div>
                     </form>
                 </div>
