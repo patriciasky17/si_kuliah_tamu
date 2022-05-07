@@ -16,23 +16,13 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->get('search');
-
-        if($search != null){
             $posts = Posts::filter(request(['search']))->paginate(5)->withQueryString();
             return view('dashboard-admin.posts.detail-article.search-article',[
                 'title' => 'Data Posts - Pradita University\'s Guest Lecturers',
                 'posts' => $posts,
             ]);
-
-        }
-        $posts = Posts::paginate(5);
-        return view('dashboard-admin.posts.detail-article.search-article',[
-            'title' => 'Posts - Pradita University\'s Guest Lecturers',
-        'posts' => $posts
-        ]);
     }
 
     /**

@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleUserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {//post, post dokumentasi, dokumentasi,foto
-        $posts = Posts::join('posts_dan_dokumentasi', 'posts.id_posts', '=', 'posts_dan_dokumentasi.id_posts')
+        $posts = Posts::filter(request(['search']))->join('posts_dan_dokumentasi', 'posts.id_posts', '=', 'posts_dan_dokumentasi.id_posts')
         ->join('dokumentasi', 'posts_dan_dokumentasi.id_dokumentasi', '=', 'dokumentasi.id_dokumentasi')
-        ->join('foto', 'dokumentasi.id_dokumentasi', '=', 'foto.id_dokumentasi')->paginate(5);
+        ->join('foto', 'dokumentasi.id_dokumentasi', '=', 'foto.id_dokumentasi')->paginate(5)->withQueryString();
         return view('website-for-user.article.article',[
             'title' => 'Article - Pradita University\'s Guest Lecturers',
             'posts' => $posts,

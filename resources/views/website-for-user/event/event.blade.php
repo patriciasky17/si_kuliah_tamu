@@ -15,20 +15,16 @@
             <div class="top-event">
                 <h1 class="event-section">EVENT LIST</h1>
                 <div class="search-area">
-                    <form class="search-event">
+                    <form class="search-event" action="{{ route('eventuser.index') }}" method="GET">
                         <div class="row">
                             <div class="col-md-6 col-sm-12 col-12">
                                 <div class="date-picker input-group">
-                                    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; height:38px; border-radius: 3px;">
-                                        <i class="bi bi-calendar"></i>&emsp;
-                                        <span></span> <i class="fa fa-caret-down"></i>
-                                    </div>
-                                </div>
-                            </div>
+                                    <input id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; height:38px; border-radius: 3px;" name="date_search">
+                            </input>
                             <div class="col-md-6 col-sm-12 col-12">
                                 <div class="input-group">
-                                    <input type="search" class="form-control rounded search-bar-for-event" placeholder="Search for event.." aria-label="Search" aria-describedby="search-addon">
-                                    <button type="button" class="btn btn-outline-warning">Search</button>
+                                    <input type="search" class="form-control rounded search-bar-for-event" placeholder="Search for event.." aria-label="Search" aria-describedby="search-addon" name="search">
+                                    <button type="submit" class="btn btn-outline-warning">Search</button>
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@ class EventUserController extends Controller
 {
     public function index()
     {
-        $event = Event::paginate(5);
+        $event = Event::filter(request(['search','date_search']))->paginate(5)->withQueryString();
         return view('website-for-user.event.event',[
             'title' => 'Event - Pradita University\'s Guest Lecturers',
             'event' => $event,
