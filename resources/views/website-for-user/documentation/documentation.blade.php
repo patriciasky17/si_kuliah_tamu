@@ -1,6 +1,6 @@
 @extends('website-for-user.partials-main.main')
 @section('css')
-    <link rel="stylesheet" href="/assets/css/style-documentation.css">
+    <link rel="stylesheet" href="/assets-user/css/style-documentation.css">
 @endsection
 
 @section('main')
@@ -19,7 +19,16 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-sm-12 col-12">
+            @foreach ($dokumentasi as $d)
+                <div class="col-md-6 col-sm-12 col-12">
+                    <a href="documentation-inside.html" class="design-kt">
+                        <p style="text-align:justify; width:90%">Kuliah Tamu {{ $loop->iteration }} - <span class="nama_event">{{ $d->nama_event }}</span></p>
+                        <img src = "https://career.summarecon.com/public/images/post/big/executive-secretary-to-pradita-institute.jpg" alt= "foto" class ="documentation-photo">
+                    </a>
+                </div>
+            @endforeach
+
+            {{-- <div class="col-md-6 col-sm-12 col-12">
                 <a href="documentation-inside.html" class="design-kt">
                     <p>Kuliah Tamu 1</p>
                     <img src = "https://career.summarecon.com/public/images/post/big/executive-secretary-to-pradita-institute.jpg" alt= "foto" class ="documentation-photo">
@@ -87,7 +96,7 @@
                     <p>Kuliah Tamu 10</p>
                     <img src = "https://irs.www.warnerbros.com/hero-banner-jpeg/movies/media/browser/we_bare_bears_the_movie_4320x1080.jpg" alt= "foto" class ="documentation-photo">
                 </a>
-            </div>
+            </div> --}}
 
             <div class="col-sm-12">
                 <ul class="pagination justify-content-center">

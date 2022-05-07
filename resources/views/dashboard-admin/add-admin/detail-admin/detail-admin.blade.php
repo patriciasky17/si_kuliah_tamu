@@ -34,7 +34,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Email</th>
                             <th scope="col">Username</th>
-                            <th scope="col">Details</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
 
@@ -44,7 +44,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Email</th>
                             <th scope="col">Username</th>
-                            <th scope="col">Details</th>
+                            <th scope="col"></th>
                         </tr>
                     </tfoot>
 

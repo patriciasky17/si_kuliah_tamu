@@ -1,6 +1,6 @@
 @extends('website-for-user.partials-main.main')
 @section('css')
-    <link rel ="stylesheet" href ="/assets/css/style-event.css">
+    <link rel ="stylesheet" href ="/assets-user/css/style-event.css">
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -58,6 +58,7 @@
                         @foreach($event as $e)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{ $e->id_event }}</td>
                             <td>{{ $e->nama_event }}</td>
                             <td>{{ $e->cara_pelaksanaan }}</td>
                             <td>{{ $e->tempat_pelaksanaan }}</td>
@@ -68,9 +69,7 @@
                             <td><a class="btn btn-sm btn-outline-warning w-100" href="#">Presensi</a></td>
                             <td><a class="btn btn-sm btn-outline-info w-100" href="#">Show</a></td>
                         </tr>
-                        @empty
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
@@ -92,8 +91,8 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src ="/assets/js/script-datepicker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src ="/assets-user/js/script-datepicker.js"></script>
 @endsection

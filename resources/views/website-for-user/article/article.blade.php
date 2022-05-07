@@ -1,6 +1,6 @@
 @extends('website-for-user.partials-main.main')
 @section('css')
-    <link rel="stylesheet" href="./assets/css/style-article.css">
+    <link rel="stylesheet" href="/assets-user/css/style-article.css">
 @endsection
 
 @section('main')

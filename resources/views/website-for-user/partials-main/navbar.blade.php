@@ -42,12 +42,12 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
-                                    Username : patricia.sky17
+                                    Username : <span>patricia.sky17</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
-                                    Role : User
+                                    Role : <span>User</span>
                                 </a>
                             </li>
                             <li><a class="dropdown-item logout" href="login.html">LOG OUT</a></li>
