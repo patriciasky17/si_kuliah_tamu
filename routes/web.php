@@ -83,7 +83,8 @@ Route::get('/user/article/{id}', [ArticleUserController::class, 'show'])->name('
 Route::get('/user/documentation', [DokumentasiUserController::class, 'index'])->name('documentationuser.index');
 Route::get('/user/documentation/{id}', [DokumentasiUserController::class, 'show'])->name('documentationuser.show');
 
-Route::resource('/user/eventuser', EventUserController::class);
-
-Route::resource('/user/presensi', PresensiUserController::class)->only(['create','store']);
-Route::get('/user/presensi/nim/{nim}', [PresensiUserController::class, 'nim'])->name('presensiuser.nim');
+Route::get('/user/eventuser', [EventUserController::class, 'index'])->name('eventuser.index');
+Route::get('/user/eventuser/{id}', [EventUserController::class, 'show'])->name('eventuser.show');
+Route::get('/user/eventuser/create/{id}', [EventUserController::class, 'create'])->name('eventuser.create');
+Route::post('/user/eventuser/store/{id}', [EventUserController::class, 'store'])->name('eventuser.store');
+Route::get('/user/presensi/nim/{nim}', [EventUserController::class, 'nim'])->name('eventuser.nim');
