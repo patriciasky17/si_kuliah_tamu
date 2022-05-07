@@ -1,3 +1,4 @@
+@extends('website-for-user.partials-main.main')
 @section('css')
     <link rel="stylesheet" href="./assets/css/style-article-inside.css">
 @endsection
