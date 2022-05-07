@@ -16,6 +16,7 @@ use App\Http\Controllers\PembicaraController;
 use App\Http\Controllers\ArticleUserController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DokumentasiUserController;
 
@@ -51,6 +52,7 @@ Route::resource('/admin/post', PostsController::class);
 Route::resource('/admin/presensi', PresensiController::class)->only('index');
 Route::resource('/admin/pembicara', PembicaraController::class)->except(['show']);
 Route::resource('/admin/event', EventController::class)->except(['show']);
+Route::resource('/admin/registeradmin', RegisterAdminController::class)->except(['show','edit','update']);
 
 Route::post('/admin/event/pembicara', [EventController::class, 'storePembicara'])->name('event.storePembicara');
 Route::get('/admin/event/pembicara/{id}', [EventController::class, 'editPembicara'])->name('event.editPembicara');

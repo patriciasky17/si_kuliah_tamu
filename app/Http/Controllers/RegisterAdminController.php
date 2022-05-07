@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegisterAdminController extends Controller
@@ -13,7 +14,11 @@ class RegisterAdminController extends Controller
      */
     public function index()
     {
-        
+        $user = User::all()->where('id_role', '=', '1');
+        return view('dashboard-admin.add-admin.detail-admin.detail-admin',[
+            'title' => 'Register Admin - Pradita University\'s Guest Lecturers',
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -36,7 +41,19 @@ class RegisterAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'email' => 'required|unique:user',
+            'password' => 'required',
+            'username' => 'required',
+        ]);
+        $admin = [
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password'],
+            'username' => $validatedData['username'],
+            'id_role' => '1',
+        ];
+        User::create($admin);
+        return redirect(route('registeradmin.index'))->with('success', 'Data Admin has added successfully');
     }
 
     /**
@@ -81,6 +98,7 @@ class RegisterAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
+        return redirect(route('registeradmin.index'))->with('success', 'Data Admin has deleted successfully');
     }
 }

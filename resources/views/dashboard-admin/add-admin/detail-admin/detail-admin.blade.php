@@ -56,7 +56,7 @@
                                 <td>{{ $u->email }}</td>
                                 <td>{{ $u->username }}</td>
                                 <td class="d-flex justify-content-center">
-                                    <form action="{{ route("user.destroy", $u->id)}}" method="POST">
+                                    <form action="{{ route("registeradmin.destroy", $u->id)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <button class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
