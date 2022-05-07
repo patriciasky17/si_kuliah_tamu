@@ -24,9 +24,7 @@ class PresensiUserController extends Controller
      */
     public function create()
     {
-        return view('website-for-user.event.presensi',[
-            'title' => 'Input Presensi - Pradita University\'s Guest Lecturers',
-        ]);
+        
     }
 
     /**
