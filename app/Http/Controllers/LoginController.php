@@ -21,9 +21,9 @@ class LoginController extends Controller
         ]);
         if(Auth::attempt($credentials)){
             if(auth()->user()->id_role == '1'){
-                return redirect()->intended(route('admin.index'));
+                return redirect()->intended(route('dashboardadmin.index'));
             }else if(auth()->user()->id_role == '2'){
-                return redirect()->intended(route('user.index'));
+                return redirect()->intended(route('dashboarduser.index'));
             }
         }
         return back()->with('loginError','Login failed!');

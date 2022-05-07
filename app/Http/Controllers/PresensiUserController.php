@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class RegisterAdminController extends Controller
+class PresensiUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,7 @@ class RegisterAdminController extends Controller
      */
     public function index()
     {
-        $user = User::all()->where('id_role', '=', '1');
-        return view('dashboard-admin.add-admin.detail-admin.detail-admin',[
-            'title' => 'Register Admin - Pradita University\'s Guest Lecturers',
-            'user' => $user,
-        ]);
+        //
     }
 
     /**
@@ -28,9 +23,7 @@ class RegisterAdminController extends Controller
      */
     public function create()
     {
-        return view('dashboard-admin.add-admin.input-admin.input-admin',[
-            'title' => 'Register Admin - Pradita University\'s Guest Lecturers',
-        ]);
+        //
     }
 
     /**
@@ -41,19 +34,7 @@ class RegisterAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'email' => 'required|unique:user',
-            'password' => 'required|min:6',
-            'username' => 'required|alpha_dash|unique:user',
-        ]);
-        $admin = [
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
-            'username' => $validatedData['username'],
-            'id_role' => '1',
-        ];
-        User::create($admin);
-        return redirect(route('registeradmin.index'))->with('success', 'Data Admin has added successfully');
+        //
     }
 
     /**
@@ -98,7 +79,6 @@ class RegisterAdminController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
-        return redirect(route('registeradmin.index'))->with('success', 'Data Admin has deleted successfully');
+        //
     }
 }
