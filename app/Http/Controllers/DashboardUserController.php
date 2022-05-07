@@ -13,7 +13,7 @@ class DashboardUserController extends Controller
         $mahasiswa = DB::select('SELECT COUNT(nim) AS jumlah_mahasiswa FROM mahasiswa');
         $posts = DB::select('SELECT COUNT(id_posts) AS jumlah_post FROM posts');
         $dokumentasi = DB::select('SELECT COUNT(id_dokumentasi) AS jumlah_dokumentasi FROM dokumentasi');
-        return view('dashboard-admin.dashboard.index',[
+        return view('website-for-user.about.index',[
             'title' => 'Dashboard Admin - Pradita University\'s Guest Lecturers',
             'event' => $event,
             'mahasiswa' => $mahasiswa,

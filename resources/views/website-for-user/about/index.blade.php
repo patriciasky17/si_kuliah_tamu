@@ -1,5 +1,6 @@
+@extends('website-for-user.partials-main.main')
 @section('css')
-    <link rel="stylesheet" href="./assets/css/style-index.css">
+    <link rel="stylesheet" href="/assets-user/css/style-index.css">
 @endsection
 
 @section('main')
@@ -13,15 +14,15 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
-                <img src="./assets/img/carousel1fix.jpg" class="d-block w-100 carousel-img" alt="carousel">
+                <img src="/assets-user/img/carousel1fix.jpg" class="d-block w-100 carousel-img" alt="carousel">
                 <div class="carousel-caption d-none d-md-block"></div>
             </div>
             <div class="carousel-item" data-bs-interval="5000">
-                <img src="./assets/img/carousel2fix.jpg" class="d-block w-100 carousel-img" alt="carousel">
+                <img src="/assets-user/img/carousel2fix.jpg" class="d-block w-100 carousel-img" alt="carousel">
                 <div class="carousel-caption d-none d-md-block"></div>
             </div>
             <div class="carousel-item" data-bs-interval="5000">
-                <img src="./assets/img/carousel3fix.jpg" class="d-block w-100 carousel-img" alt="carousel">
+                <img src="/assets-user/img/carousel3fix.jpg" class="d-block w-100 carousel-img" alt="carousel">
                 <div class="carousel-caption d-none d-md-block"></div>
             </div>
         </div>
@@ -62,7 +63,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="profiles">
                         <div class="profile">
-                            <img src="./assets/img/claudio.png" class="profile-img">
+                            <img src="/assets-user/img/claudio.png" class="profile-img">
 
                             <div class="description-profile">
                                 <h5 class="user-name">Claudio Stevant Effendi</h5>
@@ -76,7 +77,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="profiles">
                         <div class="profile">
-                            <img src="./assets/img/darren.png" class="profile-img">
+                            <img src="/assets-user/img/darren.png" class="profile-img">
 
                             <div class="description-profile">
                                 <h5 class="user-name">Darren Valentio</h5>
@@ -90,7 +91,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="profiles">
                         <div class="profile">
-                            <img src="./assets/img/patricia.png" class="profile-img">
+                            <img src="/assets-user/img/patricia.png" class="profile-img">
 
                             <div class="description-profile">
                                 <h5 class="user-name">Patricia Ho</h5>
@@ -104,7 +105,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="profiles">
                         <div class="profile">
-                            <img src="./assets/img/sheila.png" class="profile-img">
+                            <img src="/assets-user/img/sheila.png" class="profile-img">
 
                             <div class="description-profile">
                                 <h5 class="user-name">Gabrielle Sheila Sylvagno</h5>
@@ -118,7 +119,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="profiles">
                         <div class="profile">
-                            <img src="./assets/img/grace.png" class="profile-img">
+                            <img src="/assets-user/img/grace.png" class="profile-img">
 
                             <div class="description-profile">
                                 <h5 class="user-name">Grace Sally</h5>
@@ -139,5 +140,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src ="./assets/js/script.js"></script>
+    <script src ="/assets-user/js/script.js"></script>
 @endsection
