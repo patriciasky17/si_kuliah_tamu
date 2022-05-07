@@ -47,11 +47,10 @@
                             <th scope="col">Tempat Pelaksanaan</th>
                             <th scope="col">Link</th>
                             <th scope="col">Tanggal</th>
-                            <th scope="col">Jam Mulai</th>
+                            <th scope="col">Jam</th>
                             <th scope="col">Durasi</th>
-                            <th scope="col">PIC</th>
                             <th scope="col">Presensi</th>
-                            <th scope="col">Proposal</th>
+                            <th scope="col">Pembicara</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,13 +60,12 @@
                             <td>Sesi 9 : Define - Design - Develop, Strategi Penerapan Transformasi Digital</td>
                             <td>Online</td>
                             <td>Webex</td>
-                            <td>https://ykgw.webex.com/ykgw/j.php?MTID=mee0a20ece781af062018afc0c9e0cd25</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://ykgw.webex.com/ykgw/j.php?MTID=mee0a20ece781af062018afc0c9e0cd25">Enter The Event</a></td>
                             <td>23 February 2022</td>
                             <td>09:00 WIB</td>
                             <td>1 Jam 30 Menit</td>
-                            <td>Aditya</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <!-- <td><input class="form-check-input" type="checkbox"></td> -->
@@ -75,13 +73,12 @@
                             <td>Social Engineering dengan Dana</td>
                             <td>Online</td>
                             <td>Google Meet</td>
-                            <td>https://meet.google.com/gms-kftj-bqu</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://meet.google.com/gms-kftj-bqu">Enter The Event</a></td>
                             <td>25 Maret 2022</td>
                             <td>09:00 WIB</td>
                             <td>1 Jam 30 Menit</td>
-                            <td>Candra</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         </tr>
                         <tr>
@@ -90,13 +87,12 @@
                             <td>Pengembangan Software dengan Metode Scrum bersama Metrodata</td>
                             <td>Online</td>
                             <td>Google Meet</td>
-                            <td>https://meet.google.com/ujs-pqfz-kyk</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://meet.google.com/ujs-pqfz-kyk">Enter The Event</a></td>
                             <td>11 Maret 2022</td>
                             <td>13:30 WIB</td>
                             <td>1 Jam 30 Menit</td>
-                            <td>Arief</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <!-- <td><input class="form-check-input" type="checkbox"></td> -->
@@ -104,13 +100,12 @@
                             <td>Effective Scheduling Program with C#</td>
                             <td>Online</td>
                             <td>Google Meet</td>
-                            <td>https://meet.google.com/vou-wwoa-hcb</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://meet.google.com/vou-wwoa-hcb">Enter The Event</a></td>
                             <td>29 Maret 2022</td>
                             <td>10:00 WIB</td>
                             <td>1 Jam 30 Menit</td>
-                            <td>David</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <!-- <td><input class="form-check-input" type="checkbox"></td> -->
@@ -118,78 +113,72 @@
                             <td>Blockchain: Immutability, Security, Transparency</td>
                             <td>Online</td>
                             <td>Zoom</td>
-                            <td>https://zoom.us/j/96968536381?pwd=MitNL0tiR05DcUE2OElCaU9SamJ6Zz09</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://zoom.us/j/96968536381?pwd=MitNL0tiR05DcUE2OElCaU9SamJ6Zz09">Enter The Event</a></td>
                             <td>01 April 2022</td>
                             <td>13:30 WIB</td>
                             <td>2 Jam 00 Menit</td>
-                            <td>Putri</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <td>6</td>
                             <td>Program Your Application with Dart!</td>
                             <td>Offline</td>
                             <td>Aula A Universitas Pradita</td>
-                            <td>-</td>
+                            <td class="text-center">-</td>
                             <td>18 January 2022</td>
                             <td>09:00 WIB</td>
                             <td>3 Jam 30 Menit</td>
-                            <td>Jessica</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <td>7</td>
                             <td>Data, The Essential Thing for Sustainsibility Business</td>
                             <td>Online</td>
                             <td>Google Meet</td>
-                            <td>https://meet.google.com/abc-efgh-ijk</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://meet.google.com/abc-efgh-ijk">Enter The Event</a></td>
                             <td>18 April 2021</td>
                             <td>08:00 WIB</td>
                             <td>1 Jam 30 Menit</td>
-                            <td>Dimas</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <td>8</td>
                             <td>Machine Learning and Artificial Intelligence</td>
                             <td>Online</td>
                             <td>Google Meet</td>
-                            <td>https://meet.google.com/haw-opgh-eij</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://meet.google.com/haw-opgh-eij">Enter The Event</a></td>
                             <td>14 February 2022</td>
                             <td>13:00 WIB</td>
                             <td>2 Jam 30 Menit</td>
-                            <td>Tiara</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <td>9</td>
                             <td>How to be a Full-Stack Developer </td>
                             <td>Offline</td>
                             <td>Aula B Universitas Pradita</td>
-                            <td>-</td>
+                            <td class="text-center">-</td>
                             <td>01 Maret 2022</td>
                             <td>09:00 WIB</td>
                             <td>3 Jam 30 Menit</td>
-                            <td>Sarah</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                         <tr>
                             <td>10</td>
                             <td>Embedded System and Arduino</td>
                             <td>Online</td>
                             <td>Google Meet</td>
-                            <td>https://meet.google.com/opy-jdyo-iwn</td>
+                            <td><a class="btn btn-sm btn-outline-success w-100" href="https://meet.google.com/opy-jdyo-iwn">Enter The Event</a></td>
                             <td>17 November 2021/td>
                             <td>13:30 WIB</td>
                             <td>3 Jam 30 Menit</td>
-                            <td>Nadia</td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Detail</a></td>
-                            <td><a class="btn btn-sm btn-outline-warning w-100" href="proposal.html">Proposal</a></td>
+                            <td><a class="btn btn-sm btn-outline-warning w-100" href="presensi.html">Presensi</a></td>
+                            <td><a class="btn btn-sm btn-outline-info w-100" href="pembicara.html">Show</a></td>
                         </tr>
                     </tbody>
                 </table>
