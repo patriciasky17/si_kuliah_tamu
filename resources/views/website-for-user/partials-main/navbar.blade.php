@@ -5,16 +5,16 @@
             <div class="row">
                 <!-- Logo Pradita -->
                 <div class="col-3 logo">
-                    <img class="logo-pradita" src="./assets/img/logo-pradita.png">
+                    <img class="logo-pradita" src="/assets-user/img/logo-pradita.png">
                 </div>
 
                 <!-- Navigation -->
                 <div class="col-6 in-slider">
                     <ul id="navbar-center">
-                        <li class="main-navbar"><a href="index.html">ABOUT</a></li>
-                        <li class="main-navbar"><a href="article.html">ARTICLE</a></li>
-                        <li class="main-navbar"><a href="documentation.html">DOCUMENTATION</a></li>
-                        <li class="main-navbar"><a href="event.html">EVENT</a></li>
+                        <li class="main-navbar"><a href="{{ route('dashboarduser.index') }}">ABOUT</a></li>
+                        <li class="main-navbar"><a href="{{ route('article.index') }}">ARTICLE</a></li>
+                        <li class="main-navbar"><a href="{{ route('documentationuser.index') }}">DOCUMENTATION</a></li>
+                        <li class="main-navbar"><a href="{{ route('eventuser.index') }}">EVENT</a></li>
                     </ul>
                 </div>
 

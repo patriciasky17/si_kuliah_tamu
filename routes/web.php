@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ArticleUserController;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PICController;
@@ -11,10 +10,14 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PembicaraController;
+use App\Http\Controllers\ArticleUserController;
 use App\Http\Controllers\DokumentasiController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DokumentasiUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +71,13 @@ Route::get('/downloadsertifikat/{image}', [DownloadController::class, 'photoSert
 Route::get('/downloadproposal/{image}', [DownloadController::class, 'pdfProposal'])->name('download.pdfProposal');
 
 // Dashboard User 
-Route::get('/user/dashboard', [DashboardUserController::class, 'index'])->name('dashboarduser.index');
+Route::get('/user/about', [DashboardUserController::class, 'index'])->name('dashboarduser.index');
+
 Route::get('/user/article', [ArticleUserController::class, 'index'])->name('article.index');
 Route::get('/user/article/{id}', [ArticleUserController::class, 'show'])->name('article.show');
+
+Route::get('/user/documentation', [DokumentasiUserController::class, 'index'])->name('documentationuser.index');
+Route::get('/user/documentation/{id}', [DokumentasiUserController::class, 'show'])->name('documentationuser.show');
+
+Route::get('/user/event', [EventUserController::class, 'index'])->name('eventuser.index');
 
