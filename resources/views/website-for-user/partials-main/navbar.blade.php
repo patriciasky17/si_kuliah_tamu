@@ -42,15 +42,15 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown-details">
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
-                                    Username : <span>patricia.sky17</span>
+                                    Username : <span class="username">{{ auth()->user()->username }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
-                                    Role : <span>User</span>
+                                    Role : <span class="nama-role">{{ auth()->user()->role->nama_role }}</span>
                                 </a>
                             </li>
-                            <li><a class="dropdown-item logout" href="login.html">LOG OUT</a></li>
+                            <li><a class="dropdown-item logout" href="{{ route("logout") }}">LOG OUT</a></li>
                         </ul>
                     </div>
 
