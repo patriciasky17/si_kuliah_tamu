@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class PresensiUserController extends Controller
@@ -13,7 +14,7 @@ class PresensiUserController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +24,9 @@ class PresensiUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('website-for-user.event.presensi',[
+            'title' => 'Input Presensi - Pradita University\'s Guest Lecturers',
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class PresensiUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -80,5 +83,12 @@ class PresensiUserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function nim(Request $request)
+    {
+        $nim = $request->nim;
+        $data = Mahasiswa::where('nim',$nim)->first();
+        return response()->json($data);
     }
 }

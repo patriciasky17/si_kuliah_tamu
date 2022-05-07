@@ -19,6 +19,7 @@ use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DokumentasiUserController;
+use App\Http\Controllers\PresensiUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::resource('/admin/pembicara', PembicaraController::class)->except(['show']
 Route::resource('/admin/event', EventController::class)->except(['show']);
 Route::resource('/admin/registeradmin', RegisterAdminController::class)->except(['show','edit','update']);
 
+
 Route::post('/admin/event/pembicara', [EventController::class, 'storePembicara'])->name('event.storePembicara');
 Route::get('/admin/event/pembicara/{id}', [EventController::class, 'editPembicara'])->name('event.editPembicara');
 Route::delete('/admin/event/{id_event}/pembicara/{id_pembicara}', [EventController::class, 'destroyPembicara'])->name('event.destroyPembicara');
@@ -81,5 +83,7 @@ Route::get('/user/article/{id}', [ArticleUserController::class, 'show'])->name('
 Route::get('/user/documentation', [DokumentasiUserController::class, 'index'])->name('documentationuser.index');
 Route::get('/user/documentation/{id}', [DokumentasiUserController::class, 'show'])->name('documentationuser.show');
 
-Route::get('/user/event', [EventUserController::class, 'index'])->name('eventuser.index');
+Route::resource('/user/eventuser', EventUserController::class);
 
+Route::resource('/user/presensi', PresensiUserController::class)->only(['create','store']);
+Route::get('/user/presensi/nim/{nim}', [PresensiUserController::class, 'nim'])->name('presensiuser.nim');

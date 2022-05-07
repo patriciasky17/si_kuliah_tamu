@@ -1,3 +1,4 @@
+@extends('website-for-user.partials-main.main')
 @section('css')
 <!-- Data Tables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -62,7 +63,7 @@
             </tfoot>
 
             <tbody>
-                @forelse ($event as $e)
+                @forelse ($pembicara as $e)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $e->nama_event }}</td>

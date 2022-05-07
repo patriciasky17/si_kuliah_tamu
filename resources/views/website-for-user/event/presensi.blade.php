@@ -1,3 +1,4 @@
+@extends('website-for-user.partials-main.main')
 @section("main")
 <div class="container">
     <h5>PRESENSI</h5>
