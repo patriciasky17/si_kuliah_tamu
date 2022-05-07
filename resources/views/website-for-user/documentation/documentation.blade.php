@@ -22,7 +22,7 @@
             @foreach ($dokumentasi as $d)
                 <div class="col-md-6 col-sm-12 col-12">
                     <a href="documentation-inside.html" class="design-kt">
-                        <p style="text-align:justify; width:90%">Kuliah Tamu {{ $loop->iteration }} - <span class="nama_event">{{ $d->nama_event }}</span></p>
+                        <p style="text-align:justify; width:90%"><span class="nama_event">{{ $d->nama_event }}</span></p>
                         <img src = "https://career.summarecon.com/public/images/post/big/executive-secretary-to-pradita-institute.jpg" alt= "foto" class ="documentation-photo">
                     </a>
                 </div>
@@ -100,6 +100,7 @@
 
             <div class="row">
                 <div class="col-sm-12 d-flex justify-content-center" style="margin-top: 10px">
+                    {{-- @dd($dokumentasi->links()) --}}
                     {{ $dokumentasi->links() }}
                 </div>
             </div>
