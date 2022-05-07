@@ -43,8 +43,8 @@ class RegisterAdminController extends Controller
     {
         $validatedData = $request->validate([
             'email' => 'required|unique:user',
-            'password' => 'required|alpha_dash|min:6',
-            'username' => 'required|unique:user',
+            'password' => 'required|min:6',
+            'username' => 'required|alpha_dash|unique:user',
         ]);
         $admin = [
             'email' => $validatedData['email'],
