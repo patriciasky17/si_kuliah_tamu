@@ -1,5 +1,5 @@
 <!-- Bagian Navbar -->
-<nav>
+<nav id="navbar-only">
     <div id="navigation-bar">
         <div class="container-fluid">
             <div class="row">
@@ -39,7 +39,7 @@
                             </svg>
                             <span class="username">&emsp; PROFILE</span>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown-details">
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
                                     Username : <span>patricia.sky17</span>
@@ -65,5 +65,6 @@
         </div>
     </div>
 </nav>
+
 
 <!-- Karena Navbarnya Fixed, Kasih Margin nanti di Div Pertama -->

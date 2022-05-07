@@ -2,15 +2,15 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-nav{
+#navbar-only{
     background-color: #F0F1F1;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     height: 95px;
     width: 100%;
     font-size: 16px;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 9999;
 }
 
@@ -30,7 +30,7 @@ nav{
     padding-left: 20px;
 }
 
-nav ul {
+#navbar-only ul {
     display: flex;
     list-style: none;
     margin-top: 15px;
@@ -38,7 +38,16 @@ nav ul {
     justify-content: center;
 }
 
-nav ul li a {
+#navbar-only ul:not(#navbar-center) {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar-only ul li a {
     color : #353535;
     text-decoration: none;
     font-size: 0.88em;
@@ -47,30 +56,37 @@ nav ul li a {
     transition: all 0.2s;
     padding-bottom: 10px;
     border-bottom: 0px solid #F26E21;
-    
+
 }
 
-nav ul li a:hover {
+#navbar-only ul li a:hover {
     color : #F26E21;
     border-color: #F26E21;
     transition: all 0.4s;
     border-bottom: 5px solid #F26E21;
 }
 
-nav ul li a.logout{
+#navbar-only ul li a.logout{
     font-weight: 700;
     background: -webkit-linear-gradient(rgba(242,110,33,1), rgba(249,161,33,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-nav ul li a.logout:hover {
+#navbar-only ul li a.logout:hover {
     background: #EA4248;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     border-color: #EA4248;
     transition: all 0.4s;
     border-bottom: 5px solid #EA4248;
+}
+
+.dropdown-menu:not(.show){
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate3d(-53px, -200px, 0px);
 }
 
 .profile-navbar{
@@ -114,7 +130,7 @@ nav ul li a.logout:hover {
 .menu-toggle span {
     display: block;
     width : 28px;
-    height : 3px;    
+    height : 3px;
     border-radius: 3px;
     background-color: #000000;
     transition: all 0.4s;
@@ -152,19 +168,19 @@ nav ul li a.logout:hover {
 
 
 @media (min-width: 801px) {
-    nav ul li.main-navbar:nth-child(1){
+    #navbar-only ul li.main-navbar:nth-child(1){
         border-style: solid ;
         border-color: black;
         border-width: 0 0 0 1px;
     }
 
-    nav ul li.main-navbar:nth-child(2){
+    #navbar-only ul li.main-navbar:nth-child(2){
         border-style: solid ;
         border-color: black;
         border-width: 0 1px 0 1px;
     }
 
-    nav ul li.main-navbar:nth-child(4){
+    #navbar-only ul li.main-navbar:nth-child(4){
         border-style: solid ;
         border-color: black;
         border-width: 0 1px 0 1px;
@@ -181,8 +197,7 @@ nav ul li a.logout:hover {
         margin-top: 3px;
     }
 
-    
-    nav ul#navbar-center{
+    #navbar-only ul#navbar-center{
         text-decoration: none;
         padding: 0;
         position: fixed;
@@ -198,16 +213,16 @@ nav ul li a.logout:hover {
         opacity: 0;
     }
 
-    nav ul#navbar-center.slide{
+    #navbar-only ul#navbar-center.slide{
         opacity : 1;
         transform: translateX(-26.75%);
     }
 
-    nav ul li a {
+    #navbar-only ul#navbar-center li a {
         font-size: 1.1em;
         top : -70px;
     }
-    
+
     .dropdown{
         position: relative;
         margin-top: 3px;
@@ -217,7 +232,6 @@ nav ul li a.logout:hover {
 
     .dropdown-menu.show{
         z-index: 100000 !important;
+        opacity: 1;
     }
-
-
 }
