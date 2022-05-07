@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ArticleUserController extends Controller
 {
     public function index()
-    {
+    {//post, post dokumentasi, dokumentasi,foto
+        $posts = Posts::join('posts_dan_dokumentasi', 'posts.id_posts', '=', 'posts_dan_dokumentasi.id_posts')
+        ->join('dokumentasi', 'posts_dan_dokumentasi.id_dokumentasi', '=', 'dokumentasi.id_dokumentasi')
+        ->join('foto', 'dokumentasi.id_dokumentasi', '=', 'foto.id_dokumentasi')->paginate(5);
         return view('website-for-user.article.article',[
             'title' => 'Article - Pradita University\'s Guest Lecturers',
+            'posts' => $posts,
         ]);
     }
 
