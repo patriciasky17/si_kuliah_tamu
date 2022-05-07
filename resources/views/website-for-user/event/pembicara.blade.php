@@ -24,7 +24,65 @@
 
     <h6>SPEAKER'S HISTORY</h6>
 
+    <div class="table-responsive">
+        <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px;">
+            <tbody class="d-flex justify-content-center">
+                <tr>
+                    <td>Minimum date:</td>
+                    <td><input type="text" id="min" name="min" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Maximum date:</td>
+                    <td><input type="text" id="max" name="max" class="form-control"></td>
+                </tr>
+            </tbody>
+        </table>
 
+        <table id="example" class="display" style="text-align: center" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th scope="col">Num.</th>
+                    <th scope="col">Nama Event</th>
+                    <th scope="col">Cara Pelaksanaan</th>
+                    <th scope="col">Tempat</th>
+                    <th scope="col">Tanggal Pelaksanaan</th>
+                    <th scope="col">Jam</th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th scope="col">Num.</th>
+                    <th scope="col">Nama Event</th>
+                    <th scope="col">Cara Pelaksanaan</th>
+                    <th scope="col">Tempat</th>
+                    <th scope="col">Tanggal Pelaksanaan</th>
+                    <th scope="col">Jam</th>
+                </tr>
+            </tfoot>
+
+            <tbody>
+                @forelse ($event as $e)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $e->nama_event }}</td>
+                        <td>{{ $e->cara_pelaksanaan }}</td>
+                        <td>{{ $e->tempat_pelaksanaan }}</td>
+                        <td>{{ $e->tanggal_pelaksanaan }}</td>
+                        <td>{{ date('H:i',strtotime($e->jam_mulai))}} - {{ date('H:i',strtotime($e->jam_selesai))}}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4">
+                            <div class="alert alert-info text-center">
+                                <h5 class="text-center">Tidak ada data</h5>
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 
 
 </div>
