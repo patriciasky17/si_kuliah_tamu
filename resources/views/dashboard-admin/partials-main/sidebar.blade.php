@@ -88,6 +88,16 @@
                     </div>
                 </div>
 
+                <hr>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle {{ Request::is('admin/register*') ? 'active' : '' }}"" data-bs-toggle="dropdown"><i class="fa fa-person me-2"></i>Add Admin</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="#" class="dropdown-item">Add New Admin</a>
+                        <a href="#" class="dropdown-item">Data Admin</a>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </div>
