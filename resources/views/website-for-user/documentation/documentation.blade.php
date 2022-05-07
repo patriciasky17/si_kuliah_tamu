@@ -98,18 +98,10 @@
                 </a>
             </div> --}}
 
-            <div class="col-sm-12">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="dokumentasi1.html">1</a></li>
-                    <li class="page-item"><a class="page-link" href="dokumentasi1.html">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
+            <div class="row">
+                <div class="col-sm-12 d-flex justify-content-center" style="margin-top: 10px">
+                    {{ $dokumentasi->links() }}
+                </div>
             </div>
         </div>
     </div>

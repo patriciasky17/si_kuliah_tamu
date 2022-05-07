@@ -17,6 +17,7 @@ class DokumentasiUserController extends Controller
         INNER JOIN foto ON foto.id_foto =
         (SELECT foto.id_foto FROM foto WHERE dokumentasi.id_dokumentasi = foto.id_dokumentasi ORDER BY foto.id_dokumentasi ASC LIMIT 1 ), event WHERE event.id_event = dokumentasi.id_event');
         $dokumentasi = new Paginator($dokumentasi, 5);
+        $dokumentasi->setPath('documentation');
         return view('website-for-user.documentation.documentation',[
             'title' => 'Dokumentasi - Pradita University\'s Guest Lecturers',
             'dokumentasi' => $dokumentasi,
