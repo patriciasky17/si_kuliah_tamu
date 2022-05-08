@@ -18,59 +18,35 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 article-content">
-                <a href="article-inside.html" class="article-spesific">
-                    <div class="container">
-                        <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
-                        <div class="article-detail">
-                            <p class = "tanggal">July, 19 2019</p>
-                            <p class = "judul">JUDUL ARTIKEL</p>
-                            <p class = "isi">Universitas Pradita turut serta dalam memajukan bangsa dalam bidang pendidikan dengan mengadakan event kuliah tamu dari berbagai mitra di seluruh penjuru dunia. Dengan adanya event-event ini Universitas</p>
-                        </div>
+        @forelse ( $posts as $p )
+        <div class="col-12 article-content">
+            <a href="#" class="article-spesific">
+                <div class="container">
+                    <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
+                    <div class="article-detail">
+                        <p class = "tanggal">{{ date("M-d-Y",strtotime($p->waktu_publikasi)) }}</p>
+                        <p class = "judul">{{ $p->judul }}</p>
+                        <p class = "author"> {{ "Penulis : " . $p->author }}</p>
+                        <p class = "isi">{{ Str::limit($p->ringkasan, 140, ' ...') }}</p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
+        </div>
+        @empty
+        @endforelse
 
-            <div class="col-12 article-content">
-                <a href="#" class="article-spesific">
-                    <div class="container">
-                        <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
-                        <div class="article-detail">
-                            <p class = "tanggal">July, 19 2019</p>
-                            <p class = "judul">JUDUL ARTIKEL</p>
-                            <p class = "isi">Universitas Pradita turut serta dalam memajukan bangsa dalam bidang pendidikan dengan mengadakan event kuliah tamu dari berbagai mitra di seluruh penjuru dunia. Dengan adanya event-event ini Universitas</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-12 article-content">
-                <a href="#" class="article-spesific">
-                    <div class="container">
-                        <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
-                        <div class="article-detail">
-                            <p class = "tanggal">July, 19 2019</p>
-                            <p class = "judul">JUDUL ARTIKEL</p>
-                            <p class = "isi">Universitas Pradita turut serta dalam memajukan bangsa dalam bidang pendidikan dengan mengadakan event kuliah tamu dari berbagai mitra di seluruh penjuru dunia. Dengan adanya event-event ini Universitas</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-12">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="dokumentasi1.html">1</a></li>
-                    <li class="page-item"><a class="page-link" href="dokumentasi1.html">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="col-sm-12">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="dokumentasi1.html">1</a></li>
+                <li class="page-item"><a class="page-link" href="dokumentasi1.html">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- Article ends here -->

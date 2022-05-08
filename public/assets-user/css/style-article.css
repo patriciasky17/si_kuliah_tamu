@@ -17,7 +17,7 @@
 .tanggal, .judul{
     font-weight: 600;
     color: black;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .tanggal{
@@ -60,8 +60,8 @@
     }
 
     .article-photo{
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
         object-fit: cover;
         border-radius: 20px;
         float : left;

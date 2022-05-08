@@ -71,7 +71,11 @@
                             <td>{{ date('G \j\a\m i \m\e\n\i\t', strtotime($e->jam_selesai) - strtotime($e->jam_mulai))}}</td>
                             <td><a class="btn btn-sm btn-outline-warning w-100" href="{{ route('eventuser.create', $e->id_event) }}">Presensi</a></td>
                             {{-- nanti diloop --}}
-                            <td><a class="btn btn-sm btn-outline-info w-100" href="user/eventuser/{{ $e->id_pembicara }}">Nama Pembicara</a></td>
+                            <td>
+                            @foreach ($e->pembicara as $p)
+                                <a class="btn btn-sm btn-outline-info w-100" href="user/eventuser/{{ $e->id_pembicara }}">{{ $p->nama }}<br></a>
+                            @endforeach
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
