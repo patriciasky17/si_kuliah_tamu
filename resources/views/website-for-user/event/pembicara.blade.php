@@ -6,26 +6,27 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
 
+<link rel="stylesheet" href="/assets-user/css/style-pembicara.css">
 @endsection
 
 @section('main')
-<div class="container">
-    <h5>SPEAKER</h5>
+<div class="container" style="margin-top: 150px;">
+    <h5 style="margin-bottom: 30px;">SPEAKER</h5>
     <div class="row">
-        <div class="col-sm-3 col-12">
-            <img src = "https://career.summarecon.com/public/images/post/big/executive-secretary-to-pradita-institute.jpg" alt= "foto" class ="documentation-photo">
+        <div class="col-md-6 col-sm-12 col-12">
+            <img src = "http://www.summarecon.com/public/images/gallery/87/pradita-1.jpg" alt= "foto" class ="pembicara-photo">
         </div>
 
-        <div class="col-sm-9 col-12">
-            <p><b>Name: </b>\t <span class="nama_pembicara">Theresia Herlina</span></p>
-            <p><b>Institution: </b>\t <span class="institusi_pembicara">Pradita University  </span></p>
-            <p><b>Position: </b>\t <span class="nama_pembicara">Lecturer</span></p>
+        <div class="col-md-6 col-sm-12 col-12" style="margin-bottom: 30px">
+            <p><b>Name: </b> <span class="nama_pembicara">Theresia Herlina</span></p>
+            <p><b>Institution: </b><span class="institusi_pembicara">Pradita University  </span></p>
+            <p><b>Position: </b> <span class="nama_pembicara">Lecturer</span></p>
         </div>
     </div>
 
-    <h6>SPEAKER'S HISTORY</h6>
+    <h5 style="margin-bottom: 30px; margin-top: 50px">SPEAKER'S HISTORY</h5>
 
-    <div class="table-responsive">
+    <div class="table-responsive" style="margin-bottom: 70px">
         <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px;">
             <tbody class="d-flex justify-content-center">
                 <tr>
@@ -135,4 +136,7 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src ="/assets-user/js/script.js"></script>
 @endsection
