@@ -20,7 +20,7 @@
 
         @forelse ( $posts as $p )
         <div class="col-12 article-content">
-            <a href="#" class="article-spesific">
+            <a href="/user/article/{{ $p->id_posts }}" class="article-spesific">
                 <div class="container">
                     <img src = "https://file.maukuliah.id/img/gallery/031067/maukuliah-1635218473.jpg" alt="foto" class="article-photo">
                     <div class="article-detail">
@@ -41,7 +41,7 @@
                 {{ $posts->links() }}
             </div>
         </div>
-        
+
     </div>
     <!-- Article ends here -->
 @endsection

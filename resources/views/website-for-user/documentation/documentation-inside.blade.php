@@ -11,7 +11,7 @@
 @endsection
 
 @section('main')
-    <div class="container">
+    <div class="container" style="margin-top:150px">
         <div class="row">
             <div class="col-12 top-dokumentasi">
                 <h1 class="judul">DOKUMENTASI</h1>
@@ -19,7 +19,7 @@
 
         <!-- Documentation Picture Starts Here -->
         <div class="zoom-gallery">
-            <h1 class="jenis-kuliah-tamu">Kuliah Tamu 1</h1>
+            <h1 class="jenis-kuliah-tamu">Kuliah Tamu - {{ $dokumentasi[0]->nama_event }}</h1>
             <div class="row">
                 <!-- Picture 1 -->
                 <div class="col-md-6 col-sm-12 col-6">

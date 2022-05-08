@@ -1,13 +1,13 @@
 @extends('website-for-user.partials-main.main')
 @section('css')
-    <link rel="stylesheet" href="./assets/css/style-article-inside.css">
+    <link rel="stylesheet" href="/assets-user/css/style-article-inside.css">
 @endsection
 
 @section('main')
-    <div class="container">
-        <div class="judul-artikel">Judul Artikel</div>
-        <div class="nama-author">Grace Sally</div>
-        <div class="waktu-publish">Dipublikasikan 5 jam yang lalu</div>
+    <div class="container" >
+        <div class="judul-artikel">{{ $post[0]->judul }}</div>
+        <div class="nama-author">{{ $post[0]->author }}</div>
+        <div class="waktu-publish">Dipublikasikan {{ $post[0]->waktu_publikasi }}</div>
         <div class="row">
             <div class="col-12">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -38,13 +38,12 @@
             </div>
 
             <div class="col-12">
-                <p class = "isi">Pradita University lahir dari jaringan korporasi berbagai industri yang diprakarsai oleh Summarecon dan mitra bisnis korporasinya. Pendidikan kepada mahasiswa ditegakkan dengan fondasi budi pekerti, demi melahirkan generasi yang cerdas dan menjunjung tinggi moral,
-                serta berorientasi pada landasan teori yang kuat dan keahlian praktis yang sesuai kebutuhan industri.</p>
+                <p class = "isi">{{ $post[0]->ringkasan }}</p>
             </div>
 
             <div class="button">
-                <div class="col-12 button-back-to-article">
-                    <a href="article.html"><button class="button-for-back">Back</button></a>
+                <div class="col-12 button-back-to-article" style="margin-bottom : 20px;">
+                    <a><button class="button-for-back" onclick="history.back()">Back</button></a>
                 </div>
             </div>
         </div>

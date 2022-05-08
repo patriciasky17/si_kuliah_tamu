@@ -86,6 +86,13 @@
         </table>
     </div>
 
+    <div class="row">
+        <div class="button">
+            <div class="col-12 button-back-to-article" style="margin-bottom : 20px;">
+                <a><button class="button-for-back" onclick="history.back()">Back</button></a>
+            </div>
+        </div>
+    </div>
 
 </div>
 @endsection
