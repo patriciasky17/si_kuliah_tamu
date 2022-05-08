@@ -18,9 +18,9 @@
         </div>
 
         <div class="col-md-6 col-sm-12 col-12" style="margin-bottom: 30px">
-            <p><b>Name: </b> <span class="nama_pembicara">Theresia Herlina</span></p>
-            <p><b>Institution: </b><span class="institusi_pembicara">Pradita University  </span></p>
-            <p><b>Position: </b> <span class="nama_pembicara">Lecturer</span></p>
+            <p><b>Name : </b> <span class="nama_pembicara">{{ $pembicara[0]->nama }}</span></p>
+            <p><b>Institution : </b><span class="institusi_pembicara">{{ $pembicara[0]->institusi}}  </span></p>
+            <p><b>Position : </b> <span class="nama_pembicara">{{ $pembicara[0]->jabatan }}</span></p>
         </div>
     </div>
 
