@@ -9,10 +9,10 @@
         <div class="top-article">
             <h1 class="article-section">ARTICLE</h1>
             <div class="search-area">
-                <form class="search-article">
+                <form class="search-article" action='{{ route('article.index')}}' method='get'>
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:250px;">
-                        <button type="button" class="btn btn-outline-warning">Search</button>
+                        <input type="search" class="form-control rounded" placeholder="Search for article.." aria-label="Search" aria-describedby="search-addon" style="width:250px;" name='search'>
+                        <button type="submit" class="btn btn-outline-warning">Search</button>
                     </div>
                 </form>
             </div>
@@ -35,19 +35,13 @@
         @empty
         @endforelse
 
-        <div class="col-sm-12">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="dokumentasi1.html">1</a></li>
-                <li class="page-item"><a class="page-link" href="dokumentasi1.html">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-center" style="margin-top: 10px">
+                {{-- @dd($dokumentasi->links()) --}}
+                {{ $posts->links() }}
+            </div>
         </div>
+        
     </div>
     <!-- Article ends here -->
 @endsection

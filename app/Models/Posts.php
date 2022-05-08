@@ -28,11 +28,5 @@ class Posts extends Model
                             ->orWhere('author', 'LIKE', '%' . $search . '%');
             });
         });
-        $query->when( $filters['date_search'] ?? false, function($query, $search)
-        {
-            return $query->where(function($query) use ($search) {
-                $query->between('waktu_publikasi', $search['start_date'], $search['end_date']);
-            });
-        });
     }
 }
