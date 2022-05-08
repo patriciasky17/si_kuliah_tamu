@@ -73,7 +73,7 @@
                             {{-- nanti diloop --}}
                             <td>
                             @foreach ($e->pembicara as $p)
-                                <a class="btn btn-sm btn-outline-info w-100" href="user/eventuser/{{ $e->id_pembicara }}">{{ $p->nama }}<br></a>
+                                <a class="btn btn-sm btn-outline-info w-100" href="/user/eventuser/{{ $p->id_pembicara }}">{{ $p->nama }}<br></a>
                             @endforeach
                             </td>
                         </tr>
