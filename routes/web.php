@@ -44,35 +44,35 @@ Route::get('/register',[ RegisterController::class, 'index'])->name('register.in
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
 
 
-Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('dashboardadmin.index');
-Route::resource('/admin/mahasiswa', MahasiswaController::class)->except(['show']);
-Route::resource('/admin/proposal', ProposalController::class)->except(['show']);
-Route::resource('/admin/pic', PICController::class)->except(['show']);
-Route::resource('/admin/documentation', DokumentasiController::class)->except(['show']);
-Route::resource('/admin/post', PostsController::class);
-Route::resource('/admin/presensi', PresensiController::class)->only('index');
-Route::resource('/admin/pembicara', PembicaraController::class)->except(['show']);
-Route::resource('/admin/event', EventController::class)->except(['show']);
-Route::resource('/admin/registeradmin', RegisterAdminController::class)->except(['show','edit','update']);
+Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('dashboardadmin.index')->middleware('admin');
+Route::resource('/admin/mahasiswa', MahasiswaController::class)->except(['show'])->middleware('admin');
+Route::resource('/admin/proposal', ProposalController::class)->except(['show'])->middleware('admin');
+Route::resource('/admin/pic', PICController::class)->except(['show'])->middleware('admin');
+Route::resource('/admin/documentation', DokumentasiController::class)->except(['show'])->middleware('admin');
+Route::resource('/admin/post', PostsController::class)->middleware('admin');
+Route::resource('/admin/presensi', PresensiController::class)->only('index')->middleware('admin');
+Route::resource('/admin/pembicara', PembicaraController::class)->except(['show'])->middleware('admin');
+Route::resource('/admin/event', EventController::class)->except(['show'])->middleware('admin');
+Route::resource('/admin/registeradmin', RegisterAdminController::class)->except(['show','edit','update'])->middleware('admin');
 
 
-Route::post('/admin/event/pembicara', [EventController::class, 'storePembicara'])->name('event.storePembicara');
-Route::get('/admin/event/pembicara/{id}', [EventController::class, 'editPembicara'])->name('event.editPembicara');
-Route::delete('/admin/event/{id_event}/pembicara/{id_pembicara}', [EventController::class, 'destroyPembicara'])->name('event.destroyPembicara');
+Route::post('/admin/event/pembicara', [EventController::class, 'storePembicara'])->name('event.storePembicara')->middleware('admin');
+Route::get('/admin/event/pembicara/{id}', [EventController::class, 'editPembicara'])->name('event.editPembicara')->middleware('admin');
+Route::delete('/admin/event/{id_event}/pembicara/{id_pembicara}', [EventController::class, 'destroyPembicara'])->name('event.destroyPembicara')->middleware('admin');
 
-Route::get('/admin/event/laporanakhir/{id}', [EventController::class, 'editLaporanAkhir'])->name('event.editLaporanAkhir');
-Route::put('/admin/event/laporanakhir/{id}', [EventController::class, 'updateLaporanAkhir'])->name('event.updateLaporanAkhir');
+Route::get('/admin/event/laporanakhir/{id}', [EventController::class, 'editLaporanAkhir'])->name('event.editLaporanAkhir')->middleware('admin');
+Route::put('/admin/event/laporanakhir/{id}', [EventController::class, 'updateLaporanAkhir'])->name('event.updateLaporanAkhir')->middleware('admin');
 
 //Download Images
-Route::get('/downloadfoto/{image}', [DownloadController::class, 'photoDokumentasi'])->name('download.photoDokumentasi');
-Route::get('/downloadpdf/{image}', [DownloadController::class, 'pdfDokumentasi'])->name('download.pdfDokumentasi');
-Route::get('/downloadbackground/{image}', [DownloadController::class, 'photoBackground'])->name('download.photoBackground');
-Route::get('/downloadflyer/{image}', [DownloadController::class, 'photoFlyer'])->name('download.photoFlyer');
-Route::get('/downloadlaporanakhir/{image}', [DownloadController::class, 'pdfLaporanAkhir'])->name('download.pdfLaporanAkhir');
-Route::get('/downloadpembicara/{image}', [DownloadController::class, 'photoPembicara'])->name('download.photoPembicara');
-Route::get('/downloadcv/{image}', [DownloadController::class, 'pdfCV'])->name('download.pdfCV');
-Route::get('/downloadsertifikat/{image}', [DownloadController::class, 'photoSertifikat'])->name('download.photoSertifikat');
-Route::get('/downloadproposal/{image}', [DownloadController::class, 'pdfProposal'])->name('download.pdfProposal');
+Route::get('/downloadfoto/{image}', [DownloadController::class, 'photoDokumentasi'])->name('download.photoDokumentasi')->middleware('guest');
+Route::get('/downloadpdf/{image}', [DownloadController::class, 'pdfDokumentasi'])->name('download.pdfDokumentasi')->middleware('guest');
+Route::get('/downloadbackground/{image}', [DownloadController::class, 'photoBackground'])->name('download.photoBackground')->middleware('guest');
+Route::get('/downloadflyer/{image}', [DownloadController::class, 'photoFlyer'])->name('download.photoFlyer')->middleware('guest');
+Route::get('/downloadlaporanakhir/{image}', [DownloadController::class, 'pdfLaporanAkhir'])->name('download.pdfLaporanAkhir')->middleware('guest');
+Route::get('/downloadpembicara/{image}', [DownloadController::class, 'photoPembicara'])->name('download.photoPembicara')->middleware('guest');
+Route::get('/downloadcv/{image}', [DownloadController::class, 'pdfCV'])->name('download.pdfCV')->middleware('guest');
+Route::get('/downloadsertifikat/{image}', [DownloadController::class, 'photoSertifikat'])->name('download.photoSertifikat')->middleware('guest');
+Route::get('/downloadproposal/{image}', [DownloadController::class, 'pdfProposal'])->name('download.pdfProposal')->middleware('guest');
 
 // Dashboard User 
 Route::get('/user/about', [DashboardUserController::class, 'index'])->name('dashboarduser.index');
