@@ -61,6 +61,30 @@
                             </div>
                         </div>
 
+                        <br>
+                        <hr>
+                        <br>
+
+                        <div class="row mb-3">
+                            <label for="inputEmailMahasiswa" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmailMahasiswa" name="email" disabled value="{{ $users->email }}">
+                                @error('email')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputUsernameMahasiswa" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputUsernameMahasiswa" name="username" disabled value="{{ $users->username }}">
+                                @error('username')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <button type="submit" class="btn btn-outline-warning m-2 float-end">Update Data</button>
                     </form>

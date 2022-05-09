@@ -20,6 +20,7 @@ use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DokumentasiUserController;
 use App\Http\Controllers\PresensiUserController;
+use App\Http\Controllers\ProfileMahasiswaUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,8 +75,10 @@ Route::get('/downloadcv/{image}', [DownloadController::class, 'pdfCV'])->name('d
 Route::get('/downloadsertifikat/{image}', [DownloadController::class, 'photoSertifikat'])->name('download.photoSertifikat');
 Route::get('/downloadproposal/{image}', [DownloadController::class, 'pdfProposal'])->name('download.pdfProposal');
 
-// Dashboard User 
+// Dashboard User
 Route::get('/user/about', [DashboardUserController::class, 'index'])->name('dashboarduser.index');
+
+Route::get('/user/profile', [ProfileMahasiswaUserController::class, 'index'])->name('profilemahasiswauser.index');
 
 Route::get('/user/article', [ArticleUserController::class, 'index'])->name('article.index');
 Route::get('/user/article/{id}', [ArticleUserController::class, 'show'])->name('article.show');
@@ -85,6 +88,6 @@ Route::get('/user/documentation/{id}', [DokumentasiUserController::class, 'show'
 
 Route::get('/user/eventuser', [EventUserController::class, 'index'])->name('eventuser.index');
 Route::get('/user/eventuser/{id}', [EventUserController::class, 'show'])->name('eventuser.show');
-Route::get('/user/eventuser/create/{id}', [EventUserController::class, 'create'])->name('eventuser.create');
-Route::post('/user/eventuser/store/{id}', [EventUserController::class, 'store'])->name('eventuser.store');
+Route::get('/user/eventuser/create/{id}', [EventUserController::class, 'create'])->name('eventuser.create')->middleware('auth');
+Route::post('/user/eventuser/store/{id}', [EventUserController::class, 'store'])->name('eventuser.store')->middleware('auth');
 Route::get('/user/presensi/nim/{nim}', [EventUserController::class, 'nim'])->name('eventuser.nim');

@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="another-page">
-                        <p>Don't have an account? <span><a href="{{ route('register.index') }}">Sign Up</a></span></p>
+                        <p>Want to see our website only? <span><a href="{{ route('dashboarduser.index') }}">Explore as Guest</a></span></p>
                     </div>
                 </div>
             </div>

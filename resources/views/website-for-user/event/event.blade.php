@@ -11,7 +11,7 @@
 
 @section('main')
     <!-- Event Start -->
-        <div class="container" style="margin-top: 150px">
+        <div class="container">
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert" >
                     {{ session('success') }}
@@ -53,7 +53,9 @@
                             <th scope="col">Tanggal</th>
                             <th scope="col">Jam</th>
                             <th scope="col">Durasi</th>
-                            <th scope="col">Presensi</th>
+                            @if (auth()->guest() != true)
+                                <th scope="col">Presensi</th>
+                            @endif
                             <th scope="col">Pembicara</th>
                         </tr>
                     </thead>
@@ -69,7 +71,9 @@
                             <td>{{ $e->tanggal_pelaksanaan }}</td>
                             <td><span class="jam_mulai">{{ date('H:i',strtotime($e->jam_mulai)) }}</span> - <span class="jam_selesai">{{  date('H:i',strtotime($e->jam_selesai)) }}</td>
                             <td>{{ date('G \j\a\m i \m\e\n\i\t', strtotime($e->jam_selesai) - strtotime($e->jam_mulai))}}</td>
+                            @if (auth()->guest() != true)
                             <td><a class="btn btn-sm btn-outline-warning w-100" href="{{ route('eventuser.create', $e->id_event) }}">Presensi</a></td>
+                            @endif
                             {{-- nanti diloop --}}
                             <td>
                             @foreach ($e->pembicara as $p)

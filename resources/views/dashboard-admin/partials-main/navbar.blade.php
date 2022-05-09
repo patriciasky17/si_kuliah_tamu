@@ -26,7 +26,7 @@
                         <span class="d-none d-lg-inline-flex">{{ auth()->user()->username }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                        <a href="../website-for-user/index.html" class="dropdown-item">Website</a>
+                        <a href="{{ route("dashboarduser.index") }}" class="dropdown-item">Website</a>
                         <a href="{{ route("logout") }}" class="dropdown-item">Log Out</a>
                     </div>
                 </div>

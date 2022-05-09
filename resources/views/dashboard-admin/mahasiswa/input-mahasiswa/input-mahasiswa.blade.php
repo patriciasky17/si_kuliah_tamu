@@ -65,8 +65,41 @@
                             </div>
                         </div>
 
+                        <br>
+                        <hr>
+                        <br>
 
-                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Data</button>
+                        <div class="row mb-3">
+                            <label for="inputEmailMahasiswa" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmailMahasiswa" name="email">
+                                @error('email')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputUsernameMahasiswa" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputUsernameMahasiswa" name="username">
+                                @error('username')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputPasswordMahasiswa" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPasswordMahasiswa" name="password">
+                                @error('password')
+                                    <p class="text-danger"><i>{{ $message }}</i></p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-warning m-2 float-end">Submit Mahasiswa</button>
                     </form>
                 </div>
             </div>

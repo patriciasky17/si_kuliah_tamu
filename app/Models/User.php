@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class, 'id_role', 'id_role'); //id_role di table user, id_role di table role
     }
+
+    public function mahasiswa(){
+        return $this->hasOne(Mahasiswa::class, 'id_users', 'id');
+    }
 }

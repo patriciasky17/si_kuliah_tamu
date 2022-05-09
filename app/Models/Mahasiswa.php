@@ -15,6 +15,7 @@ class Mahasiswa extends Model
         'nama_mahasiswa',
         'jenis_kelamin',
         'prodi',
-        'angkatan'
+        'angkatan',
+        'id_users'
     ];
 }

@@ -40,17 +40,28 @@
                             <span class="username">&emsp; PROFILE</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown-details">
+                            @if (auth()->guest() != true)
+                            <li>
+                                <a class="dropdown-item detail-profile" href="{{ route("profilemahasiswauser.index") }}">Detail Profile</a>
+                            </li>
+                            @endif
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
-                                    Username : <span class="username">{{ auth()->user()->username }}</span>
+                                    Username : <span class="username">{{ auth()->guest() != true  ? auth()->user()->username : "Guest" }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item disabled" href="#" style="color:black; font-weight: 500">
-                                    Role : <span class="nama-role">{{ auth()->user()->role->nama_role }}</span>
+                                    Role : <span class="nama-role">{{ auth()->guest() != true ? auth()->user()->role->nama_role : "Guest"}}</span>
                                 </a>
                             </li>
+                            @if (auth()->guest() != true)
                             <li><a class="dropdown-item logout" href="{{ route("logout") }}">LOG OUT</a></li>
+                            @elseif (auth()->guest() == true)
+                            <li><a class="dropdown-item login" href="{{ route("login.index") }}">LOG IN</a></li>
+                            @endif
+
+
                         </ul>
                     </div>
 
